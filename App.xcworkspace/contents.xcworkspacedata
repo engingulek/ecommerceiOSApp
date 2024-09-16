@@ -2,6 +2,20 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:Apps"
+      name = "Apps">
+      <FileRef
+         location = "group:HomeApp/HomeApp.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Modules"
+      name = "Modules">
+      <FileRef
+         location = "group:HomeModule/HomeModule.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Kits"
       name = "Kits">
       <Group
