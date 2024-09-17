@@ -10,11 +10,13 @@ import ViewControllerAbleKit
  typealias Ables = UIViewAble
 
 protocol PresenterToViewHomeProtocol:AnyObject,Ables{
-    
+    func prepareSearchBar()
+    func searchTextFieldPlaceholder(placeholder:String)
 }
 
 
 protocol ViewToPresenterHomeProtocol {
     var view : PresenterToViewHomeProtocol? {get}
     func viewDidLoad()
+    func searchTextFieldDidChange(text:String?)
 }

@@ -9,13 +9,27 @@ import Foundation
 import UICommonKit
 
 final class HomePresenter : ViewToPresenterHomeProtocol {
+ 
+    
     weak var view : PresenterToViewHomeProtocol?
     
     init(view: PresenterToViewHomeProtocol) {
         self.view = view
     }
     
+   
+}
+
+
+extension HomePresenter {
+    
     func viewDidLoad() {
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
+        view?.prepareSearchBar()
+        view?.searchTextFieldPlaceholder(placeholder: TextTheme.searchPlaceholder.rawValue)
+    }
+    
+    func searchTextFieldDidChange(text: String?) {
+        print(text ?? "")
     }
 }

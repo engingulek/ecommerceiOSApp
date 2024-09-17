@@ -10,6 +10,7 @@
 		7D76E7C82C99A8A100CA27BB /* UICommonKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D76E7C72C99A8A100CA27BB /* UICommonKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D76E7D02C99A8CA00CA27BB /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7CF2C99A8CA00CA27BB /* UIColor+Extensions.swift */; };
 		7D76E7E12C99B42100CA27BB /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7E02C99B42100CA27BB /* ColorTheme.swift */; };
+		7D76E7ED2C99C8B900CA27BB /* TextTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7EC2C99C8B900CA27BB /* TextTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,6 +18,7 @@
 		7D76E7C72C99A8A100CA27BB /* UICommonKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICommonKit.h; sourceTree = "<group>"; };
 		7D76E7CF2C99A8CA00CA27BB /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		7D76E7E02C99B42100CA27BB /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
+		7D76E7EC2C99C8B900CA27BB /* TextTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				7D76E7E02C99B42100CA27BB /* ColorTheme.swift */,
+				7D76E7EC2C99C8B900CA27BB /* TextTheme.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			files = (
 				7D76E7D02C99A8CA00CA27BB /* UIColor+Extensions.swift in Sources */,
 				7D76E7E12C99B42100CA27BB /* ColorTheme.swift in Sources */,
+				7D76E7ED2C99C8B900CA27BB /* TextTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
