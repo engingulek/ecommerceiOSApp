@@ -13,7 +13,7 @@ class CategoryViewController: UIViewController {
     private lazy var categoryTableView : UITableView = {
         let tableView = UITableView()
         tableView.register(CategoryTVC.self, forCellReuseIdentifier: CategoryTVC.identifier)
-        tableView.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        tableView.backgroundColor = .lightGray.withAlphaComponent(0.2)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -39,7 +39,7 @@ class CategoryViewController: UIViewController {
     
     private lazy var specialView : UIView = {
        let view = UIView()
-        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        view.backgroundColor = .lightGray.withAlphaComponent(0.2)
         return view
         
     }()
