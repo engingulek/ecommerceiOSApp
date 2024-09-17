@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
- typealias Ables = UIViewAble
+ typealias Ables = UIViewAble & SegueAble & NavConUIAble
 
 protocol PresenterToViewHomeProtocol:AnyObject,Ables{
     func prepareSearchBar()
@@ -21,4 +21,10 @@ protocol ViewToPresenterHomeProtocol {
     var view : PresenterToViewHomeProtocol? {get}
     func viewDidLoad()
     func searchTextFieldDidChange(text:String?)
+    func categoriesButtonOnTapped()
+}
+
+
+protocol PresenterToRouterHomeProtocol {
+    func toCategoryModule(view:PresenterToViewHomeProtocol?)
 }

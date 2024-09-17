@@ -20,6 +20,10 @@
 		7D76E7E72C99B9E600CA27BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D76E7E62C99B9E600CA27BB /* SnapKit */; };
 		7D76E7E92C99B9E600CA27BB /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7D76E7E82C99B9E600CA27BB /* SnapKit-Dynamic */; };
 		7D76E7F52C99DF7400CA27BB /* ProductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7F42C99DF7400CA27BB /* ProductCVC.swift */; };
+		7DE97B372C9A0BBD00FDDF65 /* DependencyKits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE97B362C9A0BBD00FDDF65 /* DependencyKits.framework */; };
+		7DE97B382C9A0BBD00FDDF65 /* DependencyKits.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE97B362C9A0BBD00FDDF65 /* DependencyKits.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DE97B3A2C9A0BCD00FDDF65 /* CategoryModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE97B392C9A0BCD00FDDF65 /* CategoryModule.framework */; };
+		7DE97B3B2C9A0BCD00FDDF65 /* CategoryModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE97B392C9A0BCD00FDDF65 /* CategoryModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,7 +33,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7DE97B3B2C9A0BCD00FDDF65 /* CategoryModule.framework in Embed Frameworks */,
 				7D76E7E42C99B78400CA27BB /* UICommonKit.framework in Embed Frameworks */,
+				7DE97B382C9A0BBD00FDDF65 /* DependencyKits.framework in Embed Frameworks */,
 				7D76E7D92C99AA5200CA27BB /* ViewControllerAbleKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -48,6 +54,8 @@
 		7D76E7DD2C99AC8400CA27BB /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		7D76E7E22C99B78400CA27BB /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D76E7F42C99DF7400CA27BB /* ProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCVC.swift; sourceTree = "<group>"; };
+		7DE97B362C9A0BBD00FDDF65 /* DependencyKits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DependencyKits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DE97B392C9A0BCD00FDDF65 /* CategoryModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CategoryModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +63,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DE97B372C9A0BBD00FDDF65 /* DependencyKits.framework in Frameworks */,
 				7D76E7E72C99B9E600CA27BB /* SnapKit in Frameworks */,
 				7D76E7E32C99B78400CA27BB /* UICommonKit.framework in Frameworks */,
 				7D76E7D82C99AA5200CA27BB /* ViewControllerAbleKit.framework in Frameworks */,
+				7DE97B3A2C9A0BCD00FDDF65 /* CategoryModule.framework in Frameworks */,
 				7D76E7E92C99B9E600CA27BB /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +125,8 @@
 		7D76E7D62C99AA5200CA27BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DE97B392C9A0BCD00FDDF65 /* CategoryModule.framework */,
+				7DE97B362C9A0BBD00FDDF65 /* DependencyKits.framework */,
 				7D76E7E22C99B78400CA27BB /* UICommonKit.framework */,
 				7D76E7D72C99AA5200CA27BB /* ViewControllerAbleKit.framework */,
 			);
