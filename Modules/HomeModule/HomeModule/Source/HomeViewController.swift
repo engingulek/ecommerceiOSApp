@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import ViewControllerAbleKit
 
 class HomeViewController: UIViewController {
+    lazy var presenter: ViewToPresenterHomeProtocol = HomePresenter(view: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = .red
+        presenter.viewDidLoad()
     }
+}
+
+
+extension HomeViewController : PresenterToViewHomeProtocol {
     
-
-   
-
 }

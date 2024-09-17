@@ -11,7 +11,28 @@
 		7D71DC9E2C98B7130045415F /* HomeModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71DC9D2C98B7130045415F /* HomeModuleInterface.swift */; };
 		7D71DCA32C98B78B0045415F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71DCA22C98B78B0045415F /* HomeViewController.swift */; };
 		7D71DCA52C98B7A00045415F /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71DCA42C98B7A00045415F /* HomeRouter.swift */; };
+		7D76E7D82C99AA5200CA27BB /* ViewControllerAbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D76E7D72C99AA5200CA27BB /* ViewControllerAbleKit.framework */; };
+		7D76E7D92C99AA5200CA27BB /* ViewControllerAbleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D76E7D72C99AA5200CA27BB /* ViewControllerAbleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D76E7DC2C99AB6E00CA27BB /* HomeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7DB2C99AB6E00CA27BB /* HomeProtocols.swift */; };
+		7D76E7DE2C99AC8400CA27BB /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7DD2C99AC8400CA27BB /* HomePresenter.swift */; };
+		7D76E7E32C99B78400CA27BB /* UICommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D76E7E22C99B78400CA27BB /* UICommonKit.framework */; };
+		7D76E7E42C99B78400CA27BB /* UICommonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D76E7E22C99B78400CA27BB /* UICommonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7D76E7DA2C99AA5200CA27BB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7D76E7E42C99B78400CA27BB /* UICommonKit.framework in Embed Frameworks */,
+				7D76E7D92C99AA5200CA27BB /* ViewControllerAbleKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7D71DC922C98B6E00045415F /* HomeModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,6 +40,10 @@
 		7D71DC9D2C98B7130045415F /* HomeModuleInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModuleInterface.swift; sourceTree = "<group>"; };
 		7D71DCA22C98B78B0045415F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		7D71DCA42C98B7A00045415F /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		7D76E7D72C99AA5200CA27BB /* ViewControllerAbleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ViewControllerAbleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D76E7DB2C99AB6E00CA27BB /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
+		7D76E7DD2C99AC8400CA27BB /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		7D76E7E22C99B78400CA27BB /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +51,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D76E7E32C99B78400CA27BB /* UICommonKit.framework in Frameworks */,
+				7D76E7D82C99AA5200CA27BB /* ViewControllerAbleKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +64,7 @@
 			children = (
 				7D71DC942C98B6E00045415F /* HomeModule */,
 				7D71DC932C98B6E00045415F /* Products */,
+				7D76E7D62C99AA5200CA27BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,8 +99,19 @@
 			children = (
 				7D71DCA22C98B78B0045415F /* HomeViewController.swift */,
 				7D71DCA42C98B7A00045415F /* HomeRouter.swift */,
+				7D76E7DB2C99AB6E00CA27BB /* HomeProtocols.swift */,
+				7D76E7DD2C99AC8400CA27BB /* HomePresenter.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		7D76E7D62C99AA5200CA27BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D76E7E22C99B78400CA27BB /* UICommonKit.framework */,
+				7D76E7D72C99AA5200CA27BB /* ViewControllerAbleKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +136,7 @@
 				7D71DC8E2C98B6E00045415F /* Sources */,
 				7D71DC8F2C98B6E00045415F /* Frameworks */,
 				7D71DC902C98B6E00045415F /* Resources */,
+				7D76E7DA2C99AA5200CA27BB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -155,8 +195,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D76E7DC2C99AB6E00CA27BB /* HomeProtocols.swift in Sources */,
 				7D71DC9E2C98B7130045415F /* HomeModuleInterface.swift in Sources */,
 				7D71DCA52C98B7A00045415F /* HomeRouter.swift in Sources */,
+				7D76E7DE2C99AC8400CA27BB /* HomePresenter.swift in Sources */,
 				7D71DCA32C98B78B0045415F /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
