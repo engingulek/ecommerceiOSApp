@@ -24,9 +24,15 @@
    <Group
       location = "group:Kits"
       name = "Kits">
+      <FileRef
+         location = "group:DomainKits/UICommonKit/UICommonKit.xcodeproj">
+      </FileRef>
       <Group
          location = "group:DomainKits"
          name = "DomainKits">
+         <FileRef
+            location = "group:ViewControllerAbleKit/ViewControllerAbleKit.xcodeproj">
+         </FileRef>
          <FileRef
             location = "group:DependencyKits/DependencyKits.xcodeproj">
          </FileRef>
