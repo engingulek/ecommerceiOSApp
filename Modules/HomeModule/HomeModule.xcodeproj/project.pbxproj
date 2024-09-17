@@ -19,6 +19,7 @@
 		7D76E7E42C99B78400CA27BB /* UICommonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D76E7E22C99B78400CA27BB /* UICommonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D76E7E72C99B9E600CA27BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D76E7E62C99B9E600CA27BB /* SnapKit */; };
 		7D76E7E92C99B9E600CA27BB /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7D76E7E82C99B9E600CA27BB /* SnapKit-Dynamic */; };
+		7D76E7F52C99DF7400CA27BB /* ProductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7F42C99DF7400CA27BB /* ProductCVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		7D76E7DB2C99AB6E00CA27BB /* HomeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProtocols.swift; sourceTree = "<group>"; };
 		7D76E7DD2C99AC8400CA27BB /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		7D76E7E22C99B78400CA27BB /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D76E7F42C99DF7400CA27BB /* ProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				7D71DCA42C98B7A00045415F /* HomeRouter.swift */,
 				7D76E7DB2C99AB6E00CA27BB /* HomeProtocols.swift */,
 				7D76E7DD2C99AC8400CA27BB /* HomePresenter.swift */,
+				7D76E7F42C99DF7400CA27BB /* ProductCVC.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				7D76E7DC2C99AB6E00CA27BB /* HomeProtocols.swift in Sources */,
 				7D71DC9E2C98B7130045415F /* HomeModuleInterface.swift in Sources */,
+				7D76E7F52C99DF7400CA27BB /* ProductCVC.swift in Sources */,
 				7D71DCA52C98B7A00045415F /* HomeRouter.swift in Sources */,
 				7D76E7DE2C99AC8400CA27BB /* HomePresenter.swift in Sources */,
 				7D71DCA32C98B78B0045415F /* HomeViewController.swift in Sources */,

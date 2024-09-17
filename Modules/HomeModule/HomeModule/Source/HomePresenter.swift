@@ -27,6 +27,8 @@ extension HomePresenter {
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
         view?.prepareSearchBar()
         view?.searchTextFieldPlaceholder(placeholder: TextTheme.searchPlaceholder.rawValue)
+        view?.prepareCollectionView()
+        view?.reloadCollectionView()
     }
     
     func searchTextFieldDidChange(text: String?) {

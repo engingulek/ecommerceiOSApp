@@ -11,6 +11,8 @@ import ViewControllerAbleKit
 
 protocol PresenterToViewHomeProtocol:AnyObject,Ables{
     func prepareSearchBar()
+    func prepareCollectionView()
+    func reloadCollectionView()
     func searchTextFieldPlaceholder(placeholder:String)
 }
 

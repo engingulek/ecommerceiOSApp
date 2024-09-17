@@ -13,8 +13,11 @@ public enum ColorTheme : String {
     /// is white (#FFFFFF)
     case primaryBackColor = "#FFFFFF"
     
+    /// is black (#000000)
+    case secandaryLabelColor =  "#000000"
+    
     /// is orange (#FFA500)
-    case secandaryLabelColor =  "#FFA500"
+    case thirdLabelColor = "#FFA500"
   
 
 }
