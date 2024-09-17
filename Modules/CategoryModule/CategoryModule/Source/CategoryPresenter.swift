@@ -28,6 +28,7 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
         view?.prepareTableView()
         view?.reloadCategoryTableView()
         view?.reloadSubCategoryCollectionView()
+        view?.changeTitle(title: TextTheme.categories.rawValue)
     }
     
     

@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
-typealias Ables = UIViewAble
+typealias Ables = UIViewAble & NavConUIAble
 protocol PresenterToViewCategoryProtocol:AnyObject,Ables{
     func prepareCollectionView()
     func prepareTableView()

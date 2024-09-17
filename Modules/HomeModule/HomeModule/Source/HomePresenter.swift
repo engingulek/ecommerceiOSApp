@@ -9,12 +9,12 @@ import Foundation
 import UICommonKit
 
 final class HomePresenter : ViewToPresenterHomeProtocol {
- 
     
     weak var view : PresenterToViewHomeProtocol?
-    
-    init(view: PresenterToViewHomeProtocol) {
+    private let router : PresenterToRouterHomeProtocol
+    init(view: PresenterToViewHomeProtocol,router:PresenterToRouterHomeProtocol = HomeRouter()) {
         self.view = view
+        self.router = router
     }
     
    
@@ -29,9 +29,16 @@ extension HomePresenter {
         view?.searchTextFieldPlaceholder(placeholder: TextTheme.searchPlaceholder.rawValue)
         view?.prepareCollectionView()
         view?.reloadCollectionView()
+        view?.changeTitle(title: TextTheme.homePage.rawValue)
     }
     
     func searchTextFieldDidChange(text: String?) {
         print(text ?? "")
     }
+    
+    func categoriesButtonOnTapped() {
+        router.toCategoryModule(view: view)
+    }
+    
+ 
 }

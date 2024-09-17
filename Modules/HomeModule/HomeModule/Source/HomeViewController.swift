@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
     }()
     
     private lazy var categoryButtonAction  :UIAction = UIAction { _ in
-        print("to categories page")
+        self.presenter.categoriesButtonOnTapped()
         
     }
     

@@ -19,3 +19,30 @@ extension UIViewAble where Self : UIViewController {
         view.backgroundColor = UIColor(hex:color)
     }
 }
+
+
+//MARK: - SegueAble
+public protocol SegueAble {
+    func pushViewControllerAble (_ vc:UIViewController,animated:Bool)
+}
+
+extension SegueAble  where Self : UIViewController{
+    public func pushViewControllerAble (_ vc:UIViewController,animated:Bool) {
+        navigationController?.pushViewController(vc, animated: animated)
+    }
+}
+
+
+//MARK: - NavConUIAble
+public protocol NavConUIAble {
+    func changeTitle(title:String)
+}
+
+
+extension NavConUIAble where Self :  UIViewController{
+    
+    public func changeTitle(title:String) {
+        navigationItem.title = title
+    }
+    
+}
