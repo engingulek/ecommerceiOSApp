@@ -8,11 +8,29 @@
 import UIKit
 import ViewControllerAbleKit
 import SnapKit
-
+import UICommonKit
 class HomeViewController: UIViewController {
     lazy var presenter: ViewToPresenterHomeProtocol = HomePresenter(view: self)
     
     private lazy var searchTextField = UISearchTextField()
+    private lazy var categoryButton : UIButton = {
+       let button = UIButton()
+        button.setTitle(TextTheme.categories.rawValue, for: .normal)
+        button.setTitleColor(UIColor(hex: ColorTheme.secandaryLabelColor.rawValue) ,for: .normal)
+        button.layer.cornerRadius =  RadiusTheme.small.rawValue
+        button.addAction(categoryButtonAction, for: .touchUpInside)
+        button.titleLabel?.font = FontTheme.font.primaryFontBoldVersion
+        button.layer.borderColor = UIColor(hex: ColorTheme.secandaryLabelColor.rawValue)?.cgColor
+        button.layer.borderWidth = CornerWidthTheme.small.rawValue
+        return button
+        
+    }()
+    
+    private lazy var categoryButtonAction  :UIAction = UIAction { _ in
+        print("to categories page")
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +51,16 @@ class HomeViewController: UIViewController {
       
         view.addSubview(searchTextField)
         searchTextField.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(15)
             make.leading.equalToSuperview().offset(15)
             make.trailing.equalToSuperview().offset(-15)
             make.height.equalTo(45)
+        }
+        view.addSubview(categoryButton)
+        categoryButton.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(20)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(150)
         }
     }
 }

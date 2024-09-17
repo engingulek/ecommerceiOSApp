@@ -10,9 +10,11 @@ import UIKit
 
 public enum ColorTheme : String {
     
-    // is white (#FFFFFF)
+    /// is white (#FFFFFF)
     case primaryBackColor = "#FFFFFF"
     
+    /// is orange (#FFA500)
+    case secandaryLabelColor =  "#FFA500"
   
 
 }

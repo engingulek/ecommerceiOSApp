@@ -9,4 +9,5 @@ import Foundation
 
 public enum TextTheme : String {
     case searchPlaceholder = "Search Product"
+    case categories = "Categories"
 }
