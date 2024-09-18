@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D5556A02C9B230700C999E5 /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D55569F2C9B230700C999E5 /* DataResult.swift */; };
 		7D7D8AEE2C9B18AE00860EB2 /* NetworkKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D7D8AED2C9B18AE00860EB2 /* NetworkKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D7D8AF62C9B18DA00860EB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7D8AF52C9B18DA00860EB2 /* Alamofire */; };
 		7D7D8AF82C9B18DA00860EB2 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7D8AF72C9B18DA00860EB2 /* AlamofireDynamic */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D55569F2C9B230700C999E5 /* DataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
 		7D7D8AEA2C9B18AE00860EB2 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D7D8AED2C9B18AE00860EB2 /* NetworkKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkKit.h; sourceTree = "<group>"; };
 		7D7D8AF92C9B191B00860EB2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				7D7D8AFB2C9B19DA00860EB2 /* NetworkPath.swift */,
 				7D7D8AFD2C9B1A1500860EB2 /* TargetType.swift */,
 				7D7D8AFF2C9B1ADC00860EB2 /* NetworkManager.swift */,
+				7D55569F2C9B230700C999E5 /* DataResult.swift */,
 			);
 			path = NetworkKit;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				7D7D8B002C9B1ADC00860EB2 /* NetworkManager.swift in Sources */,
 				7D7D8AFE2C9B1A1500860EB2 /* TargetType.swift in Sources */,
 				7D7D8AFA2C9B191B00860EB2 /* Constants.swift in Sources */,
+				7D5556A02C9B230700C999E5 /* DataResult.swift in Sources */,
 				7D7D8AFC2C9B19DA00860EB2 /* NetworkPath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

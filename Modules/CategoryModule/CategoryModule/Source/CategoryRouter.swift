@@ -13,8 +13,10 @@ public class CategoryRouter : CategoryModuleProtocol {
     
     public func createHomeModule() -> UIViewController {
         let view = CategoryViewController()
-        let presenter : ViewToPresenterCategoryProtocol = CategoryPresenter(view: view)
+        let interactor = CategoryInteractor()
+        let presenter : ViewToPresenterCategoryProtocol & InteractorToPresenterCategoryProtocol = CategoryPresenter(view: view,interactor: interactor)
         view.presenter = presenter
+        interactor.presenter = presenter
         return view
     }
     

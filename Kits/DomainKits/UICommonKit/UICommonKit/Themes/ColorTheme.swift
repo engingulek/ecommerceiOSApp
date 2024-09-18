@@ -18,6 +18,9 @@ public enum ColorTheme : String {
     
     /// is orange (#FFA500)
     case thirdLabelColor = "#FFA500"
+    
+    /// is lightGray Alpha 0.3
+    case lightGrayAlpha0_3 = "#D3D3D3"
   
 
 }

@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 import UICommonKit
+import Kingfisher
 
 final class SubCategoryCVC : UICollectionViewCell {
     static let identifier : String = "productCVC"
@@ -50,8 +51,12 @@ final class SubCategoryCVC : UICollectionViewCell {
             make.top.equalTo(subCategoryImageView.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
         }
-        
-        
+    }
+    
+    func setData(subCategory:SubCategories) {
+        subCategoryName.text = subCategory.name
+        let url = URL(string: subCategory.icon)
+        subCategoryImageView.kf.setImage(with: url)
     }
     
     required init?(coder: NSCoder) {
