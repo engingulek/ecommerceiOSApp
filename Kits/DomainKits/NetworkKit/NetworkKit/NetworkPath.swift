@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkPath {
+public enum NetworkPath {
     case categories
 }
 

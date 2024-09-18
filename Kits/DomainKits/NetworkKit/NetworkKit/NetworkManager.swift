@@ -18,19 +18,20 @@ enum NetworkError : Error {
 }
 
 
-protocol NetworkManagerProtocol {
-    func fetch<T:Decodable>(
+public protocol NetworkManagerProtocol {
+   func fetch<T:Decodable>(
         target:NetworkPath,
         responseClass:T.Type) async throws -> T
 }
 
 
-class NetworkManager : NetworkManagerProtocol {
+public class NetworkManager : NetworkManagerProtocol {
+    public init() {}
     /// Fetch for NetworkManager
     /// - Parameters:
     ///   - target: request types
     ///   - responseClass: The type of data that will be received in response to the request
-    func fetch<T>(target: NetworkPath, responseClass: T.Type) async throws -> T where T : Decodable {
+  public  func fetch<T>(target: NetworkPath, responseClass: T.Type) async throws -> T where T : Decodable {
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let url = target.baseURL + target.path
         let parameters = buildParams(requestType: target.requestType)

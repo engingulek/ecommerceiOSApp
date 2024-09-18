@@ -8,6 +8,16 @@
 import Foundation
 import ViewControllerAbleKit
 typealias Ables = UIViewAble & NavConUIAble
+
+
+protocol ViewToPresenterCategoryProtocol {
+    var view : PresenterToViewCategoryProtocol? {get}
+    func viewDidLoad()
+    func numberOfRowsInSection() -> Int
+    func cellForItem(at indexPath : IndexPath) -> String
+    
+}
+
 protocol PresenterToViewCategoryProtocol:AnyObject,Ables{
     func prepareCollectionView()
     func prepareTableView()
@@ -16,9 +26,11 @@ protocol PresenterToViewCategoryProtocol:AnyObject,Ables{
 }
 
 
-protocol ViewToPresenterCategoryProtocol {
-    var view : PresenterToViewCategoryProtocol? {get}
-    func viewDidLoad()
-    func numberOfRowsInSection() -> Int
-    
+protocol PresenterToInteractorCategoryProtocol {
+    func fetchCategories() async throws
+}
+
+
+protocol InteractorToPresenterCategoryProtocol {
+    func sendData(categoryResult:[CategoryResult])
 }

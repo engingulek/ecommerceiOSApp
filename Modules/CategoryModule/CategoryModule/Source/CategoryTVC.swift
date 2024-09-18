@@ -37,8 +37,8 @@ final class CategoryTVC : UITableViewCell {
         }
     }
     //TODO: Category model will be added
-    func setData() {
-        categoryLabel.text = "Category"
+    func setData(name:String) {
+        categoryLabel.text = name
     }
     
  

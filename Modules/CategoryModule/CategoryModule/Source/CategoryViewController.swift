@@ -151,12 +151,14 @@ extension CategoryViewController : UITableViewDelegate,UITableViewDataSource {
             withIdentifier: CategoryTVC.identifier,
             for: indexPath) as? CategoryTVC else {return UITableViewCell()}
         cell.selectionStyle = .none
-        cell.setData()
+        let name = presenter.cellForItem(at: indexPath)
+        cell.setData(name: name)
         cell.backgroundColor = .clear
         return cell
     }
 }
 
+//MARK: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout 
 extension CategoryViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5

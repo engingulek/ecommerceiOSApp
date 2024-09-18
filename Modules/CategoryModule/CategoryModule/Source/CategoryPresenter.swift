@@ -9,9 +9,12 @@ import Foundation
 import UICommonKit
 final class CategoryPresenter  {
    weak var view: PresenterToViewCategoryProtocol?
-    
-    init(view: PresenterToViewCategoryProtocol?) {
+    private let interactor : PresenterToInteractorCategoryProtocol
+    private var categories: [CategoryResult] = []
+    private var subCategories : [SubCategories] = []
+    init(view: PresenterToViewCategoryProtocol?,interactor:PresenterToInteractorCategoryProtocol = CategoryInteractor()) {
         self.view = view
+        self.interactor = interactor
     }
     
     
@@ -20,8 +23,8 @@ final class CategoryPresenter  {
 
 
 extension CategoryPresenter : ViewToPresenterCategoryProtocol {
+    
 
-   
     func viewDidLoad() {
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
         view?.prepareCollectionView()
@@ -29,11 +32,39 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
         view?.reloadCategoryTableView()
         view?.reloadSubCategoryCollectionView()
         view?.changeTitle(title: TextTheme.categories.rawValue)
+        Task {
+           await fetch()
+        }
+        
+    }
+    
+    func fetch() async {
+        do{
+           try await interactor.fetchCategories()
+        }catch{
+            print("Error fetch categories")
+        }
+        
     }
     
     
     func numberOfRowsInSection() -> Int {
-        return 10
+        return categories.count
     }
+    
+    func cellForItem(at indexPath: IndexPath) -> String {
+        let category = categories[indexPath.row]
+        return category.name
+    }
+    
+    
+}
+
+extension CategoryPresenter : InteractorToPresenterCategoryProtocol {
+    func sendData(categoryResult:[CategoryResult]) {
+        categories = categoryResult
+        view?.reloadCategoryTableView()
+    }
+    
     
 }
