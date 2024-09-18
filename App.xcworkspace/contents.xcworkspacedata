@@ -31,6 +31,9 @@
          location = "group:DomainKits"
          name = "DomainKits">
          <FileRef
+            location = "group:NetworkKit/NetworkKit.xcodeproj">
+         </FileRef>
+         <FileRef
             location = "group:ViewControllerAbleKit/ViewControllerAbleKit.xcodeproj">
          </FileRef>
          <FileRef
