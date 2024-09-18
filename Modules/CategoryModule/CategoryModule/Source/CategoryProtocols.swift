@@ -13,10 +13,14 @@ typealias Ables = UIViewAble & NavConUIAble
 protocol ViewToPresenterCategoryProtocol {
     var view : PresenterToViewCategoryProtocol? {get}
     func viewDidLoad()
+    //MARK: TableView
     func numberOfRowsInSection() -> Int
     func cellForItem(at indexPath : IndexPath) -> (text:String,textColor:String,backColor:String)
     func didSelectRow(at indexPath:IndexPath)
+    //MARK: Collection View
+    func numberOfItemsInSection() -> Int
     func specialViewOnTapped()
+    func collectionViewCellForItem(at indexPath:IndexPath)-> SubCategories
     
 }
 

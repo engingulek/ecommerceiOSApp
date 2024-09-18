@@ -12,6 +12,7 @@ final class CategoryPresenter  {
     private let interactor : PresenterToInteractorCategoryProtocol
     private var categories: [CategoryResult] = []
     private var subCategories : [SubCategories] = []
+    private var preSelectedSubCategories : [SubCategories] =  [ .init(id: 1, name: "Pre-Selected Category", icon: "https://firebasestorage.googleapis.com/v0/b/ecommerceiosapp-f7e59.appspot.com/o/images%2Felectronics.png?alt=media&token=ef5b3f17-86e2-4be4-a69c-ae4c1d1153b8")]
     private var selectedCategoryId: Int = -1
     init(view: PresenterToViewCategoryProtocol?,interactor:PresenterToInteractorCategoryProtocol = CategoryInteractor()) {
         self.view = view
@@ -22,9 +23,6 @@ final class CategoryPresenter  {
 
 
 extension CategoryPresenter  {
-    
-    
-    
     
     func fetch() async {
         do{
@@ -37,19 +35,26 @@ extension CategoryPresenter  {
     
 }
 
+
 extension CategoryPresenter : ViewToPresenterCategoryProtocol {
+  
     func viewDidLoad() {
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
         view?.prepareCollectionView()
         view?.prepareTableView()
+        subCategories = preSelectedSubCategories
         view?.reloadCategoryTableView()
         view?.reloadSubCategoryCollectionView()
         view?.changeTitle(title: TextTheme.categories.rawValue)
+        view?.speacialViewChangeUI(
+            textColor: ColorTheme.thirdLabelColor.rawValue,
+            backColor: ColorTheme.primaryBackColor.rawValue)
         Task {
             await fetch()
         }
         
     }
+    
     
     func numberOfRowsInSection() -> Int {
         return categories.count
@@ -74,23 +79,42 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
             
             return (text,textColor,backColor)
             
-            
         }
     
     func didSelectRow(at indexPath: IndexPath) {
+        
         selectedCategoryId = categories[indexPath.row].id
         view?.speacialViewChangeUI(textColor: ColorTheme.secandaryLabelColor.rawValue, backColor: "")
         view?.reloadCategoryTableView()
+        
+        /// set subCategories
+        subCategories = categories[selectedCategoryId - 1].subCategories
+        view?.reloadSubCategoryCollectionView()
     }
     
     func specialViewOnTapped() {
         selectedCategoryId =  -1
         //TODO: pre-selected categories will be gone here
-        subCategories = []
+        subCategories = preSelectedSubCategories
         view?.speacialViewChangeUI(
             textColor: ColorTheme.thirdLabelColor.rawValue,
             backColor: ColorTheme.primaryBackColor.rawValue)
         view?.reloadCategoryTableView()
+        view?.reloadSubCategoryCollectionView()
+    }
+    
+}
+
+
+extension CategoryPresenter {
+    
+    func numberOfItemsInSection() -> Int {
+        return subCategories.count
+    }
+    
+    func collectionViewCellForItem(at indexPath: IndexPath) -> SubCategories {
+        let subCategory = subCategories[indexPath.item]
+        return subCategory
     }
     
 }
@@ -100,6 +124,4 @@ extension CategoryPresenter : InteractorToPresenterCategoryProtocol {
         categories = categoryResult
         view?.reloadCategoryTableView()
     }
-    
-    
 }

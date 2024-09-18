@@ -192,17 +192,22 @@ extension CategoryViewController : UITableViewDelegate,UITableViewDataSource {
 //MARK: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 extension CategoryViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return presenter.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:SubCategoryCVC.identifier.self, for: indexPath) as? SubCategoryCVC else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:SubCategoryCVC.identifier.self, 
+                                                            for: indexPath) as? SubCategoryCVC else {
             return UICollectionViewCell()
         }
+        let subCategory = presenter.collectionViewCellForItem(at: indexPath)
+        cell.setData(subCategory: subCategory)
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, 
+                        layout collectionViewLayout: UICollectionViewLayout, 
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.size.width
         let cellWidth = (width-30) / 2
         return CGSize(width: cellWidth, height: cellWidth)
