@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
-typealias Ables = UIViewAble & NavConUIAble
+typealias Ables = UIViewAble & NavConUIAble & SegueAble
 
 
 protocol ViewToPresenterCategoryProtocol {
@@ -21,6 +21,7 @@ protocol ViewToPresenterCategoryProtocol {
     func numberOfItemsInSection() -> Int
     func specialViewOnTapped()
     func collectionViewCellForItem(at indexPath:IndexPath)-> SubCategories
+    func didSelectItemAt(at indexPath:IndexPath)
     
 }
 
@@ -40,4 +41,9 @@ protocol PresenterToInteractorCategoryProtocol {
 
 protocol InteractorToPresenterCategoryProtocol {
     func sendData(categoryResult:[CategoryResult])
+}
+
+
+protocol PresenterToRouteCategoryProtocol {
+    func toProductListModule(view:PresenterToViewCategoryProtocol?,subCategoryId:Int)
 }

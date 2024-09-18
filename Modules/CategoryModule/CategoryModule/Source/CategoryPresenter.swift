@@ -14,9 +14,13 @@ final class CategoryPresenter  {
     private var subCategories : [SubCategories] = []
     private var preSelectedSubCategories : [SubCategories] =  [ .init(id: 1, name: "Pre-Selected Category", icon: "https://firebasestorage.googleapis.com/v0/b/ecommerceiosapp-f7e59.appspot.com/o/images%2Felectronics.png?alt=media&token=ef5b3f17-86e2-4be4-a69c-ae4c1d1153b8")]
     private var selectedCategoryId: Int = -1
-    init(view: PresenterToViewCategoryProtocol?,interactor:PresenterToInteractorCategoryProtocol = CategoryInteractor()) {
+    private let router : PresenterToRouteCategoryProtocol
+    init(view: PresenterToViewCategoryProtocol?,
+         interactor:PresenterToInteractorCategoryProtocol = CategoryInteractor(),
+         router:PresenterToRouteCategoryProtocol = CategoryRouter() ) {
         self.view = view
         self.interactor = interactor
+        self.router = router
     }
 }
 
@@ -115,6 +119,10 @@ extension CategoryPresenter {
     func collectionViewCellForItem(at indexPath: IndexPath) -> SubCategories {
         let subCategory = subCategories[indexPath.item]
         return subCategory
+    }
+    func didSelectItemAt(at indexPath: IndexPath) {
+        let subCategoryId = subCategories[indexPath.row].id
+        router.toProductListModule(view: view, subCategoryId: subCategoryId)
     }
     
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import UICommonKit
+import ViewControllerAbleKit
 class CategoryViewController: UIViewController {
     lazy var presenter : ViewToPresenterCategoryProtocol = CategoryPresenter(view: self)
     
@@ -212,5 +213,9 @@ extension CategoryViewController : UICollectionViewDelegate,UICollectionViewData
         let cellWidth = (width-30) / 2
         return CGSize(width: cellWidth, height: cellWidth)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItemAt(at: indexPath)
     }
 }

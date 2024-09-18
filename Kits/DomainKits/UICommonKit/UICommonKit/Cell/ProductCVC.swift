@@ -1,16 +1,18 @@
 //
 //  ProductCVC.swift
-//  HomeModule
+//  UICommonKit
 //
-//  Created by Engin Gülek on 17.09.2024.
+//  Created by Engin Gülek on 18.09.2024.
 //
 
 import Foundation
 import UIKit
 import SnapKit
-import UICommonKit
-final class ProductCVC : UICollectionViewCell {
-    static let identifier : String = "productCVC"
+
+
+
+public final class ProductCVC : UICollectionViewCell {
+    public static let identifier : String = "productCVC"
     
     private lazy var productImageView : UIImageView = {
         let imageView = UIImageView()

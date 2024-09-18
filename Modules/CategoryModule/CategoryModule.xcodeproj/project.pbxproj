@@ -12,6 +12,10 @@
 		7D55569C2C9B1EAE00C999E5 /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D55569B2C9B1EAE00C999E5 /* CategoryInteractor.swift */; };
 		7D55569E2C9B22F700C999E5 /* CategoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D55569D2C9B22F700C999E5 /* CategoryResult.swift */; };
 		7D5556A32C9B379A00C999E5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7D5556A22C9B379A00C999E5 /* Kingfisher */; };
+		7D55570C2C9B4BCD00C999E5 /* ProductListModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D55570B2C9B4BCD00C999E5 /* ProductListModule.framework */; };
+		7D55570D2C9B4BCD00C999E5 /* ProductListModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D55570B2C9B4BCD00C999E5 /* ProductListModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D55570F2C9B4BD400C999E5 /* DependencyKits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D55570E2C9B4BD400C999E5 /* DependencyKits.framework */; };
+		7D5557102C9B4BD400C999E5 /* DependencyKits.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D55570E2C9B4BD400C999E5 /* DependencyKits.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D71DCE62C98BA680045415F /* CategoryModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D71DCE52C98BA680045415F /* CategoryModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D71DCEF2C98BAA40045415F /* CategoryModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71DCEE2C98BAA40045415F /* CategoryModuleProtocol.swift */; };
 		7D71DCF12C98BB3A0045415F /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D71DCF02C98BB3A0045415F /* CategoryViewController.swift */; };
@@ -35,8 +39,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7D5557102C9B4BD400C999E5 /* DependencyKits.framework in Embed Frameworks */,
 				7DE97B292C99F4C800FDDF65 /* ViewControllerAbleKit.framework in Embed Frameworks */,
 				7DE97B272C99F4C800FDDF65 /* UICommonKit.framework in Embed Frameworks */,
+				7D55570D2C9B4BCD00C999E5 /* ProductListModule.framework in Embed Frameworks */,
 				7D55569A2C9B1CC500C999E5 /* NetworkKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -48,6 +54,8 @@
 		7D5556982C9B1CC500C999E5 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D55569B2C9B1EAE00C999E5 /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
 		7D55569D2C9B22F700C999E5 /* CategoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResult.swift; sourceTree = "<group>"; };
+		7D55570B2C9B4BCD00C999E5 /* ProductListModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProductListModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D55570E2C9B4BD400C999E5 /* DependencyKits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DependencyKits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D71DCE22C98BA680045415F /* CategoryModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CategoryModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D71DCE52C98BA680045415F /* CategoryModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CategoryModule.h; sourceTree = "<group>"; };
 		7D71DCEE2C98BAA40045415F /* CategoryModuleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModuleProtocol.swift; sourceTree = "<group>"; };
@@ -70,7 +78,9 @@
 				7D5556992C9B1CC500C999E5 /* NetworkKit.framework in Frameworks */,
 				7DE97B312C99F6B800FDDF65 /* SnapKit in Frameworks */,
 				7DE97B282C99F4C800FDDF65 /* ViewControllerAbleKit.framework in Frameworks */,
+				7D55570C2C9B4BCD00C999E5 /* ProductListModule.framework in Frameworks */,
 				7DE97B262C99F4C800FDDF65 /* UICommonKit.framework in Frameworks */,
+				7D55570F2C9B4BD400C999E5 /* DependencyKits.framework in Frameworks */,
 				7DE97B332C99F6B800FDDF65 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +141,8 @@
 		7DE97B232C99F4C800FDDF65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D55570E2C9B4BD400C999E5 /* DependencyKits.framework */,
+				7D55570B2C9B4BCD00C999E5 /* ProductListModule.framework */,
 				7D5556982C9B1CC500C999E5 /* NetworkKit.framework */,
 				7DE97B242C99F4C800FDDF65 /* UICommonKit.framework */,
 				7DE97B252C99F4C800FDDF65 /* ViewControllerAbleKit.framework */,
