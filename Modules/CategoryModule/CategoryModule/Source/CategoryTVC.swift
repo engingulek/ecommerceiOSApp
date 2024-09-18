@@ -22,6 +22,11 @@ final class CategoryTVC : UITableViewCell {
         return label
     }()
     
+    private lazy var dividerUI : UIView = {
+       let view = UIView()
+        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        return view
+    }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configureUI()
@@ -35,10 +40,29 @@ final class CategoryTVC : UITableViewCell {
             make.centerY.equalToSuperview()
             
         }
+        
+        contentView.addSubview(dividerUI)
+        dividerUI.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.width.equalTo(3)
+        }
     }
     //TODO: Category model will be added
     func setData(name:String) {
         categoryLabel.text = name
+    }
+    
+    func setConfigureUI(color:String){
+        categoryLabel.textColor = UIColor(hex: color)
+        //TODO: We will look at the best way
+        if(color == "#FFA500"){
+            dividerUI.backgroundColor = UIColor(hex: color)
+        }else{
+            dividerUI.backgroundColor = .clear
+        }
+        
     }
     
  

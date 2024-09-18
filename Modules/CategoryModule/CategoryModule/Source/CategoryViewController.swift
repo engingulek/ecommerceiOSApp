@@ -22,10 +22,10 @@ class CategoryViewController: UIViewController {
     private lazy var subCategoryCollectionView : UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-       
+        
         layout.scrollDirection = .vertical
         let  collectionview = UICollectionView(frame: .zero,
-                                         collectionViewLayout: layout)
+                                               collectionViewLayout: layout)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         collectionview.register(
@@ -38,8 +38,9 @@ class CategoryViewController: UIViewController {
     }()
     
     private lazy var specialView : UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        
         return view
         
     }()
@@ -63,8 +64,17 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         presenter.viewDidLoad()
         configureUI()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        specialView.isUserInteractionEnabled = true
+        specialView.addGestureRecognizer(tapGesture)
     }
-
+    
+    
+    @objc func viewTapped() {
+        presenter.specialViewOnTapped()
+    }
+    
     
     //MARK: ConfigureUI
     private func configureUI() {
@@ -111,13 +121,13 @@ class CategoryViewController: UIViewController {
 
 //MARK: PresenterToViewCategoryProtocol
 extension CategoryViewController : PresenterToViewCategoryProtocol {
-
+    
     
     func prepareTableView() {
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
     }
-   
+    
     func prepareCollectionView() {
         subCategoryCollectionView.delegate = self
         subCategoryCollectionView.dataSource = self
@@ -138,6 +148,17 @@ extension CategoryViewController : PresenterToViewCategoryProtocol {
         }
     }
     
+    func speacialViewChangeUI(textColor:String,backColor:String) {
+        specialLabel.textColor = UIColor(hex: textColor)
+        
+         if backColor == "" {
+            specialView.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        }else{
+            specialView.backgroundColor = UIColor(hex: backColor)
+        }
+        
+    }
+    
 }
 
 //MARK:  UITableViewDelegate,UITableViewDataSource
@@ -151,14 +172,24 @@ extension CategoryViewController : UITableViewDelegate,UITableViewDataSource {
             withIdentifier: CategoryTVC.identifier,
             for: indexPath) as? CategoryTVC else {return UITableViewCell()}
         cell.selectionStyle = .none
-        let name = presenter.cellForItem(at: indexPath)
-        cell.setData(name: name)
-        cell.backgroundColor = .clear
+        let cellItem = presenter.cellForItem(at: indexPath)
+        cell.setData(name: cellItem.text)
+        cell.setConfigureUI(color: cellItem.textColor)
+        if (cellItem.backColor == "#FFFFFF") {
+            cell.backgroundColor = UIColor(hex: cellItem.backColor)
+        }else{
+            cell.backgroundColor = .clear
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectRow(at: indexPath)
     }
 }
 
-//MARK: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout 
+//MARK: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 extension CategoryViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         5

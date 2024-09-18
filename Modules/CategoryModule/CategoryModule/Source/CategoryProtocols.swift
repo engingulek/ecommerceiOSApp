@@ -14,7 +14,9 @@ protocol ViewToPresenterCategoryProtocol {
     var view : PresenterToViewCategoryProtocol? {get}
     func viewDidLoad()
     func numberOfRowsInSection() -> Int
-    func cellForItem(at indexPath : IndexPath) -> String
+    func cellForItem(at indexPath : IndexPath) -> (text:String,textColor:String,backColor:String)
+    func didSelectRow(at indexPath:IndexPath)
+    func specialViewOnTapped()
     
 }
 
@@ -23,6 +25,7 @@ protocol PresenterToViewCategoryProtocol:AnyObject,Ables{
     func prepareTableView()
     func reloadCategoryTableView()
     func reloadSubCategoryCollectionView()
+    func speacialViewChangeUI(textColor:String,backColor:String)
 }
 
 
