@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
-typealias Ables = NavConUIAble
+typealias Ables = NavConUIAble & UICollectionViewControllerAble
 
 protocol ViewToPresenterProductListProtocol {
     var view : PresenterToViewProductListProtocol? {get}

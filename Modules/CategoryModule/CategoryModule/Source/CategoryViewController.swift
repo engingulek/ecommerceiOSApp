@@ -14,7 +14,7 @@ class CategoryViewController: UIViewController {
     private lazy var categoryTableView : UITableView = {
         let tableView = UITableView()
         tableView.register(CategoryTVC.self, forCellReuseIdentifier: CategoryTVC.identifier)
-        tableView.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        tableView.backgroundColor = UIColor(hex: ColorTheme.secondaryBackColor.rawValue)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -40,7 +40,7 @@ class CategoryViewController: UIViewController {
     
     private lazy var specialView : UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        view.backgroundColor = UIColor(hex: ColorTheme.secondaryBackColor.rawValue)
         
         return view
         
@@ -48,14 +48,14 @@ class CategoryViewController: UIViewController {
     
     private lazy var specialIcon : UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "star.circle")
+        imageView.image = UIImage(systemName: IconTheme.specialIcon.rawValue)
         imageView.tintColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
         return imageView
     }()
     
     private lazy var specialLabel : UILabel = {
         let label = UILabel()
-        label.text = "For You"
+        label.text = TextTheme.forYou.rawValue
         return label
     }()
     
@@ -151,12 +151,7 @@ extension CategoryViewController : PresenterToViewCategoryProtocol {
     
     func speacialViewChangeUI(textColor:String,backColor:String) {
         specialLabel.textColor = UIColor(hex: textColor)
-        
-         if backColor == "" {
-            specialView.backgroundColor = .lightGray.withAlphaComponent(0.2)
-        }else{
-            specialView.backgroundColor = UIColor(hex: backColor)
-        }
+        specialView.backgroundColor = UIColor(hex: backColor)
         
     }
     

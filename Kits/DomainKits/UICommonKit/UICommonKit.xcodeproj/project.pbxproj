@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7D4CAB6C2C9C6617003BECD7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7D4CAB6B2C9C6617003BECD7 /* Kingfisher */; };
+		7D4CAB7C2C9C9606003BECD7 /* IconTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB7B2C9C9606003BECD7 /* IconTheme.swift */; };
 		7D5556FA2C9B494300C999E5 /* ProductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556F92C9B494300C999E5 /* ProductCVC.swift */; };
 		7D5556FD2C9B497300C999E5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D5556FC2C9B497300C999E5 /* SnapKit */; };
 		7D5556FF2C9B497300C999E5 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7D5556FE2C9B497300C999E5 /* SnapKit-Dynamic */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D4CAB7B2C9C9606003BECD7 /* IconTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconTheme.swift; sourceTree = "<group>"; };
 		7D5556F92C9B494300C999E5 /* ProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCVC.swift; sourceTree = "<group>"; };
 		7D76E7C42C99A8A100CA27BB /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D76E7C72C99A8A100CA27BB /* UICommonKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICommonKit.h; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				7D76E7EC2C99C8B900CA27BB /* TextTheme.swift */,
 				7D76E7EE2C99CE5C00CA27BB /* RadiusTheme.swift */,
 				7D76E7F22C99D05C00CA27BB /* FontTheme.swift */,
+				7D4CAB7B2C9C9606003BECD7 /* IconTheme.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				7D76E7D02C99A8CA00CA27BB /* UIColor+Extensions.swift in Sources */,
 				7D76E7F32C99D05C00CA27BB /* FontTheme.swift in Sources */,
 				7D5556FA2C9B494300C999E5 /* ProductCVC.swift in Sources */,
+				7D4CAB7C2C9C9606003BECD7 /* IconTheme.swift in Sources */,
 				7D76E7E12C99B42100CA27BB /* ColorTheme.swift in Sources */,
 				7D76E7ED2C99C8B900CA27BB /* TextTheme.swift in Sources */,
 				7D76E7EF2C99CE5C00CA27BB /* RadiusTheme.swift in Sources */,

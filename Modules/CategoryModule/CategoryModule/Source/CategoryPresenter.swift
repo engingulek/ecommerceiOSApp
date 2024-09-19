@@ -78,7 +78,7 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
                 backColor = ColorTheme.primaryBackColor.rawValue
             }else{
                 textColor = ColorTheme.secandaryLabelColor.rawValue
-                backColor = ColorTheme.lightGrayAlpha0_3.rawValue
+                backColor = ColorTheme.secondaryBackColor.rawValue
             }
             
             return (text,textColor,backColor)
@@ -88,7 +88,7 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
     func didSelectRow(at indexPath: IndexPath) {
         
         selectedCategoryId = categories[indexPath.row].id
-        view?.speacialViewChangeUI(textColor: ColorTheme.secandaryLabelColor.rawValue, backColor: "")
+        view?.speacialViewChangeUI(textColor: ColorTheme.secandaryLabelColor.rawValue, backColor: ColorTheme.secondaryBackColor.rawValue)
         view?.reloadCategoryTableView()
         
         /// set subCategories

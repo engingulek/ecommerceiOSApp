@@ -14,9 +14,21 @@ public protocol UIViewAble {
     func setBackColorAble(color:String)
 }
 
-extension UIViewAble where Self : UIViewController {
+extension UIViewAble where Self : UIViewController  {
     public func setBackColorAble(color:String){
         view.backgroundColor = UIColor(hex:color)
+    }
+    
+}
+
+public protocol UICollectionViewControllerAble {
+    func setBackColorCollectionViewController(color:String)
+}
+
+
+extension UICollectionViewControllerAble where Self : UICollectionViewController {
+    public func setBackColorCollectionViewController(color:String) {
+        collectionView.backgroundColor = UIColor(hex: color)
     }
 }
 

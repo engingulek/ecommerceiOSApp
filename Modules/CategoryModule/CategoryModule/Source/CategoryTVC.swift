@@ -24,7 +24,7 @@ final class CategoryTVC : UITableViewCell {
     
     private lazy var dividerUI : UIView = {
        let view = UIView()
-        view.backgroundColor = .lightGray.withAlphaComponent(0.3)
+        view.backgroundColor = UIColor(hex: ColorTheme.secondaryBackColor.rawValue)
         return view
     }()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

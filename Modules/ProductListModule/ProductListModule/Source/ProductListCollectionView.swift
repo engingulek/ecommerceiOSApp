@@ -13,7 +13,8 @@ final class ProductListCollectionView : BaseCollectionView {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
-        collectionView.backgroundColor = UIColor(hex: "#F6F5F5")
+        presenter.viewDidLoad()
+      //  collectionView.backgroundColor = UIColor(hex: "#F6F5F5")
         
     }
 }

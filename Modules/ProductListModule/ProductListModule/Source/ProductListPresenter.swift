@@ -44,6 +44,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     
     func viewDidLoad() {
         view?.reloadCollectionView()
+        view?.setBackColorCollectionViewController(color: ColorTheme.secondaryBackColor.rawValue)
     }
     
     func getSubCategoryId(subCategoryId: Int) {
