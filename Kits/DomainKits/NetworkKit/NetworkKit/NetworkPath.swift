@@ -9,6 +9,8 @@ import Foundation
 
 public enum NetworkPath {
     case categories
+    case smartPhones
+    case laptops
 }
 
 
@@ -22,6 +24,10 @@ extension NetworkPath : TargetType {
         switch self {
         case .categories:
             Constants.category.rawValue + Constants.getAll.rawValue
+        case .smartPhones:
+            Constants.product.rawValue + Constants.getSmartPhones.rawValue
+        case .laptops:
+            Constants.product.rawValue + Constants.getLaptops.rawValue
         }
     }
     

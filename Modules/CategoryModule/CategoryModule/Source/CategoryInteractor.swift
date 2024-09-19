@@ -9,10 +9,10 @@ import Foundation
 import NetworkKit
 class CategoryInteractor : PresenterToInteractorCategoryProtocol {
     var presenter : InteractorToPresenterCategoryProtocol?
-    private let networkManage : NetworkManagerProtocol = NetworkManager()
+    private let networkManager : NetworkManagerProtocol = NetworkManager()
     func fetchCategories() async throws {
         do {
-            let response = try await networkManage.fetch(target: .categories, responseClass: DataResult<CategoryResult>.self)
+            let response = try await networkManager.fetch(target: .categories, responseClass: DataResult<CategoryResult>.self)
             presenter?.sendData(categoryResult: response.data)
         }catch{
             print("interactor error")

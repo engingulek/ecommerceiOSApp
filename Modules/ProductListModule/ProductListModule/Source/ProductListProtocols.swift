@@ -6,27 +6,42 @@
 //
 
 import Foundation
-
-protocol ViewToPresenterCategoryProtocol {
-    var view : PresenterToViewCategoryProtocol? {get}
+import ViewControllerAbleKit
+typealias Ables = NavConUIAble
+// tableview relaod section all vb
+protocol ViewToPresenterProductListProtocol {
+    var view : PresenterToViewProductListProtocol? {get}
     func viewDidLoad()
+    func getSubCategoryId(subCategoryId:Int)
+    func numberOfItemsInSection() -> Int
+    func collectionViewCellForItem(at indexPath:IndexPath)-> BaseProduct
+   // func didSelectItemAt(at indexPath:IndexPath)
     
 }
 
-protocol PresenterToViewCategoryProtocol:AnyObject{
-    func prepareCollectionView()
+//prepare
+protocol PresenterToViewProductListProtocol:AnyObject & Ables{
+    
     func reloadCollectionView()
    
 }
 
-
-protocol PresenterToInteractorCategoryProtocol {
-  
+//ProductListInteractor:
+protocol PresenterToInteractorProductListProtocol {
+    func fetchSmartPhoneProducts() async
+    func fetchLaptopProducts() async 
+    
 }
 
+// to presenter send Data
+protocol InteractorToPresenterProductListProtocol {
+    func sendDataSmartPhonesProduct(resultData:[ElectronicResult<Size,Color>])
+    func sendDataLaptopsProduct(resultData:[ElectronicResult<Size,Int>])
+}
 
-protocol InteractorToPresenterCategoryProtocol {
-  
+//Router:
+protocol PresenterToRouserProductListProtocol {
+    
 }
 
 

@@ -12,4 +12,6 @@ public enum TextTheme : String {
     case categories = "Categories"
     case lastViewed = "Last Viewed"
     case homePage = "Home Page"
+    case smartPhones = "Smart Phones"
+    case laptops = "Laptops"
 }
