@@ -12,4 +12,7 @@ enum Constants : String {
     case baseUrl = "http://localhost:8080/api"
     case category = "/category"
     case getAll = "/getAll"
+    case product = "/product"
+    case getSmartPhones = "/getSmartPhones"
+    case getLaptops = "/getLaptops"
 }

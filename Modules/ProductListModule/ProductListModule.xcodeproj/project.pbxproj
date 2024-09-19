@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7D4CAB622C9C549B003BECD7 /* ProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */; };
 		7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */; };
+		7D4CAB672C9C5B90003BECD7 /* ElectronicResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB662C9C5B90003BECD7 /* ElectronicResult.swift */; };
+		7D4CAB692C9C6478003BECD7 /* BaseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB682C9C6478003BECD7 /* BaseProduct.swift */; };
+		7D4CAB6E2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */; };
+		7D4CAB6F2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D5556C62C9B45E300C999E5 /* ProductListModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D5556C52C9B45E300C999E5 /* ProductListModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D5556ED2C9B46A200C999E5 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556EC2C9B46A200C999E5 /* BaseCollectionView.swift */; };
 		7D5556EF2C9B46D700C999E5 /* ProductListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556EE2C9B46D700C999E5 /* ProductListCollectionView.swift */; };
@@ -29,6 +33,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7D5557062C9B49F100C999E5 /* UICommonKit.framework in Embed Frameworks */,
+				7D4CAB6F2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Embed Frameworks */,
 				7D5557042C9B49F100C999E5 /* NetworkKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -39,6 +44,9 @@
 /* Begin PBXFileReference section */
 		7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListInteractor.swift; sourceTree = "<group>"; };
 		7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
+		7D4CAB662C9C5B90003BECD7 /* ElectronicResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectronicResult.swift; sourceTree = "<group>"; };
+		7D4CAB682C9C6478003BECD7 /* BaseProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProduct.swift; sourceTree = "<group>"; };
+		7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ViewControllerAbleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5556C22C9B45E300C999E5 /* ProductListModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProductListModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5556C52C9B45E300C999E5 /* ProductListModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListModule.h; sourceTree = "<group>"; };
 		7D5556EC2C9B46A200C999E5 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
@@ -56,6 +64,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D5557052C9B49F100C999E5 /* UICommonKit.framework in Frameworks */,
+				7D4CAB6E2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Frameworks */,
 				7D5557032C9B49F100C999E5 /* NetworkKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7D4CAB652C9C5B0E003BECD7 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7D4CAB662C9C5B90003BECD7 /* ElectronicResult.swift */,
+				7D4CAB682C9C6478003BECD7 /* BaseProduct.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		7D5556B82C9B45E300C999E5 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +119,7 @@
 		7D5556F52C9B47D100C999E5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7D4CAB652C9C5B0E003BECD7 /* Entity */,
 				7D5556EC2C9B46A200C999E5 /* BaseCollectionView.swift */,
 				7D5556EE2C9B46D700C999E5 /* ProductListCollectionView.swift */,
 				7D5556F02C9B475600C999E5 /* ProductListRouter.swift */,
@@ -114,6 +133,7 @@
 		7D5557002C9B49F100C999E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */,
 				7D5557012C9B49F100C999E5 /* NetworkKit.framework */,
 				7D5557022C9B49F100C999E5 /* UICommonKit.framework */,
 			);
@@ -201,6 +221,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D4CAB672C9C5B90003BECD7 /* ElectronicResult.swift in Sources */,
 				7D5556EF2C9B46D700C999E5 /* ProductListCollectionView.swift in Sources */,
 				7D5556F12C9B475600C999E5 /* ProductListRouter.swift in Sources */,
 				7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */,
@@ -208,6 +229,7 @@
 				7D5556ED2C9B46A200C999E5 /* BaseCollectionView.swift in Sources */,
 				7D5556F72C9B47ED00C999E5 /* ProductListProtocols.swift in Sources */,
 				7D5556F32C9B477B00C999E5 /* ProductListModuleProtocol.swift in Sources */,
+				7D4CAB692C9C6478003BECD7 /* BaseProduct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
