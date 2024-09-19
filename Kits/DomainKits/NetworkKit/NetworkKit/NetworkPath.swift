@@ -11,6 +11,8 @@ public enum NetworkPath {
     case categories
     case smartPhones
     case laptops
+    case thirsts
+    case jumpers
 }
 
 
@@ -28,6 +30,10 @@ extension NetworkPath : TargetType {
             Constants.product.rawValue + Constants.getSmartPhones.rawValue
         case .laptops:
             Constants.product.rawValue + Constants.getLaptops.rawValue
+        case .thirsts:
+            Constants.product.rawValue + Constants.getThirsts.rawValue
+        case .jumpers:
+            Constants.product.rawValue + Constants.getJumpers.rawValue
         }
     }
     

@@ -15,4 +15,6 @@ enum Constants : String {
     case product = "/product"
     case getSmartPhones = "/getSmartPhones"
     case getLaptops = "/getLaptops"
+    case getThirsts = "/getThirsts"
+    case getJumpers = "/getJumpers"
 }

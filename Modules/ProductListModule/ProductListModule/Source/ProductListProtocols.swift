@@ -8,38 +8,38 @@
 import Foundation
 import ViewControllerAbleKit
 typealias Ables = NavConUIAble
-// tableview relaod section all vb
+
 protocol ViewToPresenterProductListProtocol {
     var view : PresenterToViewProductListProtocol? {get}
     func viewDidLoad()
     func getSubCategoryId(subCategoryId:Int)
     func numberOfItemsInSection() -> Int
     func collectionViewCellForItem(at indexPath:IndexPath)-> BaseProduct
-   // func didSelectItemAt(at indexPath:IndexPath)
     
 }
 
-//prepare
+
 protocol PresenterToViewProductListProtocol:AnyObject & Ables{
     
     func reloadCollectionView()
    
 }
 
-//ProductListInteractor:
+
 protocol PresenterToInteractorProductListProtocol {
     func fetchSmartPhoneProducts() async
     func fetchLaptopProducts() async 
+    func fetchTshirtsProducts() async
+    func fetchJumpersProducts() async
     
 }
 
-// to presenter send Data
+
 protocol InteractorToPresenterProductListProtocol {
-    func sendDataSmartPhonesProduct(resultData:[ElectronicResult<Size,Color>])
-    func sendDataLaptopsProduct(resultData:[ElectronicResult<Size,Int>])
+    func sendData(resultData:[BaseProduct])
 }
 
-//Router:
+
 protocol PresenterToRouserProductListProtocol {
     
 }
