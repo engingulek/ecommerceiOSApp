@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D4CAB622C9C549B003BECD7 /* ProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */; };
+		7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */; };
 		7D5556C62C9B45E300C999E5 /* ProductListModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D5556C52C9B45E300C999E5 /* ProductListModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D5556ED2C9B46A200C999E5 /* BaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556EC2C9B46A200C999E5 /* BaseCollectionView.swift */; };
 		7D5556EF2C9B46D700C999E5 /* ProductListCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556EE2C9B46D700C999E5 /* ProductListCollectionView.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListInteractor.swift; sourceTree = "<group>"; };
+		7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		7D5556C22C9B45E300C999E5 /* ProductListModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProductListModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5556C52C9B45E300C999E5 /* ProductListModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListModule.h; sourceTree = "<group>"; };
 		7D5556EC2C9B46A200C999E5 /* BaseCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 				7D5556EE2C9B46D700C999E5 /* ProductListCollectionView.swift */,
 				7D5556F02C9B475600C999E5 /* ProductListRouter.swift */,
 				7D5556F62C9B47ED00C999E5 /* ProductListProtocols.swift */,
+				7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */,
+				7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -197,6 +203,8 @@
 			files = (
 				7D5556EF2C9B46D700C999E5 /* ProductListCollectionView.swift in Sources */,
 				7D5556F12C9B475600C999E5 /* ProductListRouter.swift in Sources */,
+				7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */,
+				7D4CAB622C9C549B003BECD7 /* ProductListInteractor.swift in Sources */,
 				7D5556ED2C9B46A200C999E5 /* BaseCollectionView.swift in Sources */,
 				7D5556F72C9B47ED00C999E5 /* ProductListProtocols.swift in Sources */,
 				7D5556F32C9B477B00C999E5 /* ProductListModuleProtocol.swift in Sources */,

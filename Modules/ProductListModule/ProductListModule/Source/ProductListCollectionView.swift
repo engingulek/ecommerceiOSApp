@@ -9,6 +9,7 @@ import Foundation
 import UICommonKit
 import UIKit
 final class ProductListCollectionView : BaseCollectionView {
+    lazy var presenter : ViewToPresenterProductListProtocol = ProductListPresenter(view: self)
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
@@ -25,17 +26,37 @@ extension ProductListCollectionView {
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier, for: indexPath) as? ProductCVC else {return UICollectionViewCell()}
+    override func collectionView(_ collectionView: UICollectionView, 
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier,
+                                                            for: indexPath) as? ProductCVC 
+        else {return UICollectionViewCell()}
         return cell
     }
 }
 
 
+//MARK: UICollectionViewDelegateFlowLayout
 extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, 
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let width = collectionView.frame.size.width
         let cellWidth = (width-30) / 2
         return CGSize(width: cellWidth, height: cellWidth)
     }
+}
+
+//MARK: PresenterToViewProductListProtocol
+extension ProductListCollectionView : PresenterToViewProductListProtocol {
+ 
+    func reloadCollectionView() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            collectionView.reloadData()
+        }
+    }
+    
 }

@@ -7,26 +7,34 @@
 
 import Foundation
 
-protocol ViewToPresenterCategoryProtocol {
-    var view : PresenterToViewCategoryProtocol? {get}
+// tableview relaod section all vb
+protocol ViewToPresenterProductListProtocol {
+    var view : PresenterToViewProductListProtocol? {get}
     func viewDidLoad()
+    func getSubCategoryId(subCategoryId:Int)
     
 }
 
-protocol PresenterToViewCategoryProtocol:AnyObject{
-    func prepareCollectionView()
+//prepare
+protocol PresenterToViewProductListProtocol:AnyObject{
+    
     func reloadCollectionView()
    
 }
 
-
-protocol PresenterToInteractorCategoryProtocol {
+//ProductListInteractor:
+protocol PresenterToInteractorProductListProtocol {
   
 }
 
-
-protocol InteractorToPresenterCategoryProtocol {
+// to presenter send Data
+protocol InteractorToPresenterProductListProtocol {
   
+}
+
+//Router:
+protocol PresenterToRouserProductListProtocol {
+    
 }
 
 
