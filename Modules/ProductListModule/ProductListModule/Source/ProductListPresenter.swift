@@ -28,6 +28,14 @@ final class ProductListPresenter {
     private func getLaptops() async {
         await interactor.fetchLaptopProducts()
     }
+    
+    private func getTshirts() async {
+        await interactor.fetchTshirtsProducts()
+    }
+    
+    private func getJumpers() async {
+        await interactor.fetchJumpersProducts()
+    }
 }
 
 
@@ -53,7 +61,18 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
                 view?.reloadCollectionView()
             }
             view?.changeTitle(title: TextTheme.laptops.rawValue)
-            
+        case 6:
+            Task{
+                await getTshirts()
+                view?.reloadCollectionView()
+            }
+            view?.changeTitle(title: TextTheme.tshirts.rawValue)
+        case 7:
+            Task{
+                await getJumpers()
+                view?.reloadCollectionView()
+            }
+            view?.changeTitle(title: TextTheme.jumpers.rawValue)
         default:
             print("Switch Error")
         }
@@ -75,16 +94,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
 
 //MARK: InteractorToPresenterProductListProtocol
 extension ProductListPresenter : InteractorToPresenterProductListProtocol {
-    
-    func sendDataSmartPhonesProduct(resultData: [ElectronicResult<Size, Color>]) {
-        baseProducts = resultData.map({ smartPhone in
-            return BaseProduct(id: smartPhone.id, imageurl: smartPhone.imageurl, name: smartPhone.name, price: smartPhone.price)
-        })
-    }
-    
-    func sendDataLaptopsProduct(resultData: [ElectronicResult<Size, Int>]) {
-        baseProducts = resultData.map({ smartPhone in
-            return BaseProduct(id: smartPhone.id, imageurl: smartPhone.imageurl, name: smartPhone.name, price: smartPhone.price)
-        })
+    func sendData(resultData: [BaseProduct]) {
+        baseProducts = resultData
     }
 }
