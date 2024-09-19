@@ -8,6 +8,8 @@
 import Foundation
 
 public enum RadiusTheme : Double {
+    /// is 5
+    case xSmall = 5
     /// is 15
     case small = 10
 }

@@ -10,12 +10,11 @@ import UICommonKit
 import UIKit
 final class ProductListCollectionView : BaseCollectionView {
     lazy var presenter : ViewToPresenterProductListProtocol = ProductListPresenter(view: self)
+    //TODO: ActivityIndicator will be added there
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
         presenter.viewDidLoad()
-      //  collectionView.backgroundColor = UIColor(hex: "#F6F5F5")
-        
     }
 }
 
@@ -24,6 +23,7 @@ final class ProductListCollectionView : BaseCollectionView {
 extension ProductListCollectionView {
     override func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
+        
         return presenter.numberOfItemsInSection()
         
     }
@@ -34,16 +34,13 @@ extension ProductListCollectionView {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier,
                                                             for: indexPath) as? ProductCVC 
         else {return UICollectionViewCell()}
-        let baseProduct =  presenter.collectionViewCellForItem(at: indexPath)
+        
+        let cellItem =  presenter.collectionViewCellForItem(at: indexPath)
+        let baseProduct = cellItem.product
+        
         cell.setData(name: baseProduct.name, imageUrl: baseProduct.imageurl, price: baseProduct.price)
-      
-              
-      
-              
-              
-        cell.layer.cornerRadius = 5.0
-        cell.backgroundColor = UIColor(hex: ColorTheme.primaryBackColor.rawValue)
-              
+        cell.layer.cornerRadius = cellItem.radius
+        cell.backgroundColor = UIColor(hex: cellItem.backColor)
         cell.layer.masksToBounds = true
         return cell
     }
@@ -58,19 +55,31 @@ extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
         
         let width = collectionView.frame.size.width
         let cellWidth = (width-30) / 2
+        
         return CGSize(width: cellWidth, height: cellWidth*1.5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    func collectionView(_ collectionView: UICollectionView, 
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let item = presenter.insetForSectionAt()
+        
+        return UIEdgeInsets(top: item.top, left: item.left, bottom: item.bottom, right: item.right)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+    func collectionView(_ collectionView: UICollectionView, 
+                        layout collectionViewLayout: UICollectionViewLayout, 
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return presenter.minimumLineSpacingForSectionAt()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+    func collectionView(_ collectionView: UICollectionView, 
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return presenter.minimumInteritemSpacingForSectionAt()
     }
 }
 
@@ -83,6 +92,4 @@ extension ProductListCollectionView : PresenterToViewProductListProtocol {
             collectionView.reloadData()
         }
     }
-    
-    
 }
