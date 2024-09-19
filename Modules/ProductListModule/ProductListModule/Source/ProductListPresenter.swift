@@ -41,6 +41,8 @@ final class ProductListPresenter {
 
 //MARK: ViewToPresenterProductListProtocol
 extension ProductListPresenter : ViewToPresenterProductListProtocol {
+  
+    
     
     func viewDidLoad() {
         view?.reloadCollectionView()
@@ -75,6 +77,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
             }
             view?.changeTitle(title: TextTheme.jumpers.rawValue)
         default:
+            //TODO: Alert Error will be added there
             print("Switch Error")
         }
         
@@ -86,8 +89,23 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     
 
     
-    func collectionViewCellForItem(at indexPath: IndexPath) -> BaseProduct {
-        return baseProducts[indexPath.item]
+    func collectionViewCellForItem(at indexPath: IndexPath) -> (product:BaseProduct,radius:Double,backColor:String) {
+        
+        return ( baseProducts[indexPath.item],
+                 RadiusTheme.xSmall.rawValue,
+                 ColorTheme.primaryBackColor.rawValue)
+    }
+    
+    func insetForSectionAt() -> (top: CGFloat, left: CGFloat, right: CGFloat, bottom: CGFloat) {
+        return (top:10,left:10,right:10,bottom:10)
+    }
+    
+    func minimumLineSpacingForSectionAt() -> CGFloat {
+        return 10
+    }
+    
+    func minimumInteritemSpacingForSectionAt() -> CGFloat {
+        return 10
     }
     
    
