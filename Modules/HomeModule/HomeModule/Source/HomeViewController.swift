@@ -72,6 +72,11 @@ class HomeViewController: UIViewController {
                                   for: .editingChanged)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
+    
     @objc func searchTextFieldDidChange(_ textField: UITextField){
         presenter.searchTextFieldDidChange(text: textField.text)
     }
@@ -111,6 +116,8 @@ class HomeViewController: UIViewController {
 
 //MARK: PresenterToViewHomeProtocol
 extension HomeViewController : PresenterToViewHomeProtocol {
+
+    
     
     func prepareSearchBar() {
         searchTextField.delegate = self
@@ -130,6 +137,10 @@ extension HomeViewController : PresenterToViewHomeProtocol {
             guard let self = self else {return}
             lastViewedUICollectionView.reloadData()
         }
+    }
+    
+    func clearSearchText() {
+        searchTextField.text = ""
     }
     
   

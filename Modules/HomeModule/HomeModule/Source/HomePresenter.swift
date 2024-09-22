@@ -32,13 +32,22 @@ extension HomePresenter {
         view?.changeTitle(title: TextTheme.homePage.rawValue)
     }
     
+    func viewWillAppear() {
+        view?.clearSearchText()
+    }
+    
     func searchTextFieldDidChange(text: String?) {
-        print(text ?? "")
+        guard let searchText = text else {return}
+        if searchText.count > 3 {
+            router.toSearchProductListModule(view: view, text: searchText)
+        }
     }
     
     func categoriesButtonOnTapped() {
         router.toCategoryModule(view: view)
     }
+    
+   
     
  
 }
