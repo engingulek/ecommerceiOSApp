@@ -18,6 +18,8 @@ protocol ViewToPresenterProductListProtocol {
     func insetForSectionAt() -> (top:CGFloat,left:CGFloat,right:CGFloat,bottom:CGFloat)
     func minimumLineSpacingForSectionAt() -> CGFloat
     func minimumInteritemSpacingForSectionAt() -> CGFloat
+    func sortAscendingPrice()
+    func sortDescendingPrice()
     
 }
 

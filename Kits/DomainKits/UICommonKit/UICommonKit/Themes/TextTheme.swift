@@ -17,4 +17,9 @@ public enum TextTheme : String {
     case jumpers = "Jumpers"
     case tshirts = "T-Shirts"
     case forYou = "For You"
+    case sort = "Sort"
+    case sortType = "Sort Type"
+    case ascendingPrice  = "Ascending Price"
+    case descendingPrice = "Descending Price"
+    case cancel = "Cancel"
 }
