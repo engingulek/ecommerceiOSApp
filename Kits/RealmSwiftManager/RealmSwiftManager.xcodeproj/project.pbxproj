@@ -13,6 +13,7 @@
 		7D0EBDA62CA0717200230FF9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7D0EBDA52CA0717200230FF9 /* RealmSwift */; };
 		7D0EBDA72CA0717200230FF9 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 7D0EBDA52CA0717200230FF9 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		7D0EBDAD2CA0761800230FF9 /* LastViewedCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0EBDAC2CA0761800230FF9 /* LastViewedCategory.swift */; };
+		7D7704692CA0D63A003C9622 /* LastViewedProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704682CA0D63A003C9622 /* LastViewedProduct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		7D0EBD9D2CA0715D00230FF9 /* RealmSwiftManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSwiftManager.swift; sourceTree = "<group>"; };
 		7D0EBD9F2CA0716B00230FF9 /* realm-swift-10.51.0 */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "realm-swift-10.51.0"; path = "../../../../../Downloads/realm-swift-10.51.0"; sourceTree = "<group>"; };
 		7D0EBDAC2CA0761800230FF9 /* LastViewedCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewedCategory.swift; sourceTree = "<group>"; };
+		7D7704682CA0D63A003C9622 /* LastViewedProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewedProduct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				7D0EBD962CA0714100230FF9 /* RealmSwiftManager.h */,
 				7D0EBD9D2CA0715D00230FF9 /* RealmSwiftManager.swift */,
 				7D0EBDAC2CA0761800230FF9 /* LastViewedCategory.swift */,
+				7D7704682CA0D63A003C9622 /* LastViewedProduct.swift */,
 			);
 			path = RealmSwiftManager;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D0EBD9E2CA0715D00230FF9 /* RealmSwiftManager.swift in Sources */,
+				7D7704692CA0D63A003C9622 /* LastViewedProduct.swift in Sources */,
 				7D0EBDAD2CA0761800230FF9 /* LastViewedCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

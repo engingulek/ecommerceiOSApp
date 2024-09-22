@@ -7,10 +7,12 @@
 
 import Foundation
 import UICommonKit
+import RealmSwiftManager
 final class ProductListPresenter {
     weak var view : PresenterToViewProductListProtocol?
     private let interactor : PresenterToInteractorProductListProtocol
     private let router : PresenterToRouserProductListProtocol
+    private let realmManager : RealmSwiftManagerProtocol = RealmSwiftManager()
     private var baseProducts : [ProductResult] = []
     private var lastProducts  : [ProductResult] = []
     init(view: PresenterToViewProductListProtocol?,
@@ -117,6 +119,14 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     
     func minimumInteritemSpacingForSectionAt() -> CGFloat {
         return 10
+    }
+    
+    func didSelectItemAt(at indexPath: IndexPath) {
+        let product = lastProducts[indexPath.item]
+        realmManager.addLastViewedProduct(id: product.id,
+                                          name: product.name,
+                                          imageUrl: product.imageurl[0], 
+                                          price: product.price)
     }
     
     

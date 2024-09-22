@@ -47,6 +47,10 @@ class HomeViewController: UIViewController {
         presenter.viewDidLoad()
         configureUI()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewWillAppear()
+    }
 
     private func configureUI(){
         
@@ -90,23 +94,60 @@ extension HomeViewController : PresenterToViewHomeProtocol {
     }
 }
 
-
-extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+//MARK: UICollectionViewDelegate,UICollectionViewDataSource
+extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return presenter.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier.self, for: indexPath) as? ProductCVC else {
             return UICollectionViewCell()
         }
+        let cellItem =  presenter.collectionViewCellForItem(at: indexPath)
+        let baseProduct = cellItem.product
+        
+        cell.setData(name: baseProduct.name, imageUrl: [baseProduct.imageUrl], price: baseProduct.price)
+        cell.layer.cornerRadius = cellItem.radius
+        cell.backgroundColor = UIColor(hex: cellItem.backColor)
+        cell.layer.masksToBounds = true
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.lastViewedUICollectionView.frame.size.width
-        let cellWidth = (width-30) / 2
-        return CGSize(width: cellWidth, height: cellWidth)
+    
+}
+
+extension HomeViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
+        let width = collectionView.frame.size.width
+        let cellWidth = (width-30) / 2
+        
+        return CGSize(width: cellWidth, height: cellWidth*1.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let item = presenter.insetForSectionAt()
+        
+        return UIEdgeInsets(top: item.top, left: item.left, bottom: item.bottom, right: item.right)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return presenter.minimumLineSpacingForSectionAt()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        return presenter.minimumInteritemSpacingForSectionAt()
     }
 }
