@@ -8,18 +8,54 @@
 import Foundation
 import UICommonKit
 import UIKit
-final class ProductListCollectionView : BaseCollectionView {
+final class ProductListCollectionView :UIViewController {
     lazy var presenter : ViewToPresenterProductListProtocol = ProductListPresenter(view: self)
+    private lazy var productListCollectionView = UICollectionView.createCollectionView()
+    private lazy var searchTextField = UISearchTextField()
     //TODO: ActivityIndicator will be added there
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
-        let sortButton = UIBarButtonItem(title: TextTheme.sort.rawValue , 
+         
+        productListCollectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
+        let sortButton = UIBarButtonItem(title: TextTheme.sort.rawValue ,
                                          style: .plain, target: self,
                                          action: #selector(sortButtonTapped))
         
         self.navigationItem.rightBarButtonItem = sortButton
         presenter.viewDidLoad()
+        
+        
+        //TODO: Look at the best of this
+        searchTextField.addTarget(self,
+                                  action: #selector(searchTextFieldDidChange(_:)),
+                                  for: .editingChanged)
+        
+        configureUI()
+    }
+    
+    private func configureUI(){
+        view.addSubview(searchTextField)
+        searchTextField.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(15)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(45)
+        }
+        
+        view.addSubview(productListCollectionView)
+        productListCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(searchTextField.snp.bottom).offset(10)
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+    }
+    
+    
+    
+    @objc func searchTextFieldDidChange(_ textField: UITextField){
+        presenter.searchProductList(searchText: searchTextField.text)
+      
     }
     
     @objc private func sortButtonTapped(){
@@ -45,15 +81,15 @@ final class ProductListCollectionView : BaseCollectionView {
 
 
 //MARK: CollectionViewDelegate and CollectionViewDataSource
-extension ProductListCollectionView {
-    override func collectionView(_ collectionView: UICollectionView,
+extension ProductListCollectionView : UICollectionViewDelegate,UICollectionViewDataSource {
+     func collectionView(_ collectionView: UICollectionView,
                                  numberOfItemsInSection section: Int) -> Int {
         
         return presenter.numberOfItemsInSection()
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView,
+     func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier,
@@ -114,7 +150,19 @@ extension ProductListCollectionView : PresenterToViewProductListProtocol {
     func reloadCollectionView() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
-            collectionView.reloadData()
+            productListCollectionView.reloadData()
         }
     }
+    
+    func prepareCollectionView() {
+        productListCollectionView.delegate = self
+        productListCollectionView.dataSource = self
+    }
+    
+    func searchTextFieldPlacholder(placholderText: String) {
+        searchTextField.placeholder = placholderText
+    }
+    
+   
 }
+

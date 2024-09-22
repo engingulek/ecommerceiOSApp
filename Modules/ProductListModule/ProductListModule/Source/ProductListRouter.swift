@@ -12,7 +12,7 @@ public class ProductListRouter : ProductListModuleProtocol {
     
     public init() {}
     
-    public func createProductListModule(subCategoryId: Int) -> UICollectionViewController {
+    public func createProductListModule(subCategoryId: Int) -> UIViewController {
         let view = ProductListCollectionView()
         let interactor = ProductListInteractor()
         let presenter : ViewToPresenterProductListProtocol & InteractorToPresenterProductListProtocol = ProductListPresenter(view: view,interactor: interactor)

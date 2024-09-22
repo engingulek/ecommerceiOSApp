@@ -18,6 +18,7 @@
 		7D76E7ED2C99C8B900CA27BB /* TextTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7EC2C99C8B900CA27BB /* TextTheme.swift */; };
 		7D76E7EF2C99CE5C00CA27BB /* RadiusTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7EE2C99CE5C00CA27BB /* RadiusTheme.swift */; };
 		7D76E7F32C99D05C00CA27BB /* FontTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D76E7F22C99D05C00CA27BB /* FontTheme.swift */; };
+		7D7704672CA0BC9D003C9622 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704662CA0BC9D003C9622 /* UICollectionView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7D76E7EC2C99C8B900CA27BB /* TextTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTheme.swift; sourceTree = "<group>"; };
 		7D76E7EE2C99CE5C00CA27BB /* RadiusTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusTheme.swift; sourceTree = "<group>"; };
 		7D76E7F22C99D05C00CA27BB /* FontTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontTheme.swift; sourceTree = "<group>"; };
+		7D7704662CA0BC9D003C9622 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				7D76E7CF2C99A8CA00CA27BB /* UIColor+Extensions.swift */,
+				7D7704662CA0BC9D003C9622 /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				7D4CAB7C2C9C9606003BECD7 /* IconTheme.swift in Sources */,
 				7D76E7E12C99B42100CA27BB /* ColorTheme.swift in Sources */,
 				7D76E7ED2C99C8B900CA27BB /* TextTheme.swift in Sources */,
+				7D7704672CA0BC9D003C9622 /* UICollectionView+Extension.swift in Sources */,
 				7D76E7EF2C99CE5C00CA27BB /* RadiusTheme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
