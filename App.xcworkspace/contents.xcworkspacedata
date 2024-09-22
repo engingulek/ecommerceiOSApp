@@ -21,9 +21,6 @@
       location = "group:Modules"
       name = "Modules">
       <FileRef
-         location = "group:SearchProductListModule/SearchProductListModule.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:ProductListModule/ProductListModule.xcodeproj">
       </FileRef>
       <FileRef

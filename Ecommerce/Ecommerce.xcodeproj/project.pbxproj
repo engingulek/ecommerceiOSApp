@@ -20,8 +20,6 @@
 		7D71DCD62C98B8960045415F /* HomeModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D71DCD22C98B8960045415F /* HomeModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D71DD1D2C98BC9E0045415F /* CategoryModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D71DD1C2C98BC9E0045415F /* CategoryModule.framework */; };
 		7D71DD1E2C98BC9E0045415F /* CategoryModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D71DD1C2C98BC9E0045415F /* CategoryModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7D7703FD2CA088E3003C9622 /* SearchProductListModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7703FC2CA088E3003C9622 /* SearchProductListModule.framework */; };
-		7D7703FE2CA088E3003C9622 /* SearchProductListModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7703FC2CA088E3003C9622 /* SearchProductListModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +31,6 @@
 			files = (
 				7D71DCD42C98B8960045415F /* DependencyKits.framework in Embed Frameworks */,
 				7D71DD1E2C98BC9E0045415F /* CategoryModule.framework in Embed Frameworks */,
-				7D7703FE2CA088E3003C9622 /* SearchProductListModule.framework in Embed Frameworks */,
 				7D55570A2C9B4A1000C999E5 /* ProductListModule.framework in Embed Frameworks */,
 				7D71DCD62C98B8960045415F /* HomeModule.framework in Embed Frameworks */,
 			);
@@ -64,7 +61,6 @@
 			files = (
 				7D71DCD32C98B8960045415F /* DependencyKits.framework in Frameworks */,
 				7D71DD1D2C98BC9E0045415F /* CategoryModule.framework in Frameworks */,
-				7D7703FD2CA088E3003C9622 /* SearchProductListModule.framework in Frameworks */,
 				7D5557092C9B4A1000C999E5 /* ProductListModule.framework in Frameworks */,
 				7D71DCD52C98B8960045415F /* HomeModule.framework in Frameworks */,
 			);

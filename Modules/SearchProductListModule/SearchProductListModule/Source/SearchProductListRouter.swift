@@ -15,7 +15,5 @@ public class SearchProductListRouter : SearchProductListModuleProtocol {
         print(view)
         return view
     }
-    
-    
 }
 
