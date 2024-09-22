@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D0EBDAA2CA071AE00230FF9 /* RealmSwiftManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D0EBDA92CA071AE00230FF9 /* RealmSwiftManager.framework */; };
+		7D0EBDAB2CA071AE00230FF9 /* RealmSwiftManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D0EBDA92CA071AE00230FF9 /* RealmSwiftManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D5556992C9B1CC500C999E5 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5556982C9B1CC500C999E5 /* NetworkKit.framework */; };
 		7D55569A2C9B1CC500C999E5 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5556982C9B1CC500C999E5 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D55569C2C9B1EAE00C999E5 /* CategoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D55569B2C9B1EAE00C999E5 /* CategoryInteractor.swift */; };
@@ -39,6 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7D0EBDAB2CA071AE00230FF9 /* RealmSwiftManager.framework in Embed Frameworks */,
 				7D5557102C9B4BD400C999E5 /* DependencyKits.framework in Embed Frameworks */,
 				7DE97B292C99F4C800FDDF65 /* ViewControllerAbleKit.framework in Embed Frameworks */,
 				7DE97B272C99F4C800FDDF65 /* UICommonKit.framework in Embed Frameworks */,
@@ -51,6 +54,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7D0EBD862CA06FBC00230FF9 /* RealmManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D0EBDA92CA071AE00230FF9 /* RealmSwiftManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwiftManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D4698F72CA05A050018876C /* CoreDataManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreDataManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5556982C9B1CC500C999E5 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D55569B2C9B1EAE00C999E5 /* CategoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryInteractor.swift; sourceTree = "<group>"; };
 		7D55569D2C9B22F700C999E5 /* CategoryResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResult.swift; sourceTree = "<group>"; };
@@ -80,6 +86,7 @@
 				7DE97B282C99F4C800FDDF65 /* ViewControllerAbleKit.framework in Frameworks */,
 				7D55570C2C9B4BCD00C999E5 /* ProductListModule.framework in Frameworks */,
 				7DE97B262C99F4C800FDDF65 /* UICommonKit.framework in Frameworks */,
+				7D0EBDAA2CA071AE00230FF9 /* RealmSwiftManager.framework in Frameworks */,
 				7D55570F2C9B4BD400C999E5 /* DependencyKits.framework in Frameworks */,
 				7DE97B332C99F6B800FDDF65 /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -141,6 +148,9 @@
 		7DE97B232C99F4C800FDDF65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D0EBDA92CA071AE00230FF9 /* RealmSwiftManager.framework */,
+				7D0EBD862CA06FBC00230FF9 /* RealmManager.framework */,
+				7D4698F72CA05A050018876C /* CoreDataManager.framework */,
 				7D55570E2C9B4BD400C999E5 /* DependencyKits.framework */,
 				7D55570B2C9B4BCD00C999E5 /* ProductListModule.framework */,
 				7D5556982C9B1CC500C999E5 /* NetworkKit.framework */,
