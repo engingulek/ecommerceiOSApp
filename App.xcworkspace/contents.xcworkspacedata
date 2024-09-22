@@ -31,6 +31,9 @@
       location = "group:Kits"
       name = "Kits">
       <FileRef
+         location = "group:RealmSwiftManager/RealmSwiftManager.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:DomainKits/UICommonKit/UICommonKit.xcodeproj">
       </FileRef>
       <Group

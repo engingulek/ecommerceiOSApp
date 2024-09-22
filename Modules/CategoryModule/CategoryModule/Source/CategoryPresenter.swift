@@ -7,14 +7,18 @@
 
 import Foundation
 import UICommonKit
+import RealmSwiftManager
 final class CategoryPresenter  {
     weak var view: PresenterToViewCategoryProtocol?
     private let interactor : PresenterToInteractorCategoryProtocol
+    private let realmManager : RealmSwiftManagerProtocol = RealmSwiftManager()
     private var categories: [CategoryResult] = []
     private var subCategories : [SubCategories] = []
-    private var preSelectedSubCategories : [SubCategories] =  [ .init(id: 1, name: "Pre-Selected Category", icon: "https://firebasestorage.googleapis.com/v0/b/ecommerceiosapp-f7e59.appspot.com/o/images%2Felectronics.png?alt=media&token=ef5b3f17-86e2-4be4-a69c-ae4c1d1153b8")]
+    
+    
     private var selectedCategoryId: Int = -1
     private let router : PresenterToRouteCategoryProtocol
+    
     init(view: PresenterToViewCategoryProtocol?,
          interactor:PresenterToInteractorCategoryProtocol = CategoryInteractor(),
          router:PresenterToRouteCategoryProtocol = CategoryRouter() ) {
@@ -22,6 +26,44 @@ final class CategoryPresenter  {
         self.interactor = interactor
         self.router = router
     }
+    
+    private func addLastViewCategory(subCategories:SubCategories) {
+        realmManager.addLastViewCategory(id: subCategories.id, name: subCategories.name, imageUrl: subCategories.icon)
+    }
+    
+    private func getLastViewedCategories()  {
+      let lastViewdCategories = realmManager.fetchLastViewedCategory()
+        subCategories = lastViewdCategories.map({ category in
+            return  SubCategories(id: category.id, name: category.name, icon: category.imageUrl)
+        })
+    }
+    
+    /*private func addLastViewedCategoryToRealm(subCategory:SubCategories) {
+        let result = coreDataManager.addLastViewedCategory(id: subCategory.id, name: subCategory.name, imageUrl: subCategory.icon)
+        if result {
+            print("Added")
+        }else{
+            print("error ")
+        }
+    
+    }*/
+    
+    /*private func getLastViewedCategoryFromRealm(){
+        let result = coreDataManager.getLastViewedCategory()
+        if result.errorState {
+            print("error")
+        }else{
+            if result.list.isEmpty {
+                print("Last Viewed Categories is Empty")
+            }else{
+                subCategories = result.list.map { category in
+                   return SubCategories(id: Int(category.id), name: category.name ?? "", icon: category.imageUrl ?? "")
+                }
+                view?.reloadSubCategoryCollectionView()
+            }
+           
+        }
+    }*/
 }
 
 
@@ -46,7 +88,10 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
         view?.prepareCollectionView()
         view?.prepareTableView()
-        subCategories = preSelectedSubCategories
+        
+        getLastViewedCategories()
+       
+        
         view?.reloadCategoryTableView()
         view?.reloadSubCategoryCollectionView()
         view?.changeTitle(title: TextTheme.categories.rawValue)
@@ -86,7 +131,7 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
         }
     
     func didSelectRow(at indexPath: IndexPath) {
-        
+    
         selectedCategoryId = categories[indexPath.row].id
         view?.speacialViewChangeUI(textColor: ColorTheme.secandaryLabelColor.rawValue, backColor: ColorTheme.secondaryBackColor.rawValue)
         view?.reloadCategoryTableView()
@@ -99,7 +144,8 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
     func specialViewOnTapped() {
         selectedCategoryId =  -1
         //TODO: pre-selected categories will be gone here
-        subCategories = preSelectedSubCategories
+        getLastViewedCategories()
+        
         view?.speacialViewChangeUI(
             textColor: ColorTheme.thirdLabelColor.rawValue,
             backColor: ColorTheme.primaryBackColor.rawValue)
@@ -121,7 +167,9 @@ extension CategoryPresenter {
         return subCategory
     }
     func didSelectItemAt(at indexPath: IndexPath) {
-        let subCategoryId = subCategories[indexPath.row].id
+        let subCategory =  subCategories[indexPath.row]
+       addLastViewCategory(subCategories: subCategory)
+        let subCategoryId = subCategory.id
         router.toProductListModule(view: view, subCategoryId: subCategoryId)
     }
     
