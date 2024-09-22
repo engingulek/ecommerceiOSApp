@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import DependencyKits
 import CategoryModule
+import SearchProductListModule
 public class HomeRouter : HomeModuleProtocol {
     public init(){}
     public func createHomeModule() -> UIViewController {
@@ -23,9 +24,16 @@ public class HomeRouter : HomeModuleProtocol {
 
 extension HomeRouter : PresenterToRouterHomeProtocol {
     
+    
     func toCategoryModule(view: PresenterToViewHomeProtocol?) {
         @Dependency var categoryModuleInterface : CategoryModuleProtocol
         let viewConroller = categoryModuleInterface.createHomeModule()
+        view?.pushViewControllerAble(viewConroller, animated: true)
+    }
+    
+    func toSearchProductListModule(view: PresenterToViewHomeProtocol?,text:String) {
+        @Dependency var searchProductListModule : SearchProductListModuleProtocol
+        let viewConroller = searchProductListModule.createSearchProductListModule(text: text)
         view?.pushViewControllerAble(viewConroller, animated: true)
     }
     

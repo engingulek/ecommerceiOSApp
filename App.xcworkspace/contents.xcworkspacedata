@@ -5,6 +5,9 @@
       location = "group:Apps"
       name = "Apps">
       <FileRef
+         location = "group:SearchProductListApp/SearchProductListApp.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:ProductListApp/ProductListApp.xcodeproj">
       </FileRef>
       <FileRef
@@ -17,6 +20,9 @@
    <Group
       location = "group:Modules"
       name = "Modules">
+      <FileRef
+         location = "group:SearchProductListModule/SearchProductListModule.xcodeproj">
+      </FileRef>
       <FileRef
          location = "group:ProductListModule/ProductListModule.xcodeproj">
       </FileRef>
