@@ -105,6 +105,10 @@ extension ProductListCollectionView : UICollectionViewDelegate,UICollectionViewD
         cell.layer.masksToBounds = true
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.didSelectItemAt(at: indexPath)
+    }
 }
 
 

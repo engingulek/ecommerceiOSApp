@@ -7,6 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
+import RealmSwiftManager
  typealias Ables = UIViewAble & SegueAble & NavConUIAble
 
 protocol PresenterToViewHomeProtocol:AnyObject,Ables{
@@ -21,7 +22,12 @@ protocol PresenterToViewHomeProtocol:AnyObject,Ables{
 protocol ViewToPresenterHomeProtocol {
     var view : PresenterToViewHomeProtocol? {get}
     func viewDidLoad()
-    
+    func viewWillAppear()
+    func numberOfItemsInSection() -> Int
+    func collectionViewCellForItem(at indexPath:IndexPath)-> (product:LastViewedProductResult,radius:Double,backColor:String)
+    func insetForSectionAt() -> (top:CGFloat,left:CGFloat,right:CGFloat,bottom:CGFloat)
+    func minimumLineSpacingForSectionAt() -> CGFloat
+    func minimumInteritemSpacingForSectionAt() -> CGFloat
     
     func categoriesButtonOnTapped()
 

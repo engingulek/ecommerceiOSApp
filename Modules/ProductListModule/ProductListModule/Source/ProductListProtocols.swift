@@ -14,11 +14,13 @@ protocol ViewToPresenterProductListProtocol {
     func viewDidLoad()
     func getSubCategoryId(subCategoryId:Int)
     func searchProductList(searchText:String?)
+    
     func numberOfItemsInSection() -> Int
     func collectionViewCellForItem(at indexPath:IndexPath)-> (product:ProductResult,radius:Double,backColor:String)
     func insetForSectionAt() -> (top:CGFloat,left:CGFloat,right:CGFloat,bottom:CGFloat)
     func minimumLineSpacingForSectionAt() -> CGFloat
     func minimumInteritemSpacingForSectionAt() -> CGFloat
+    func didSelectItemAt(at indexPath:IndexPath)
     func sortAscendingPrice()
     func sortDescendingPrice()
     

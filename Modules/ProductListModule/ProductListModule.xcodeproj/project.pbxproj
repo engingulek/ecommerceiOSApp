@@ -26,6 +26,8 @@
 		7D5557042C9B49F100C999E5 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5557012C9B49F100C999E5 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D5557052C9B49F100C999E5 /* UICommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5557022C9B49F100C999E5 /* UICommonKit.framework */; };
 		7D5557062C9B49F100C999E5 /* UICommonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5557022C9B49F100C999E5 /* UICommonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D77046B2CA0DAF8003C9622 /* RealmSwiftManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */; };
+		7D77046C2CA0DAF8003C9622 /* RealmSwiftManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7D77046C2CA0DAF8003C9622 /* RealmSwiftManager.framework in Embed Frameworks */,
 				7D5557062C9B49F100C999E5 /* UICommonKit.framework in Embed Frameworks */,
 				7D4CAB6F2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Embed Frameworks */,
 				7D5557042C9B49F100C999E5 /* NetworkKit.framework in Embed Frameworks */,
@@ -62,6 +65,7 @@
 		7D5556F62C9B47ED00C999E5 /* ProductListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListProtocols.swift; sourceTree = "<group>"; };
 		7D5557012C9B49F100C999E5 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5557022C9B49F100C999E5 /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwiftManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D77046B2CA0DAF8003C9622 /* RealmSwiftManager.framework in Frameworks */,
 				7D5557052C9B49F100C999E5 /* UICommonKit.framework in Frameworks */,
 				7D4CAB6E2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Frameworks */,
 				7D5557032C9B49F100C999E5 /* NetworkKit.framework in Frameworks */,
@@ -150,6 +155,7 @@
 		7D5557002C9B49F100C999E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */,
 				7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */,
 				7D5557012C9B49F100C999E5 /* NetworkKit.framework */,
 				7D5557022C9B49F100C999E5 /* UICommonKit.framework */,
