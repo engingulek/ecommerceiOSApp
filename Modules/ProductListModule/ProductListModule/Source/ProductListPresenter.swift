@@ -41,7 +41,6 @@ final class ProductListPresenter {
 
 //MARK: ViewToPresenterProductListProtocol
 extension ProductListPresenter : ViewToPresenterProductListProtocol {
-  
     
     
     func viewDidLoad() {
@@ -107,6 +106,19 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     func minimumInteritemSpacingForSectionAt() -> CGFloat {
         return 10
     }
+    
+    
+    func sortAscendingPrice() {
+        baseProducts = baseProducts.sorted { $0.price < $1.price}
+        view?.reloadCollectionView()
+    }
+    
+    func sortDescendingPrice() {
+        baseProducts = baseProducts.sorted { $0.price > $1.price}
+        view?.reloadCollectionView()
+    }
+    
+  
     
    
 }

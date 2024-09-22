@@ -14,7 +14,32 @@ final class ProductListCollectionView : BaseCollectionView {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
+        let sortButton = UIBarButtonItem(title: TextTheme.sort.rawValue , 
+                                         style: .plain, target: self,
+                                         action: #selector(sortButtonTapped))
+        
+        self.navigationItem.rightBarButtonItem = sortButton
         presenter.viewDidLoad()
+    }
+    
+    @objc private func sortButtonTapped(){
+        let alert = UIAlertController(title: TextTheme.sort.rawValue, 
+                                      message: TextTheme.sortType.rawValue,
+                                      preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: TextTheme.ascendingPrice.rawValue, style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            presenter.sortAscendingPrice()
+        }))
+        
+        alert.addAction(UIAlertAction(title: TextTheme.descendingPrice.rawValue, style: .default, handler: { [weak self] _ in
+            guard let self = self else { return }
+            presenter.sortDescendingPrice()
+        }))
+        
+        alert.addAction(UIAlertAction(title: TextTheme.cancel.rawValue, style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -28,11 +53,11 @@ extension ProductListCollectionView {
         
     }
     
-    override func collectionView(_ collectionView: UICollectionView, 
+    override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier,
-                                                            for: indexPath) as? ProductCVC 
+                                                            for: indexPath) as? ProductCVC
         else {return UICollectionViewCell()}
         
         let cellItem =  presenter.collectionViewCellForItem(at: indexPath)
@@ -49,7 +74,7 @@ extension ProductListCollectionView {
 
 //MARK: UICollectionViewDelegateFlowLayout
 extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -59,7 +84,7 @@ extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellWidth, height: cellWidth*1.5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         
@@ -68,14 +93,14 @@ extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: item.top, left: item.left, bottom: item.bottom, right: item.right)
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
-                        layout collectionViewLayout: UICollectionViewLayout, 
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
         return presenter.minimumLineSpacingForSectionAt()
     }
     
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
@@ -85,7 +110,7 @@ extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
 
 //MARK: PresenterToViewProductListProtocol
 extension ProductListCollectionView : PresenterToViewProductListProtocol {
- 
+    
     func reloadCollectionView() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
