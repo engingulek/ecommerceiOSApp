@@ -12,7 +12,8 @@ final class ProductListPresenter {
     private let interactor : PresenterToInteractorProductListProtocol
     private let router : PresenterToRouserProductListProtocol
     private var baseProducts : [BaseProduct] = []
-    init(view: PresenterToViewProductListProtocol?, 
+    private var lastProducts  : [BaseProduct] = []
+    init(view: PresenterToViewProductListProtocol?,
          interactor: PresenterToInteractorProductListProtocol = ProductListInteractor(),
          router: PresenterToRouserProductListProtocol = ProductListRouter()) {
         self.view = view
@@ -45,7 +46,9 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     
     func viewDidLoad() {
         view?.reloadCollectionView()
-        view?.setBackColorCollectionViewController(color: ColorTheme.secondaryBackColor.rawValue)
+        view?.prepareCollectionView()
+        view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
+        view?.searchTextFieldPlacholder(placholderText: TextTheme.searchPlaceholder.rawValue)
     }
     
     func getSubCategoryId(subCategoryId: Int) {
@@ -82,15 +85,24 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
         
     }
     
-    func numberOfItemsInSection() -> Int {
-        return baseProducts.count
+    func searchProductList(searchText: String?) {
+        guard let searchText = searchText else {return}
+        if searchText.isEmpty {
+            lastProducts = baseProducts
+        }else{
+            lastProducts = baseProducts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+        }
+        
+        view?.reloadCollectionView()
     }
     
-
+    func numberOfItemsInSection() -> Int {
+        return lastProducts.count
+    }
     
     func collectionViewCellForItem(at indexPath: IndexPath) -> (product:BaseProduct,radius:Double,backColor:String) {
         
-        return ( baseProducts[indexPath.item],
+        return ( lastProducts[indexPath.item],
                  RadiusTheme.xSmall.rawValue,
                  ColorTheme.primaryBackColor.rawValue)
     }
@@ -109,17 +121,14 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     
     
     func sortAscendingPrice() {
-        baseProducts = baseProducts.sorted { $0.price < $1.price}
+        lastProducts = lastProducts.sorted { $0.price < $1.price}
         view?.reloadCollectionView()
     }
     
     func sortDescendingPrice() {
-        baseProducts = baseProducts.sorted { $0.price > $1.price}
+        lastProducts = lastProducts.sorted { $0.price > $1.price}
         view?.reloadCollectionView()
     }
-    
-  
-    
    
 }
 
@@ -127,5 +136,6 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
 extension ProductListPresenter : InteractorToPresenterProductListProtocol {
     func sendData(resultData: [BaseProduct]) {
         baseProducts = resultData
+        lastProducts = resultData
     }
 }

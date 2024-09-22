@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 public protocol ProductListModuleProtocol{
-    func createProductListModule(subCategoryId:Int) -> UICollectionViewController
+    func createProductListModule(subCategoryId:Int) -> UIViewController
 }

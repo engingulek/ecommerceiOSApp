@@ -10,19 +10,19 @@ import ViewControllerAbleKit
  typealias Ables = UIViewAble & SegueAble & NavConUIAble
 
 protocol PresenterToViewHomeProtocol:AnyObject,Ables{
-    func prepareSearchBar()
+    
     func prepareCollectionView()
     func reloadCollectionView()
-    func searchTextFieldPlaceholder(placeholder:String)
-    func clearSearchText()
+    
+
 }
 
 
 protocol ViewToPresenterHomeProtocol {
     var view : PresenterToViewHomeProtocol? {get}
     func viewDidLoad()
-    func viewWillAppear()
-    func searchTextFieldDidChange(text:String?)
+    
+    
     func categoriesButtonOnTapped()
 
 }
