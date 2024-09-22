@@ -11,8 +11,8 @@ final class ProductListPresenter {
     weak var view : PresenterToViewProductListProtocol?
     private let interactor : PresenterToInteractorProductListProtocol
     private let router : PresenterToRouserProductListProtocol
-    private var baseProducts : [BaseProduct] = []
-    private var lastProducts  : [BaseProduct] = []
+    private var baseProducts : [ProductResult] = []
+    private var lastProducts  : [ProductResult] = []
     init(view: PresenterToViewProductListProtocol?,
          interactor: PresenterToInteractorProductListProtocol = ProductListInteractor(),
          router: PresenterToRouserProductListProtocol = ProductListRouter()) {
@@ -100,7 +100,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
         return lastProducts.count
     }
     
-    func collectionViewCellForItem(at indexPath: IndexPath) -> (product:BaseProduct,radius:Double,backColor:String) {
+    func collectionViewCellForItem(at indexPath: IndexPath) -> (product:ProductResult,radius:Double,backColor:String) {
         
         return ( lastProducts[indexPath.item],
                  RadiusTheme.xSmall.rawValue,
@@ -134,8 +134,8 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
 
 //MARK: InteractorToPresenterProductListProtocol
 extension ProductListPresenter : InteractorToPresenterProductListProtocol {
-    func sendData(resultData: [BaseProduct]) {
-        baseProducts = resultData
-        lastProducts = resultData
+    func sendData(resultData: [ProductResult]) {
+       baseProducts = resultData
+      lastProducts = resultData
     }
 }

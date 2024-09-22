@@ -10,7 +10,6 @@
 		7D4CAB622C9C549B003BECD7 /* ProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */; };
 		7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */; };
 		7D4CAB672C9C5B90003BECD7 /* SmartPhoneResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB662C9C5B90003BECD7 /* SmartPhoneResult.swift */; };
-		7D4CAB692C9C6478003BECD7 /* BaseProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB682C9C6478003BECD7 /* BaseProduct.swift */; };
 		7D4CAB6E2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */; };
 		7D4CAB6F2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D4CAB712C9C80C5003BECD7 /* ClothesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB702C9C80C5003BECD7 /* ClothesResult.swift */; };
@@ -49,7 +48,6 @@
 		7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListInteractor.swift; sourceTree = "<group>"; };
 		7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
 		7D4CAB662C9C5B90003BECD7 /* SmartPhoneResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhoneResult.swift; sourceTree = "<group>"; };
-		7D4CAB682C9C6478003BECD7 /* BaseProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProduct.swift; sourceTree = "<group>"; };
 		7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ViewControllerAbleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D4CAB702C9C80C5003BECD7 /* ClothesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesResult.swift; sourceTree = "<group>"; };
 		7D4CAB722C9C8722003BECD7 /* ProductResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResult.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				7D4CAB7A2C9C8DBA003BECD7 /* Results */,
-				7D4CAB682C9C6478003BECD7 /* BaseProduct.swift */,
 				7D4CAB762C9C8D6F003BECD7 /* Size.swift */,
 				7D4CAB782C9C8D92003BECD7 /* Color.swift */,
 			);
@@ -252,7 +249,6 @@
 				7D4CAB792C9C8D92003BECD7 /* Color.swift in Sources */,
 				7D4CAB732C9C8722003BECD7 /* ProductResult.swift in Sources */,
 				7D4CAB712C9C80C5003BECD7 /* ClothesResult.swift in Sources */,
-				7D4CAB692C9C6478003BECD7 /* BaseProduct.swift in Sources */,
 				7D4CAB772C9C8D6F003BECD7 /* Size.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
