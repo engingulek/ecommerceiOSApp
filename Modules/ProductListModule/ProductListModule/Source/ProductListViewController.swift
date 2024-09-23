@@ -10,7 +10,7 @@ import UICommonKit
 import UIKit
 final class ProductListCollectionView :UIViewController {
     lazy var presenter : ViewToPresenterProductListProtocol = ProductListPresenter(view: self)
-    private lazy var productListCollectionView = UICollectionView.createCollectionView()
+    private lazy var productListCollectionView = UICollectionView.createCollectionView(scrollDirection: .vertical)
     private lazy var searchTextField = UISearchTextField()
     //TODO: ActivityIndicator will be added there
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ final class ProductListCollectionView :UIViewController {
         self.navigationItem.rightBarButtonItem = sortButton
         presenter.viewDidLoad()
         
-        
+        productListCollectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
         //TODO: Look at the best of this
         searchTextField.addTarget(self,
                                   action: #selector(searchTextFieldDidChange(_:)),

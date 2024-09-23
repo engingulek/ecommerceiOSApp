@@ -39,11 +39,12 @@ class HomeViewController: UIViewController {
         
     }
     
-    private lazy var lastViewedUICollectionView = UICollectionView.createCollectionView()
+    private lazy var lastViewedUICollectionView = UICollectionView.createCollectionView(scrollDirection: .vertical)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lastViewedUICollectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
         presenter.viewDidLoad()
         configureUI()
     }

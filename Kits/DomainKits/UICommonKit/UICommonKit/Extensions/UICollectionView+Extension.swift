@@ -9,15 +9,12 @@ import Foundation
 import UIKit
 
 extension UICollectionView {
-   public static func createCollectionView() -> UICollectionView {
+    public static func createCollectionView(scrollDirection:ScrollDirection,tag:Int = 0) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
+        layout.scrollDirection = scrollDirection
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
+        collectionView.tag = tag
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = UIColor(hex: ColorTheme.primaryBackColor.rawValue)
         

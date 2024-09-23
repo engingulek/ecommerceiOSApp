@@ -22,4 +22,7 @@ public enum TextTheme : String {
     case ascendingPrice  = "Ascending Price"
     case descendingPrice = "Descending Price"
     case cancel = "Cancel"
+    case color = "Color"
+    case size = "Size"
+    case description = "Description"
 }
