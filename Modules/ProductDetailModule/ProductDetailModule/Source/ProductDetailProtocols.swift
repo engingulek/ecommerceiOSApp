@@ -32,6 +32,7 @@ protocol PresenterToInteractorProductDetailProtocol{
     func fetchColor() async
     func fetchMemorySize() async
     func fetchProductDetail(id:Int,product_id:Int) async
+    func fetchInventoryInfo(product_id:Int) async
     
 }
 
@@ -40,6 +41,7 @@ protocol InteractorToPresenterProductDetailProtocol{
     func sendColor(colors:[ColorResult])
     func sendMemorySize(memorySizes:[MemorySizeResult])
     func sendProductDetail(productDetail:ProductDetailResult)
+    func sendInventoryResult(inventorResult:[InventoryResult])
 }
 
 

@@ -11,6 +11,7 @@ import Foundation
 enum Constants : String {
     case baseUrl = "http://localhost:8080/api"
     case category = "/category"
+    case inventory = "/inventory"
     case getAll = "/getAll"
     case product = "/product"
     case getSmartPhones = "/getSmartPhones"
@@ -20,5 +21,6 @@ enum Constants : String {
     case  getMemorySizes = "/getMemorySizes"
     case getColors  = "/getColors"
     case getSmartPhoneDetail = "/getSmartPhoneDetail?"
+    case getInventoryByProductId = "/getInventoryByProductId?"
     
 }

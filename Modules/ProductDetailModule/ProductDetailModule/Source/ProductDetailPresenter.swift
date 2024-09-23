@@ -15,7 +15,7 @@ final class ProductDetailPresenter {
     private var colorsList : [ColorResult] = []
     private var memorySizesList : [MemorySizeResult] = []
     private var prodcutDetailResult : ProductDetailResult?
-    
+    private var productInventoryResult:[InventoryResult] = []
     init(view: PresenterToViewProductDetailProtocol?,
          interactor: PresenterToInteractorProductDetailProtocol = ProductDetailInteractor(),
          router: PresenterToRouserProductDetailProtocol = ProductDetailRouter()) {
@@ -50,6 +50,7 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
     func getProductInfo(id: Int, product_id: Int) {
         Task {
             await interactor.fetchProductDetail(id:id,product_id:product_id)
+            await interactor.fetchInventoryInfo(product_id: product_id)
             view?.reloadCollectionView()
         }
     }
@@ -92,8 +93,7 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
 }
 
 extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
-  
-    
+ 
     func sendColor(colors: [ColorResult]) {
         colorsList = colors
     }
@@ -110,6 +110,12 @@ extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
                             desc: productDetail.description)
     }
     
+    func sendInventoryResult(inventorResult: [InventoryResult]) {
+        productInventoryResult =  inventorResult
+        print(productInventoryResult)
+    }
+    
+  
     
     
 }
