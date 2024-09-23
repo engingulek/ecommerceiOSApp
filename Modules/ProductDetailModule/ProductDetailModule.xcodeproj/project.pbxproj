@@ -11,7 +11,37 @@
 		7D7704852CA1A6DA003C9622 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704842CA1A6DA003C9622 /* ProductDetailViewController.swift */; };
 		7D7704892CA1A70C003C9622 /* ProductDetailModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704882CA1A70C003C9622 /* ProductDetailModuleProtocol.swift */; };
 		7D77048B2CA1A75E003C9622 /* ProductDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D77048A2CA1A75E003C9622 /* ProductDetailRouter.swift */; };
+		7D7704BE2CA1ACBB003C9622 /* ProductDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704BD2CA1ACBB003C9622 /* ProductDetailProtocols.swift */; };
+		7D7704C12CA1ACD9003C9622 /* NetworkKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7704C02CA1ACD9003C9622 /* NetworkKit.framework */; };
+		7D7704C22CA1ACD9003C9622 /* NetworkKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7704C02CA1ACD9003C9622 /* NetworkKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D7704C62CA1ACE6003C9622 /* UICommonKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7704C42CA1ACE6003C9622 /* UICommonKit.framework */; };
+		7D7704C72CA1ACE6003C9622 /* UICommonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7704C42CA1ACE6003C9622 /* UICommonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D7704C82CA1ACE6003C9622 /* ViewControllerAbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7704C52CA1ACE6003C9622 /* ViewControllerAbleKit.framework */; };
+		7D7704C92CA1ACE6003C9622 /* ViewControllerAbleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D7704C52CA1ACE6003C9622 /* ViewControllerAbleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D7704CB2CA1B064003C9622 /* ProductDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704CA2CA1B064003C9622 /* ProductDetailPresenter.swift */; };
+		7D7704CD2CA1B15D003C9622 /* ProductDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704CC2CA1B15D003C9622 /* ProductDetailInteractor.swift */; };
+		7D7704D02CA1B533003C9622 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7704CF2CA1B533003C9622 /* SnapKit */; };
+		7D7704D22CA1B533003C9622 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7704D12CA1B533003C9622 /* SnapKit-Dynamic */; };
+		7D7704D42CA1BC8C003C9622 /* ProductImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704D32CA1BC8C003C9622 /* ProductImagesCVC.swift */; };
+		7D7704D72CA1BCAC003C9622 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7704D62CA1BCAC003C9622 /* Kingfisher */; };
+		7D7704D92CA1C56B003C9622 /* PDFeatureOneCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704D82CA1C56B003C9622 /* PDFeatureOneCVC.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7D7704C32CA1ACD9003C9622 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7D7704C72CA1ACE6003C9622 /* UICommonKit.framework in Embed Frameworks */,
+				7D7704C92CA1ACE6003C9622 /* ViewControllerAbleKit.framework in Embed Frameworks */,
+				7D7704C22CA1ACD9003C9622 /* NetworkKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7D77047A2CA1A6C2003C9622 /* ProductDetailModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProductDetailModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -19,6 +49,14 @@
 		7D7704842CA1A6DA003C9622 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		7D7704882CA1A70C003C9622 /* ProductDetailModuleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailModuleProtocol.swift; sourceTree = "<group>"; };
 		7D77048A2CA1A75E003C9622 /* ProductDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailRouter.swift; sourceTree = "<group>"; };
+		7D7704BD2CA1ACBB003C9622 /* ProductDetailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailProtocols.swift; sourceTree = "<group>"; };
+		7D7704C02CA1ACD9003C9622 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D7704C42CA1ACE6003C9622 /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D7704C52CA1ACE6003C9622 /* ViewControllerAbleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ViewControllerAbleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D7704CA2CA1B064003C9622 /* ProductDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPresenter.swift; sourceTree = "<group>"; };
+		7D7704CC2CA1B15D003C9622 /* ProductDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInteractor.swift; sourceTree = "<group>"; };
+		7D7704D32CA1BC8C003C9622 /* ProductImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImagesCVC.swift; sourceTree = "<group>"; };
+		7D7704D82CA1C56B003C9622 /* PDFeatureOneCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFeatureOneCVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +64,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7704D72CA1BCAC003C9622 /* Kingfisher in Frameworks */,
+				7D7704D22CA1B533003C9622 /* SnapKit-Dynamic in Frameworks */,
+				7D7704C62CA1ACE6003C9622 /* UICommonKit.framework in Frameworks */,
+				7D7704D02CA1B533003C9622 /* SnapKit in Frameworks */,
+				7D7704C82CA1ACE6003C9622 /* ViewControllerAbleKit.framework in Frameworks */,
+				7D7704C12CA1ACD9003C9622 /* NetworkKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +81,7 @@
 			children = (
 				7D77047C2CA1A6C2003C9622 /* ProductDetailModule */,
 				7D77047B2CA1A6C2003C9622 /* Products */,
+				7D7704BF2CA1ACD9003C9622 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +108,11 @@
 			children = (
 				7D7704842CA1A6DA003C9622 /* ProductDetailViewController.swift */,
 				7D77048A2CA1A75E003C9622 /* ProductDetailRouter.swift */,
+				7D7704BD2CA1ACBB003C9622 /* ProductDetailProtocols.swift */,
+				7D7704CA2CA1B064003C9622 /* ProductDetailPresenter.swift */,
+				7D7704CC2CA1B15D003C9622 /* ProductDetailInteractor.swift */,
+				7D7704D32CA1BC8C003C9622 /* ProductImagesCVC.swift */,
+				7D7704D82CA1C56B003C9622 /* PDFeatureOneCVC.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -73,6 +123,16 @@
 				7D7704882CA1A70C003C9622 /* ProductDetailModuleProtocol.swift */,
 			);
 			path = ProtocolSource;
+			sourceTree = "<group>";
+		};
+		7D7704BF2CA1ACD9003C9622 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D7704C42CA1ACE6003C9622 /* UICommonKit.framework */,
+				7D7704C52CA1ACE6003C9622 /* ViewControllerAbleKit.framework */,
+				7D7704C02CA1ACD9003C9622 /* NetworkKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,12 +157,18 @@
 				7D7704762CA1A6C2003C9622 /* Sources */,
 				7D7704772CA1A6C2003C9622 /* Frameworks */,
 				7D7704782CA1A6C2003C9622 /* Resources */,
+				7D7704C32CA1ACD9003C9622 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ProductDetailModule;
+			packageProductDependencies = (
+				7D7704CF2CA1B533003C9622 /* SnapKit */,
+				7D7704D12CA1B533003C9622 /* SnapKit-Dynamic */,
+				7D7704D62CA1BCAC003C9622 /* Kingfisher */,
+			);
 			productName = ProductDetailModule;
 			productReference = 7D77047A2CA1A6C2003C9622 /* ProductDetailModule.framework */;
 			productType = "com.apple.product-type.framework";
@@ -131,6 +197,10 @@
 				Base,
 			);
 			mainGroup = 7D7704702CA1A6C2003C9622;
+			packageReferences = (
+				7D7704CE2CA1B533003C9622 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				7D7704D52CA1BCAC003C9622 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 7D77047B2CA1A6C2003C9622 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -155,8 +225,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D7704CB2CA1B064003C9622 /* ProductDetailPresenter.swift in Sources */,
+				7D7704BE2CA1ACBB003C9622 /* ProductDetailProtocols.swift in Sources */,
 				7D7704892CA1A70C003C9622 /* ProductDetailModuleProtocol.swift in Sources */,
+				7D7704CD2CA1B15D003C9622 /* ProductDetailInteractor.swift in Sources */,
 				7D7704852CA1A6DA003C9622 /* ProductDetailViewController.swift in Sources */,
+				7D7704D42CA1BC8C003C9622 /* ProductImagesCVC.swift in Sources */,
+				7D7704D92CA1C56B003C9622 /* PDFeatureOneCVC.swift in Sources */,
 				7D77048B2CA1A75E003C9622 /* ProductDetailRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +451,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D7704CE2CA1B533003C9622 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		7D7704D52CA1BCAC003C9622 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D7704CF2CA1B533003C9622 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D7704CE2CA1B533003C9622 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		7D7704D12CA1B533003C9622 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D7704CE2CA1B533003C9622 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+		7D7704D62CA1BCAC003C9622 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D7704D52CA1BCAC003C9622 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7D7704712CA1A6C2003C9622 /* Project object */;
 }
