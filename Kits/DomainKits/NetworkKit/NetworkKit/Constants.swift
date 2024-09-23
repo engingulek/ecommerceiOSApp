@@ -17,4 +17,6 @@ enum Constants : String {
     case getLaptops = "/getLaptops"
     case getThirsts = "/getThirsts"
     case getJumpers = "/getJumpers"
+    case  getMemorySizes = "/getMemorySizes"
+    case getColors  = "/getColors"
 }

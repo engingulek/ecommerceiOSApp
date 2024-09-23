@@ -11,106 +11,29 @@ import UICommonKit
 class ProductDetailViewController: UIViewController {
     lazy var presenter : ViewToPresenterProductDetailProtocol = ProductDetailPresenter(view: self)
 
-    private lazy var productImagesCollectionView : UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(ProductImagesCVC.self, forCellWithReuseIdentifier: ProductImagesCVC.identifier)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor(hex: ColorTheme.primaryBackColor.rawValue)
-        collectionView.tag = 0
-        
-        return collectionView
-    }()
+    private lazy var productImagesCollectionView  = UICollectionView.createCollectionView(scrollDirection: .horizontal,tag: 0)
+    private lazy var featureOneCollectionView  = UICollectionView.createCollectionView(scrollDirection: .horizontal,tag: 1)
+    private lazy var featureTwoCollectionView = UICollectionView.createCollectionView(scrollDirection: .horizontal,tag: 2)
     
+
+
+    private lazy var baseProductImageView = UIImageView.primaryImageView()
     
-    private lazy var featureOneCollectionView : UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(PDFeatureOneCVC.self, forCellWithReuseIdentifier: PDFeatureOneCVC.identifier)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor(hex: ColorTheme.primaryBackColor.rawValue)
-        collectionView.tag = 1
-        
-        return collectionView
-    }()
+    private lazy var productName = UILabel.secondaryLabel(numnerOfLines: 2)
     
-    private lazy var featureTwoCollectionView : UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(PDFeatureOneCVC.self, forCellWithReuseIdentifier: PDFeatureOneCVC.identifier)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor(hex: ColorTheme.primaryBackColor.rawValue)
-        collectionView.tag = 2
-        
-        return collectionView
-    }()
-    private lazy var baseProductImageView : UIImageView = {
-        let imageView = UIImageView()
-        imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "iphone")
-        return imageView
-    }()
+    private lazy var descTitle = UILabel.primaryUILabelLeft(text: TextTheme.description.rawValue)
     
-    private lazy var productName : UILabel = {
-        let label = UILabel()
-        label.text = "iPhone 13 256GB Black"
-        label.font = FontTheme.font.primaryFontNormalVersion
-        label.numberOfLines = 2
-        return label
-    }()
+    private lazy var productDesc = UILabel.secondaryLabel(numnerOfLines: 3)
     
-    private lazy var descTitle : UILabel = {
-        let label = UILabel()
-        label.text = "Description"
-        label.font = FontTheme.font.secondaryFontBoldVersion
-        label.textColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
-        label.textAlignment = .left
-        return label
-    }()
-    private lazy var productDesc : UILabel = {
-        let label = UILabel()
-        label.text = "Experience the ultimate in portability and performance with the MacBook Air M1. Featuring a 13.3-inch Retina display, Apple M1 chip for lightning-fast speeds, and a sleek, lightweight design."
-        label.font = FontTheme.font.primaryFontNormalVersion
-        label.numberOfLines = 3
-        return label
-    }()
-    
-    private lazy var productPrice : UILabel = {
-        let label = UILabel()
-        label.text = "1220"
-        label.font = FontTheme.font.secondaryFontBoldVersion
-        label.textColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
-        label.textAlignment = .left
-        return label
-    }()
+    private lazy var productPrice = UILabel.primaryUILabelLeft()
     
     
     
-    private lazy var featureOneTitle : UILabel = {
-        let label = UILabel()
-        label.text = "Size"
-        label.font = FontTheme.font.primaryFontBoldVersion
-        label.textColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
-        label.textAlignment = .left
-        return label
-    }()
+    private lazy var featureOneTitle = UILabel.primaryUILabelLeft(text: TextTheme.size.rawValue)
     
     
     
-    private lazy var featureTwoTitle : UILabel = {
-        let label = UILabel()
-        label.text = "Color"
-        label.font = FontTheme.font.primaryFontBoldVersion
-        label.textColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
-        label.textAlignment = .left
-        return label
-    }()
+    private lazy var featureTwoTitle = UILabel.primaryUILabelLeft(text: TextTheme.color.rawValue)
     
     
     
@@ -118,9 +41,13 @@ class ProductDetailViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         presenter.viewDidLoad()
+        productImagesCollectionView.register(ProductImagesCVC.self, forCellWithReuseIdentifier: ProductImagesCVC.identifier)
+        featureOneCollectionView.register(PDFeatureOneCVC.self, forCellWithReuseIdentifier: PDFeatureOneCVC.identifier)
+        featureTwoCollectionView.register(PDFeatureOneCVC.self, forCellWithReuseIdentifier: PDFeatureOneCVC.identifier)
         
     }
     
+    //MARK: ConfigureUI
     private func configureUI() {
     
         view.addSubview(baseProductImageView)
@@ -226,33 +153,43 @@ extension ProductDetailViewController : PresenterToViewProductDetailProtocol {
 //MARK: UICollectionViewDelegate,UICollectionViewDataSource
 extension ProductDetailViewController : UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch collectionView.tag{
-        case 0 :
-            return 3
-        case 1:
-            return 3
-        case 2:
-            return 3
-        default:
-            return 0
-        }
+        return  presenter.numberOfItemsInSection(tag: collectionView.tag)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView.tag{
         case 0 :
-           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductImagesCVC.identifier, for: indexPath) as? ProductImagesCVC else {return UICollectionViewCell()}
+           guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ProductImagesCVC.identifier,
+            for: indexPath) as? ProductImagesCVC else {return UICollectionViewCell()}
+            let item = presenter.collectionViewCellForItem(at: indexPath, tag: 0)
             return cell
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PDFeatureOneCVC.identifier, for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
-            cell.setData(text: "256GB")
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PDFeatureOneCVC.identifier,
+                for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
+            let item = presenter.collectionViewCellForItem(at: indexPath, tag: 1)
+            print(item.text)
+            cell.setData(text: item.text)
+            cell.setUI()
             return cell
         case 2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PDFeatureOneCVC.identifier, for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
-            cell.setData(text: "Black")
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: PDFeatureOneCVC.identifier,
+                for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
+            let item = presenter.collectionViewCellForItem(at: indexPath, tag: 2)
+            cell.setData(text: item.text)
+            cell.setUI()
             return cell
         default:
             return UICollectionViewCell()
         }
+    }
+}
+
+
+extension ProductDetailViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height: 50)
     }
 }

@@ -14,9 +14,8 @@ final class PDFeatureOneCVC : UICollectionViewCell {
     
     private lazy var featureLabel : UILabel = {
         let label = UILabel()
-        label.text = "128GB"
         label.font = FontTheme.font.primaryFontNormalVersion
-        label.numberOfLines = 2
+        label.textAlignment = .center
         return label
     }()
     
@@ -41,7 +40,15 @@ final class PDFeatureOneCVC : UICollectionViewCell {
         }
     }
     
+    
+    
     func setData(text:String){
         featureLabel.text = text
+    }
+    
+    func setUI(){
+        contentView.layer.cornerRadius = 5
+        contentView.layer.borderColor = UIColor(hex: ColorTheme.secondaryBackColor.rawValue)?.cgColor
+        contentView.layer.borderWidth = 1
     }
 }

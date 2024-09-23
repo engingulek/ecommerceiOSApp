@@ -25,6 +25,7 @@
 		7D7704D42CA1BC8C003C9622 /* ProductImagesCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704D32CA1BC8C003C9622 /* ProductImagesCVC.swift */; };
 		7D7704D72CA1BCAC003C9622 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7D7704D62CA1BCAC003C9622 /* Kingfisher */; };
 		7D7704D92CA1C56B003C9622 /* PDFeatureOneCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704D82CA1C56B003C9622 /* PDFeatureOneCVC.swift */; };
+		7D7704E02CA1F821003C9622 /* Color+MemortSizeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D7704DF2CA1F821003C9622 /* Color+MemortSizeResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +58,7 @@
 		7D7704CC2CA1B15D003C9622 /* ProductDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInteractor.swift; sourceTree = "<group>"; };
 		7D7704D32CA1BC8C003C9622 /* ProductImagesCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImagesCVC.swift; sourceTree = "<group>"; };
 		7D7704D82CA1C56B003C9622 /* PDFeatureOneCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFeatureOneCVC.swift; sourceTree = "<group>"; };
+		7D7704DF2CA1F821003C9622 /* Color+MemortSizeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+MemortSizeResult.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,9 @@
 		7D7704862CA1A6DF003C9622 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				7D7704DE2CA1F812003C9622 /* Entity */,
 				7D7704842CA1A6DA003C9622 /* ProductDetailViewController.swift */,
+				7D7704DF2CA1F821003C9622 /* Color+MemortSizeResult.swift */,
 				7D77048A2CA1A75E003C9622 /* ProductDetailRouter.swift */,
 				7D7704BD2CA1ACBB003C9622 /* ProductDetailProtocols.swift */,
 				7D7704CA2CA1B064003C9622 /* ProductDetailPresenter.swift */,
@@ -133,6 +137,13 @@
 				7D7704C02CA1ACD9003C9622 /* NetworkKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D7704DE2CA1F812003C9622 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +238,7 @@
 			files = (
 				7D7704CB2CA1B064003C9622 /* ProductDetailPresenter.swift in Sources */,
 				7D7704BE2CA1ACBB003C9622 /* ProductDetailProtocols.swift in Sources */,
+				7D7704E02CA1F821003C9622 /* Color+MemortSizeResult.swift in Sources */,
 				7D7704892CA1A70C003C9622 /* ProductDetailModuleProtocol.swift in Sources */,
 				7D7704CD2CA1B15D003C9622 /* ProductDetailInteractor.swift in Sources */,
 				7D7704852CA1A6DA003C9622 /* ProductDetailViewController.swift in Sources */,

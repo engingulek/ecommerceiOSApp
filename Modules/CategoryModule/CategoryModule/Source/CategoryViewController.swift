@@ -19,24 +19,7 @@ class CategoryViewController: UIViewController {
         return tableView
     }()
     
-    
-    private lazy var subCategoryCollectionView : UICollectionView = {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        
-        layout.scrollDirection = .vertical
-        let  collectionview = UICollectionView(frame: .zero,
-                                               collectionViewLayout: layout)
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        collectionview.register(
-            SubCategoryCVC.self,
-            forCellWithReuseIdentifier: SubCategoryCVC.identifier)
-        
-        collectionview.showsHorizontalScrollIndicator = false
-        collectionview.backgroundColor = UIColor(hex:ColorTheme.primaryBackColor.rawValue)
-        return collectionview
-    }()
+    private lazy var subCategoryCollectionView = UICollectionView.createCollectionView(scrollDirection: .vertical)
     
     private lazy var specialView : UIView = {
         let view = UIView()
@@ -65,7 +48,9 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         presenter.viewDidLoad()
         configureUI()
-        
+        subCategoryCollectionView.register(
+            SubCategoryCVC.self,
+            forCellWithReuseIdentifier: SubCategoryCVC.identifier)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         specialView.isUserInteractionEnabled = true
         specialView.addGestureRecognizer(tapGesture)

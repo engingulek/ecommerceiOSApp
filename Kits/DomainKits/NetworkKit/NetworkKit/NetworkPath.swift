@@ -13,6 +13,8 @@ public enum NetworkPath {
     case laptops
     case thirsts
     case jumpers
+    case colors
+    case memorySizes
 }
 
 
@@ -34,6 +36,11 @@ extension NetworkPath : TargetType {
             Constants.product.rawValue + Constants.getThirsts.rawValue
         case .jumpers:
             Constants.product.rawValue + Constants.getJumpers.rawValue
+        case .colors:
+            Constants.product.rawValue + Constants.getColors.rawValue
+        case .memorySizes:
+            Constants.product.rawValue + Constants.getMemorySizes.rawValue
+            
         }
     }
     
