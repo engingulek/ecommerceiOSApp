@@ -9,14 +9,9 @@
 /* Begin PBXBuildFile section */
 		7D4CAB622C9C549B003BECD7 /* ProductListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */; };
 		7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */; };
-		7D4CAB672C9C5B90003BECD7 /* SmartPhoneResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB662C9C5B90003BECD7 /* SmartPhoneResult.swift */; };
 		7D4CAB6E2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */; };
 		7D4CAB6F2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7D4CAB712C9C80C5003BECD7 /* ClothesResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB702C9C80C5003BECD7 /* ClothesResult.swift */; };
 		7D4CAB732C9C8722003BECD7 /* ProductResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB722C9C8722003BECD7 /* ProductResult.swift */; };
-		7D4CAB752C9C8D51003BECD7 /* LaptopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB742C9C8D51003BECD7 /* LaptopResult.swift */; };
-		7D4CAB772C9C8D6F003BECD7 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB762C9C8D6F003BECD7 /* Size.swift */; };
-		7D4CAB792C9C8D92003BECD7 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D4CAB782C9C8D92003BECD7 /* Color.swift */; };
 		7D5556C62C9B45E300C999E5 /* ProductListModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 7D5556C52C9B45E300C999E5 /* ProductListModule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D5556EF2C9B46D700C999E5 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556EE2C9B46D700C999E5 /* ProductListViewController.swift */; };
 		7D5556F12C9B475600C999E5 /* ProductListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5556F02C9B475600C999E5 /* ProductListRouter.swift */; };
@@ -28,6 +23,10 @@
 		7D5557062C9B49F100C999E5 /* UICommonKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D5557022C9B49F100C999E5 /* UICommonKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D77046B2CA0DAF8003C9622 /* RealmSwiftManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */; };
 		7D77046C2CA0DAF8003C9622 /* RealmSwiftManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D77048D2CA1A7E1003C9622 /* ProductDetailModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77048C2CA1A7E1003C9622 /* ProductDetailModule.framework */; };
+		7D77048E2CA1A7E1003C9622 /* ProductDetailModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77048C2CA1A7E1003C9622 /* ProductDetailModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7D7704902CA1A846003C9622 /* DependencyKits.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77048F2CA1A846003C9622 /* DependencyKits.framework */; };
+		7D7704912CA1A846003C9622 /* DependencyKits.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D77048F2CA1A846003C9622 /* DependencyKits.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,8 +37,10 @@
 			dstSubfolderSpec = 10;
 			files = (
 				7D77046C2CA0DAF8003C9622 /* RealmSwiftManager.framework in Embed Frameworks */,
+				7D77048E2CA1A7E1003C9622 /* ProductDetailModule.framework in Embed Frameworks */,
 				7D5557062C9B49F100C999E5 /* UICommonKit.framework in Embed Frameworks */,
 				7D4CAB6F2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Embed Frameworks */,
+				7D7704912CA1A846003C9622 /* DependencyKits.framework in Embed Frameworks */,
 				7D5557042C9B49F100C999E5 /* NetworkKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -50,13 +51,8 @@
 /* Begin PBXFileReference section */
 		7D4CAB612C9C549B003BECD7 /* ProductListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListInteractor.swift; sourceTree = "<group>"; };
 		7D4CAB632C9C5586003BECD7 /* ProductListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListPresenter.swift; sourceTree = "<group>"; };
-		7D4CAB662C9C5B90003BECD7 /* SmartPhoneResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartPhoneResult.swift; sourceTree = "<group>"; };
 		7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ViewControllerAbleKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7D4CAB702C9C80C5003BECD7 /* ClothesResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothesResult.swift; sourceTree = "<group>"; };
 		7D4CAB722C9C8722003BECD7 /* ProductResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductResult.swift; sourceTree = "<group>"; };
-		7D4CAB742C9C8D51003BECD7 /* LaptopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaptopResult.swift; sourceTree = "<group>"; };
-		7D4CAB762C9C8D6F003BECD7 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
-		7D4CAB782C9C8D92003BECD7 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		7D5556C22C9B45E300C999E5 /* ProductListModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ProductListModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5556C52C9B45E300C999E5 /* ProductListModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductListModule.h; sourceTree = "<group>"; };
 		7D5556EE2C9B46D700C999E5 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +62,8 @@
 		7D5557012C9B49F100C999E5 /* NetworkKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D5557022C9B49F100C999E5 /* UICommonKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UICommonKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwiftManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D77048C2CA1A7E1003C9622 /* ProductDetailModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProductDetailModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D77048F2CA1A846003C9622 /* DependencyKits.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DependencyKits.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +72,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D77046B2CA0DAF8003C9622 /* RealmSwiftManager.framework in Frameworks */,
+				7D77048D2CA1A7E1003C9622 /* ProductDetailModule.framework in Frameworks */,
 				7D5557052C9B49F100C999E5 /* UICommonKit.framework in Frameworks */,
 				7D4CAB6E2C9C69B9003BECD7 /* ViewControllerAbleKit.framework in Frameworks */,
+				7D7704902CA1A846003C9622 /* DependencyKits.framework in Frameworks */,
 				7D5557032C9B49F100C999E5 /* NetworkKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,27 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7D4CAB652C9C5B0E003BECD7 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				7D4CAB7A2C9C8DBA003BECD7 /* Results */,
-				7D4CAB762C9C8D6F003BECD7 /* Size.swift */,
-				7D4CAB782C9C8D92003BECD7 /* Color.swift */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		7D4CAB7A2C9C8DBA003BECD7 /* Results */ = {
-			isa = PBXGroup;
-			children = (
-				7D4CAB662C9C5B90003BECD7 /* SmartPhoneResult.swift */,
-				7D4CAB702C9C80C5003BECD7 /* ClothesResult.swift */,
-				7D4CAB722C9C8722003BECD7 /* ProductResult.swift */,
-				7D4CAB742C9C8D51003BECD7 /* LaptopResult.swift */,
-			);
-			path = Results;
-			sourceTree = "<group>";
-		};
 		7D5556B82C9B45E300C999E5 = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +121,7 @@
 		7D5556F52C9B47D100C999E5 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				7D4CAB652C9C5B0E003BECD7 /* Entity */,
+				7D4CAB722C9C8722003BECD7 /* ProductResult.swift */,
 				7D5556EE2C9B46D700C999E5 /* ProductListViewController.swift */,
 				7D5556F02C9B475600C999E5 /* ProductListRouter.swift */,
 				7D5556F62C9B47ED00C999E5 /* ProductListProtocols.swift */,
@@ -155,6 +134,8 @@
 		7D5557002C9B49F100C999E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7D77048F2CA1A846003C9622 /* DependencyKits.framework */,
+				7D77048C2CA1A7E1003C9622 /* ProductDetailModule.framework */,
 				7D77046A2CA0DAF8003C9622 /* RealmSwiftManager.framework */,
 				7D4CAB6D2C9C69B9003BECD7 /* ViewControllerAbleKit.framework */,
 				7D5557012C9B49F100C999E5 /* NetworkKit.framework */,
@@ -244,18 +225,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D4CAB672C9C5B90003BECD7 /* SmartPhoneResult.swift in Sources */,
 				7D5556EF2C9B46D700C999E5 /* ProductListViewController.swift in Sources */,
 				7D5556F12C9B475600C999E5 /* ProductListRouter.swift in Sources */,
 				7D4CAB642C9C5586003BECD7 /* ProductListPresenter.swift in Sources */,
-				7D4CAB752C9C8D51003BECD7 /* LaptopResult.swift in Sources */,
 				7D4CAB622C9C549B003BECD7 /* ProductListInteractor.swift in Sources */,
 				7D5556F72C9B47ED00C999E5 /* ProductListProtocols.swift in Sources */,
 				7D5556F32C9B477B00C999E5 /* ProductListModuleProtocol.swift in Sources */,
-				7D4CAB792C9C8D92003BECD7 /* Color.swift in Sources */,
 				7D4CAB732C9C8722003BECD7 /* ProductResult.swift in Sources */,
-				7D4CAB712C9C80C5003BECD7 /* ClothesResult.swift in Sources */,
-				7D4CAB772C9C8D6F003BECD7 /* Size.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

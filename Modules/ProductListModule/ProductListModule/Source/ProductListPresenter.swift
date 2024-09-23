@@ -127,6 +127,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
                                           name: product.name,
                                           imageUrl: product.imageurl[0], 
                                           price: product.price)
+        router.toProductDetailModule(view: view, id: product.id, product_id: product.product_id)
     }
     
     
