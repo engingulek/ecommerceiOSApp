@@ -16,6 +16,8 @@ final class ProductDetailPresenter {
     private var memorySizesList : [MemorySizeResult] = []
     private var prodcutDetailResult : ProductDetailResult?
     private var productInventoryResult:[InventoryResult] = []
+    private var selectedMemorySizeId: Int?
+    private var selectedColorId:Int?
     init(view: PresenterToViewProductDetailProtocol?,
          interactor: PresenterToInteractorProductDetailProtocol = ProductDetailInteractor(),
          router: PresenterToRouserProductDetailProtocol = ProductDetailRouter()) {
@@ -69,20 +71,61 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
     }
     
     //TODO: () = selected and nonselected  border color 
-    func collectionViewCellForItem(at indexPath: IndexPath,tag:Int) -> (text: String, ()) {
+    func collectionViewCellForItem(at indexPath: IndexPath,tag:Int) -> (text: String, textColor:String,backColor:String,borderColor:String) {
         switch tag {
         case 0 :
             //TODO: error image url will be added there
             let imageUrl = prodcutDetailResult?.imageurl[indexPath.item] ?? ""
-            return (imageUrl,())
+            return (imageUrl,"","","")
         case 1:
-            let size = memorySizesList[indexPath.item].size
-            return (size,())
+            let memorySize = memorySizesList[indexPath.item]
+            let size = memorySize.size
+            let id = memorySize.id
+            
+            let text:String
+            let backColor:String
+            let borderColor:String
+            let textColor:String
+            
+            text = size
+            
+            if selectedMemorySizeId == id {
+                textColor = ColorTheme.primaryBackColor.rawValue
+                borderColor = ColorTheme.thirdLabelColor.rawValue
+                backColor = ColorTheme.lightOrange.rawValue
+                
+            }else{
+                textColor = ColorTheme.secandaryLabelColor.rawValue
+                borderColor = ColorTheme.secandaryLabelColor.rawValue
+                backColor = ColorTheme.primaryBackColor.rawValue
+            }
+            
+            
+            return (text,textColor,backColor,borderColor)
         case 2:
             let color = colorsList[indexPath.item].name
-            return (color,())
+            let id =  colorsList[indexPath.item].id
+            let text:String
+            let backColor:String
+            let borderColor:String
+            let textColor:String
+            
+            text = color
+            
+            if selectedColorId == id {
+                textColor = ColorTheme.primaryBackColor.rawValue
+                borderColor = ColorTheme.thirdLabelColor.rawValue
+                backColor = ColorTheme.lightOrange.rawValue
+                
+            }else{
+                textColor = ColorTheme.secandaryLabelColor.rawValue
+                borderColor = ColorTheme.secandaryLabelColor.rawValue
+                backColor = ColorTheme.primaryBackColor.rawValue
+            }
+            
+            return (text,textColor,backColor,borderColor)
         default:
-            return ("",())
+            return ("","","","")
         }
     }
     
@@ -104,6 +147,8 @@ extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
     
     func sendProductDetail(productDetail:ProductDetailResult) {
         prodcutDetailResult = productDetail
+        selectedMemorySizeId = productDetail.memory_size_id
+        selectedColorId = productDetail.color_id
         view?.configureData(baseImageUrl: productDetail.imageurl[0],
                             name: productDetail.name,
                             price: productDetail.price,
@@ -112,7 +157,6 @@ extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
     
     func sendInventoryResult(inventorResult: [InventoryResult]) {
         productInventoryResult =  inventorResult
-        print(productInventoryResult)
     }
     
   

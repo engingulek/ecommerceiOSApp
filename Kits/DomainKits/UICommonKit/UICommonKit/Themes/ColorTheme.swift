@@ -21,5 +21,7 @@ public enum ColorTheme : String {
     
     /// is like light gray
     case secondaryBackColor = "#F6F5F5"
+    
+    case lightOrange = "#FFC96F"
 
 }

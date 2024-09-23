@@ -14,7 +14,7 @@ protocol ViewToPresenterProductDetailProtocol {
     func viewDidLoad()
     func getProductInfo(id:Int,product_id:Int)
     func numberOfItemsInSection(tag:Int) -> Int
-    func collectionViewCellForItem(at indexPath:IndexPath,tag:Int)-> (text:String,())
+    func collectionViewCellForItem(at indexPath:IndexPath,tag:Int)-> (text:String,textColor:String,backColor:String,borderColor:String)
     func sizeForItemAt() -> CGSize
     
     

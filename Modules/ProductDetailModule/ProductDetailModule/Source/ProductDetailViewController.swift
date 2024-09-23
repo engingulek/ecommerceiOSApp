@@ -183,9 +183,9 @@ extension ProductDetailViewController : UICollectionViewDelegate,UICollectionVie
                 withReuseIdentifier: PDFeatureOneCVC.identifier,
                 for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
             let item = presenter.collectionViewCellForItem(at: indexPath, tag: 1)
-            print(item.text)
+            
             cell.setData(text: item.text)
-            cell.setUI()
+            cell.setUI(backColor: item.backColor, borderColor: item.borderColor,textColor: item.textColor)
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCell(
@@ -193,7 +193,7 @@ extension ProductDetailViewController : UICollectionViewDelegate,UICollectionVie
                 for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
             let item = presenter.collectionViewCellForItem(at: indexPath, tag: 2)
             cell.setData(text: item.text)
-            cell.setUI()
+            cell.setUI(backColor: item.backColor, borderColor: item.borderColor,textColor: item.textColor)
             return cell
         default:
             return UICollectionViewCell()

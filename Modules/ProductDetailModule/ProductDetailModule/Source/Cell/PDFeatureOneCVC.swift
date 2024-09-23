@@ -14,8 +14,9 @@ final class PDFeatureOneCVC : UICollectionViewCell {
     
     private lazy var featureLabel : UILabel = {
         let label = UILabel()
-        label.font = FontTheme.font.primaryFontNormalVersion
+        label.font = FontTheme.font.primaryFontBoldVersion
         label.textAlignment = .center
+        label.textColor = UIColor(hex: ColorTheme.secandaryLabelColor.rawValue)
         return label
     }()
     
@@ -46,9 +47,11 @@ final class PDFeatureOneCVC : UICollectionViewCell {
         featureLabel.text = text
     }
     
-    func setUI(){
+    func setUI(backColor:String,borderColor:String,textColor:String){
         contentView.layer.cornerRadius = 5
-        contentView.layer.borderColor = UIColor(hex: ColorTheme.secondaryBackColor.rawValue)?.cgColor
+        contentView.layer.borderColor = UIColor(hex: borderColor)?.cgColor
+        contentView.layer.backgroundColor = UIColor(hex: backColor)?.cgColor
+        featureLabel.textColor = UIColor(hex: textColor)
         contentView.layer.borderWidth = 1
     }
 }
