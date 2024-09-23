@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
-typealias Ables = NavConUIAble & UIViewAble
+typealias Ables = NavConUIAble & UIViewAble & SegueAble
 
 protocol ViewToPresenterProductListProtocol {
     var view : PresenterToViewProductListProtocol? {get}
@@ -49,7 +49,7 @@ protocol InteractorToPresenterProductListProtocol {
 
 
 protocol PresenterToRouserProductListProtocol {
-    
+    func toProductDetailModule(view:PresenterToViewProductListProtocol?,id:Int,product_id:Int)
 }
 
 
