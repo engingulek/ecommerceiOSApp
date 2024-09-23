@@ -15,6 +15,7 @@ public enum NetworkPath {
     case jumpers
     case colors
     case memorySizes
+    case getSmartPhoneDetail(Int,Int)
 }
 
 
@@ -40,6 +41,8 @@ extension NetworkPath : TargetType {
             Constants.product.rawValue + Constants.getColors.rawValue
         case .memorySizes:
             Constants.product.rawValue + Constants.getMemorySizes.rawValue
+        case .getSmartPhoneDetail(let id, let product_id):
+            Constants.product.rawValue + Constants.getSmartPhoneDetail.rawValue + "id=\(id)&product_id=\(product_id)"
             
         }
     }

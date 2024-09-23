@@ -148,6 +148,19 @@ extension ProductDetailViewController : PresenterToViewProductDetailProtocol {
             featureTwoCollectionView.reloadData()
         }
     }
+    
+    func configureData(baseImageUrl: String, name: String, price: Int, desc: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            productName.text = name
+            productPrice.text = "\(price)₺"
+            productDesc.text = desc
+            let url = URL(string: baseImageUrl)
+            baseProductImageView.kf.setImage(with: url)
+        }
+      
+        
+    }
 }
 
 //MARK: UICollectionViewDelegate,UICollectionViewDataSource
@@ -163,6 +176,7 @@ extension ProductDetailViewController : UICollectionViewDelegate,UICollectionVie
             withReuseIdentifier: ProductImagesCVC.identifier,
             for: indexPath) as? ProductImagesCVC else {return UICollectionViewCell()}
             let item = presenter.collectionViewCellForItem(at: indexPath, tag: 0)
+            cell.setData(imageUrl: item.text)
             return cell
         case 1:
             guard let cell = collectionView.dequeueReusableCell(
@@ -189,7 +203,10 @@ extension ProductDetailViewController : UICollectionViewDelegate,UICollectionVie
 
 
 extension ProductDetailViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: 50)
+    func collectionView(_ collectionView: UICollectionView, 
+                        layout collectionViewLayout:
+                        UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return presenter.sizeForItemAt()
     }
 }

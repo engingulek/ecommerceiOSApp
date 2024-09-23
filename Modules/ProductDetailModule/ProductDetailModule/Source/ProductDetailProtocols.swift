@@ -15,6 +15,7 @@ protocol ViewToPresenterProductDetailProtocol {
     func getProductInfo(id:Int,product_id:Int)
     func numberOfItemsInSection(tag:Int) -> Int
     func collectionViewCellForItem(at indexPath:IndexPath,tag:Int)-> (text:String,())
+    func sizeForItemAt() -> CGSize
     
     
 }
@@ -23,13 +24,14 @@ protocol ViewToPresenterProductDetailProtocol {
 protocol PresenterToViewProductDetailProtocol : AnyObject & Ables{
     func prepareCollectionView()
     func reloadCollectionView()
-    
+    func configureData(baseImageUrl:String,name:String,price:Int,desc:String)
 }
 
 /// fetch
 protocol PresenterToInteractorProductDetailProtocol{
     func fetchColor() async
     func fetchMemorySize() async
+    func fetchProductDetail(id:Int,product_id:Int) async
     
 }
 
@@ -37,6 +39,7 @@ protocol PresenterToInteractorProductDetailProtocol{
 protocol InteractorToPresenterProductDetailProtocol{
     func sendColor(colors:[ColorResult])
     func sendMemorySize(memorySizes:[MemorySizeResult])
+    func sendProductDetail(productDetail:ProductDetailResult)
 }
 
 

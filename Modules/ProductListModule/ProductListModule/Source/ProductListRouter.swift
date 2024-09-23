@@ -28,7 +28,7 @@ public class ProductListRouter : ProductListModuleProtocol {
 extension ProductListRouter : PresenterToRouserProductListProtocol {
     func toProductDetailModule(view:PresenterToViewProductListProtocol?,id: Int, product_id: Int) {
         @Dependency var productDetailModule : ProductDetailModuleProtocol
-        let controllerView =  productDetailModule.createProductListModule(id: id, product_id: product_id)
+        let controllerView =  productDetailModule.createProductListModule(id: product_id, product_id: id)
         view?.pushViewControllerAble(controllerView, animated: true)
         
         
