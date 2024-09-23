@@ -16,7 +16,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
     
     func fetchSmartPhoneProducts() async {
         do{
-            let response = try await networkManager.fetch(target: .smartPhones, responseClass: DataResult<SmartPhoneResult>.self)
+            let response = try await networkManager.fetch(target: .smartPhones, responseClass: DataResult<ProductResult>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
            
@@ -28,7 +28,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
     
     func fetchLaptopProducts() async  {
         do{
-            let response = try await networkManager.fetch(target: .laptops, responseClass: DataResult<LaptopResult>.self)
+            let response = try await networkManager.fetch(target: .laptops, responseClass: DataResult<ProductResult>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
         }catch{
@@ -39,7 +39,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
     
     func fetchTshirtsProducts() async {
         do{
-            let response = try await networkManager.fetch(target: .thirsts, responseClass: DataResult<ClothesResult>.self)
+            let response = try await networkManager.fetch(target: .thirsts, responseClass: DataResult<ProductResult>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
         }catch{
@@ -49,7 +49,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
     
     func fetchJumpersProducts() async {
         do{
-            let response = try await networkManager.fetch(target: .jumpers, responseClass: DataResult<ClothesResult>.self)
+            let response = try await networkManager.fetch(target: .jumpers, responseClass: DataResult<ProductResult>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
         }catch{
