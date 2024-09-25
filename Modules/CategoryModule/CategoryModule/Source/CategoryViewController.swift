@@ -8,6 +8,7 @@
 import UIKit
 import UICommonKit
 import ViewControllerAbleKit
+
 class CategoryViewController: UIViewController {
     lazy var presenter : ViewToPresenterCategoryProtocol = CategoryPresenter(view: self)
     
@@ -24,9 +25,7 @@ class CategoryViewController: UIViewController {
     private lazy var specialView : UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hex: ColorTheme.secondaryBackColor.rawValue)
-        
         return view
-        
     }()
     
     private lazy var specialIcon : UIImageView = {
@@ -155,6 +154,7 @@ extension CategoryViewController : PresenterToViewCategoryProtocol {
 
 //MARK:  UITableViewDelegate,UITableViewDataSource
 extension CategoryViewController : UITableViewDelegate,UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.numberOfRowsInSection()
     }
@@ -163,10 +163,13 @@ extension CategoryViewController : UITableViewDelegate,UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CategoryTVC.identifier,
             for: indexPath) as? CategoryTVC else {return UITableViewCell()}
-        cell.selectionStyle = .none
+        
+        
         let cellItem = presenter.cellForItem(at: indexPath)
         cell.setData(name: cellItem.text)
         cell.setConfigureUI(color: cellItem.textColor)
+        cell.selectionStyle = .none
+        
         if (cellItem.backColor == "#FFFFFF") {
             cell.backgroundColor = UIColor(hex: cellItem.backColor)
         }else{
@@ -183,15 +186,18 @@ extension CategoryViewController : UITableViewDelegate,UITableViewDataSource {
 
 //MARK: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 extension CategoryViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return presenter.numberOfItemsInSection()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:SubCategoryCVC.identifier.self, 
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:SubCategoryCVC.identifier.self,
                                                             for: indexPath) as? SubCategoryCVC else {
             return UICollectionViewCell()
         }
+        
         let subCategory = presenter.collectionViewCellForItem(at: indexPath)
         cell.setData(subCategory: subCategory)
         return cell
@@ -200,6 +206,7 @@ extension CategoryViewController : UICollectionViewDelegate,UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, 
                         layout collectionViewLayout: UICollectionViewLayout, 
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
         let width = collectionView.frame.size.width
         let cellWidth = (width-30) / 2
         return CGSize(width: cellWidth, height: cellWidth)
@@ -207,6 +214,7 @@ extension CategoryViewController : UICollectionViewDelegate,UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         presenter.didSelectItemAt(at: indexPath)
     }
 }

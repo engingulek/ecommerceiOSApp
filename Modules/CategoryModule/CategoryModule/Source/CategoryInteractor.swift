@@ -8,8 +8,10 @@
 import Foundation
 import NetworkKit
 class CategoryInteractor : PresenterToInteractorCategoryProtocol {
+    
     var presenter : InteractorToPresenterCategoryProtocol?
     private let networkManager : NetworkManagerProtocol = NetworkManager()
+    
     func fetchCategories() async throws {
         do {
             let response = try await networkManager.fetch(target: .categories, responseClass: DataResult<[CategoryResult]>.self)
@@ -17,8 +19,6 @@ class CategoryInteractor : PresenterToInteractorCategoryProtocol {
         }catch{
             throw error
         }
-       
     }
-    
     
 }
