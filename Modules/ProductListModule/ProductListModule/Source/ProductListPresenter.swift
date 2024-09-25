@@ -31,8 +31,6 @@ final class ProductListPresenter {
                                       message: TextTheme.primaryErrorMessage.rawValue,
                                       actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
-        
-        
     }
     
     private func getLaptops() async {
@@ -43,7 +41,6 @@ final class ProductListPresenter {
                                       message: TextTheme.primaryErrorMessage.rawValue,
                                       actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
-        
     }
     
     private func getTshirts() async {
@@ -54,7 +51,6 @@ final class ProductListPresenter {
                                       message: TextTheme.primaryErrorMessage.rawValue,
                                       actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
-        
     }
     
     private func getJumpers() async {
@@ -65,7 +61,6 @@ final class ProductListPresenter {
                                       message: TextTheme.primaryErrorMessage.rawValue,
                                       actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
-        
     }
 }
 
@@ -85,32 +80,39 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     func getSubCategoryId(subCategoryId: Int) {
         switch subCategoryId {
         case 1:
+            view?.startIndicator()
             Task{
                 await getSmartPhones()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.smartPhones.rawValue)
             
         case 2:
+            view?.startIndicator()
             Task{
                 await getLaptops()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.laptops.rawValue)
         case 6:
+            view?.startIndicator()
             Task{
                 await getTshirts()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.tshirts.rawValue)
         case 7:
+            view?.startIndicator()
             Task{
                 await getJumpers()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.jumpers.rawValue)
         default:
-            //TODO: Alert Error will be added there
             view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
                                       message: TextTheme.primaryErrorMessage.rawValue,
                                       actionTitle: TextTheme.primaryActionTitle.rawValue)
@@ -120,8 +122,10 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     
     func searchProductList(searchText: String?) {
         guard let searchText = searchText else {return}
+        view?.startIndicator()
         if searchText.isEmpty {
             lastProducts = baseProducts
+            view?.setEmptyMessageForYou(text: TextTheme.noneText.rawValue)
         }else{
             
             if lastProducts.isEmpty {
@@ -132,6 +136,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
         }
         
         view?.reloadCollectionView()
+        view?.stopIndicator()
     }
     
     func numberOfItemsInSection() -> Int {

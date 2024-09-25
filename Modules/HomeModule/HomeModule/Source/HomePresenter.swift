@@ -26,7 +26,7 @@ final class HomePresenter  {
         case .success(let list):
             if list.isEmpty {
                 lastViewedProduct = []
-                view?.setEmptyMessageLabel(text: TextTheme.emptyList.rawValue)
+                view?.setEmptyMessageLabel(text: TextTheme.secondaryEmtyList.rawValue)
             }else{
                 lastViewedProduct = list
                 view?.setEmptyMessageLabel(text: "")

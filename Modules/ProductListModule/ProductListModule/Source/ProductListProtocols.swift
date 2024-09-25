@@ -32,6 +32,8 @@ protocol PresenterToViewProductListProtocol:AnyObject & Ables{
     func reloadCollectionView()
     func searchTextFieldPlacholder(placholderText:String)
     func setEmptyMessageForYou(text:String)
+    func startIndicator()
+    func stopIndicator()
 }
 
 

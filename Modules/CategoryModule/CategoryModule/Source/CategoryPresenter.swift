@@ -37,7 +37,7 @@ final class CategoryPresenter  {
         switch result {
         case .success(let list):
             if list.isEmpty {
-                view?.setEmptyMessageForYou(text: TextTheme.emptyList.rawValue)
+                view?.setEmptyMessageForYou(text: TextTheme.secondaryEmtyList.rawValue)
             }else{
                 subCategories = list.map({ category in
                     return  SubCategories(id: category.id, name: category.name, icon: category.imageUrl)

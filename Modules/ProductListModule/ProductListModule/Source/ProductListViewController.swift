@@ -13,6 +13,9 @@ final class ProductListCollectionView :UIViewController {
     private lazy var productListCollectionView = UICollectionView.createCollectionView(scrollDirection: .vertical)
     private lazy var searchTextField = UISearchTextField()
     private lazy var emptyMessageLabel = UILabel.primaryUILabelLeft(color: ColorTheme.alertLabelColor.rawValue)
+    
+    private lazy var loadingIndicator = UIActivityIndicatorView.createActivityIndicator()
+    
     //TODO: ActivityIndicator will be added there
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,12 @@ final class ProductListCollectionView :UIViewController {
         
         view.addSubview(emptyMessageLabel)
         emptyMessageLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
@@ -180,6 +189,20 @@ extension ProductListCollectionView : PresenterToViewProductListProtocol {
             emptyMessageLabel.text = text
         }
     }
+    
+    func startIndicator() {
+          DispatchQueue.main.async { [weak self] in
+              guard let self = self else {return}
+              loadingIndicator.startAnimating()
+          }
+      }
+      
+      func stopIndicator() {
+          DispatchQueue.main.async { [weak self] in
+              guard let self = self else {return}
+              loadingIndicator.stopAnimating()
+          }
+      }
     
     
     
