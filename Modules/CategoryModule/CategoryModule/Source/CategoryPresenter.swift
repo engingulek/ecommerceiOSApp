@@ -32,38 +32,26 @@ final class CategoryPresenter  {
     }
     
     private func getLastViewedCategories()  {
-      let lastViewdCategories = realmManager.fetchLastViewedCategory()
-        subCategories = lastViewdCategories.map({ category in
-            return  SubCategories(id: category.id, name: category.name, icon: category.imageUrl)
-        })
-    }
-    
-    /*private func addLastViewedCategoryToRealm(subCategory:SubCategories) {
-        let result = coreDataManager.addLastViewedCategory(id: subCategory.id, name: subCategory.name, imageUrl: subCategory.icon)
-        if result {
-            print("Added")
-        }else{
-            print("error ")
-        }
-    
-    }*/
-    
-    /*private func getLastViewedCategoryFromRealm(){
-        let result = coreDataManager.getLastViewedCategory()
-        if result.errorState {
-            print("error")
-        }else{
-            if result.list.isEmpty {
-                print("Last Viewed Categories is Empty")
+      let result = realmManager.fetchLastViewedCategory()
+        
+        switch result {
+        case .success(let list):
+            if list.isEmpty {
+                view?.setEmptyMessageForYou(text: TextTheme.emptyList.rawValue)
             }else{
-                subCategories = result.list.map { category in
-                   return SubCategories(id: Int(category.id), name: category.name ?? "", icon: category.imageUrl ?? "")
-                }
-                view?.reloadSubCategoryCollectionView()
+                subCategories = list.map({ category in
+                    return  SubCategories(id: category.id, name: category.name, icon: category.imageUrl)
+                })
+                view?.setEmptyMessageForYou(text: "")
             }
-           
+            
+        case .failure:
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
-    }*/
+        
+    }
 }
 
 
@@ -74,7 +62,9 @@ extension CategoryPresenter  {
         do{
             try await interactor.fetchCategories()
         }catch{
-            print("Error fetch categories")
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
         
     }
@@ -143,7 +133,6 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
     
     func specialViewOnTapped() {
         selectedCategoryId =  -1
-        //TODO: pre-selected categories will be gone here
         getLastViewedCategories()
         
         view?.speacialViewChangeUI(

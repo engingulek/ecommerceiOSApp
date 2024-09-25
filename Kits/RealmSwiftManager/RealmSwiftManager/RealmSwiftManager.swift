@@ -11,14 +11,15 @@ import RealmSwift
 
 public protocol RealmSwiftManagerProtocol {
     func addLastViewCategory(id:Int,name:String,imageUrl:String)
-    func fetchLastViewedCategory() -> [LastViewedCategoryResult]
+    func fetchLastViewedCategory() -> Result<[LastViewedCategoryResult], Error>
     
     func addLastViewedProduct(id:Int,name:String,imageUrl:String,price:Int)
-    func fetchLastViewedProduct() -> [LastViewedProductResult]
+    func fetchLastViewedProduct() -> Result<[LastViewedProductResult], Error>
 }
 
 
 public class RealmSwiftManager :RealmSwiftManagerProtocol {
+   
    
     
     public init(){ }
@@ -36,13 +37,19 @@ public class RealmSwiftManager :RealmSwiftManagerProtocol {
         
     }
     
-    public func fetchLastViewedCategory()  -> [LastViewedCategoryResult]{
-        let realm = try! Realm()
-        
-        let lastViewedCategories = realm.objects(LastViewedCategory.self)
-        
-        return lastViewedCategories.map { category in
-            return LastViewedCategoryResult(id: category.id, name: category.name, imageUrl: category.imageUrl)
+    public func fetchLastViewedCategory() -> Result<[LastViewedCategoryResult], Error> {
+        do {
+            let realm = try Realm()
+            
+            let lastViewedCategories = realm.objects(LastViewedCategory.self)
+            
+            let categories = lastViewedCategories.map { category in
+                LastViewedCategoryResult(id: category.id, name: category.name, imageUrl: category.imageUrl)
+            }
+            
+            return .success(Array(categories))
+        } catch {
+            return .failure(error)
         }
     }
     
@@ -76,6 +83,23 @@ public class RealmSwiftManager :RealmSwiftManagerProtocol {
             return LastViewedProductResult(id: product.id, imageUrl: product.imageUrl, name: product.name, price:product.price )
         }
     }
+    
+    
+    public func fetchLastViewedProduct() -> Result<[LastViewedProductResult], Error> {
+        do{
+            let realm = try Realm()
+            
+            let lastViewedProduct = realm.objects(LastViewedProduct.self)
+            
+            let products = lastViewedProduct.map { product in
+                return LastViewedProductResult(id: product.id, imageUrl: product.imageUrl, name: product.name, price:product.price )
+            }
+            return .success(Array(products))
+        }catch{
+            return .failure(error)
+        }
+    }
+    
     
     func productExist(withId id:Int) -> Bool {
         let realm = try! Realm()

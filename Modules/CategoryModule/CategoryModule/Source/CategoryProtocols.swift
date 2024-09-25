@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
-typealias Ables = UIViewAble & NavConUIAble & SegueAble
+typealias Ables = UIViewAble & NavConUIAble & SegueAble & AlertMessageAble
 
 
 protocol ViewToPresenterCategoryProtocol {
@@ -31,6 +31,7 @@ protocol PresenterToViewCategoryProtocol:AnyObject,Ables{
     func reloadCategoryTableView()
     func reloadSubCategoryCollectionView()
     func speacialViewChangeUI(textColor:String,backColor:String)
+    func setEmptyMessageForYou(text:String)
 }
 
 

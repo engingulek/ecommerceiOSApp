@@ -25,14 +25,10 @@ class HomeViewController: UIViewController {
         
     }()
     
-    private lazy var lastViewedUILabel : UILabel = {
-        let label = UILabel()
-        label.text = TextTheme.lastViewed.rawValue
-        label.textColor = UIColor(hex: ColorTheme.secandaryLabelColor.rawValue)
-        label.font = FontTheme.font.primaryFontBoldVersion
-        return label
-        
-    }()
+    private lazy var emptyMessageLabel = UILabel.primaryUILabelLeft(color: ColorTheme.alertLabelColor.rawValue)
+    
+    private lazy var lastViewedUILabel = UILabel.primaryUILabelLeft(text: TextTheme.lastViewed.rawValue,color: ColorTheme.secandaryLabelColor.rawValue)
+    
     
     private lazy var categoryButtonAction  :UIAction = UIAction { _ in
         self.presenter.categoriesButtonOnTapped()
@@ -76,11 +72,24 @@ class HomeViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        view.addSubview(emptyMessageLabel)
+        emptyMessageLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
     }
 }
 
 //MARK: PresenterToViewHomeProtocol
 extension HomeViewController : PresenterToViewHomeProtocol {
+    
+    func setEmptyMessageLabel(text: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            emptyMessageLabel.text = text
+        }
+    }
+    
     
     func prepareCollectionView() {
         lastViewedUICollectionView.delegate = self

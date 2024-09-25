@@ -42,7 +42,7 @@ class CategoryViewController: UIViewController {
         return label
     }()
     
-    
+    private lazy var emptyMessageLabel = UILabel.primaryUILabelLeft(color: ColorTheme.alertLabelColor.rawValue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,14 +101,19 @@ class CategoryViewController: UIViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        
+        subCategoryCollectionView.addSubview(emptyMessageLabel)
+        emptyMessageLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+        }
     }
 }
 
 
 //MARK: PresenterToViewCategoryProtocol
 extension CategoryViewController : PresenterToViewCategoryProtocol {
-    
-    
+  
     func prepareTableView() {
         categoryTableView.delegate = self
         categoryTableView.dataSource = self
@@ -140,6 +145,12 @@ extension CategoryViewController : PresenterToViewCategoryProtocol {
         
     }
     
+    func setEmptyMessageForYou(text: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            emptyMessageLabel.text = text
+        }
+    }
 }
 
 //MARK:  UITableViewDelegate,UITableViewDataSource
