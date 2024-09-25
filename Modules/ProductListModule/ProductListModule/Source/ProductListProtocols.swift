@@ -7,7 +7,7 @@
 
 import Foundation
 import ViewControllerAbleKit
-typealias Ables = NavConUIAble & UIViewAble & SegueAble
+typealias Ables = NavConUIAble & UIViewAble & SegueAble & AlertMessageAble
 
 protocol ViewToPresenterProductListProtocol {
     var view : PresenterToViewProductListProtocol? {get}
@@ -31,14 +31,17 @@ protocol PresenterToViewProductListProtocol:AnyObject & Ables{
     func prepareCollectionView()
     func reloadCollectionView()
     func searchTextFieldPlacholder(placholderText:String)
+    func setEmptyMessageForYou(text:String)
+    func startIndicator()
+    func stopIndicator()
 }
 
 
 protocol PresenterToInteractorProductListProtocol {
-    func fetchSmartPhoneProducts() async
-    func fetchLaptopProducts() async 
-    func fetchTshirtsProducts() async
-    func fetchJumpersProducts() async
+    func fetchSmartPhoneProducts() async throws
+    func fetchLaptopProducts() async throws
+    func fetchTshirtsProducts() async throws
+    func fetchJumpersProducts() async throws
     
 }
 

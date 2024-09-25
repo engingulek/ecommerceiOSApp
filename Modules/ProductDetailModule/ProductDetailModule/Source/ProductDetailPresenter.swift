@@ -113,8 +113,6 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
             
             text = size == "1000" ? "1GB" : "\(size)GB"
             
-            
-            
             let stock = invetoryCheckForMemorySize(memorySizeId: id)
             
             if stock  == 0{

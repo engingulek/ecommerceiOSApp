@@ -24,20 +24,43 @@ final class ProductListPresenter {
     }
     
     private func getSmartPhones() async {
-        await interactor.fetchSmartPhoneProducts()
-        
+        do{
+          try await interactor.fetchSmartPhoneProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
     }
     
     private func getLaptops() async {
-        await interactor.fetchLaptopProducts()
+        do{
+           try await interactor.fetchLaptopProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
     }
     
     private func getTshirts() async {
-        await interactor.fetchTshirtsProducts()
+        do{
+          try  await interactor.fetchTshirtsProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
     }
     
     private func getJumpers() async {
-        await interactor.fetchJumpersProducts()
+        do{
+           try await interactor.fetchJumpersProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
     }
 }
 
@@ -57,46 +80,63 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
     func getSubCategoryId(subCategoryId: Int) {
         switch subCategoryId {
         case 1:
+            view?.startIndicator()
             Task{
                 await getSmartPhones()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.smartPhones.rawValue)
             
         case 2:
+            view?.startIndicator()
             Task{
                 await getLaptops()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.laptops.rawValue)
         case 6:
+            view?.startIndicator()
             Task{
                 await getTshirts()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.tshirts.rawValue)
         case 7:
+            view?.startIndicator()
             Task{
                 await getJumpers()
                 view?.reloadCollectionView()
+                view?.stopIndicator()
             }
             view?.changeTitle(title: TextTheme.jumpers.rawValue)
         default:
-            //TODO: Alert Error will be added there
-            print("Switch Error")
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
         
     }
     
     func searchProductList(searchText: String?) {
         guard let searchText = searchText else {return}
+        view?.startIndicator()
         if searchText.isEmpty {
             lastProducts = baseProducts
+            view?.setEmptyMessageForYou(text: TextTheme.noneText.rawValue)
         }else{
-            lastProducts = baseProducts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+            
+            if lastProducts.isEmpty {
+                view?.setEmptyMessageForYou(text: TextTheme.emptyList.rawValue)
+            }else{
+                lastProducts = baseProducts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+            }
         }
         
         view?.reloadCollectionView()
+        view?.stopIndicator()
     }
     
     func numberOfItemsInSection() -> Int {

@@ -14,9 +14,29 @@ final class HomePresenter  {
     private let router : PresenterToRouterHomeProtocol
     private var lastViewedProduct : [LastViewedProductResult] = []
     private let realmManager : RealmSwiftManagerProtocol = RealmSwiftManager()
+    
     init(view: PresenterToViewHomeProtocol,router:PresenterToRouterHomeProtocol = HomeRouter()) {
         self.view = view
         self.router = router
+    }
+    
+    private  func lastViewedProductAction() {
+        let result = realmManager.fetchLastViewedProduct()
+        switch result {
+        case .success(let list):
+            if list.isEmpty {
+                lastViewedProduct = []
+                view?.setEmptyMessageLabel(text: TextTheme.secondaryEmtyList.rawValue)
+            }else{
+                lastViewedProduct = list
+                view?.setEmptyMessageLabel(text: "")
+            }
+            
+        case .failure:
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
     }
 }
 
@@ -30,12 +50,12 @@ extension HomePresenter : ViewToPresenterHomeProtocol {
         view?.prepareCollectionView()
      
         view?.changeTitle(title: TextTheme.homePage.rawValue)
-        lastViewedProduct = realmManager.fetchLastViewedProduct()
+        lastViewedProductAction()
         view?.reloadCollectionView()
     }
     
     func viewWillAppear() {
-        lastViewedProduct = realmManager.fetchLastViewedProduct()
+        lastViewedProductAction()
         view?.reloadCollectionView()
     }
 
@@ -65,4 +85,6 @@ extension HomePresenter : ViewToPresenterHomeProtocol {
     func minimumInteritemSpacingForSectionAt() -> CGFloat {
         return 10
     }
+    
+    
 }

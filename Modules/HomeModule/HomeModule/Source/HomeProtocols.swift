@@ -8,12 +8,13 @@
 import Foundation
 import ViewControllerAbleKit
 import RealmSwiftManager
- typealias Ables = UIViewAble & SegueAble & NavConUIAble
+ typealias Ables = UIViewAble & SegueAble & NavConUIAble & AlertMessageAble
 
 protocol PresenterToViewHomeProtocol:AnyObject,Ables{
     
     func prepareCollectionView()
     func reloadCollectionView()
+    func setEmptyMessageLabel(text:String)
     
 
 }
@@ -30,6 +31,7 @@ protocol ViewToPresenterHomeProtocol {
     func minimumInteritemSpacingForSectionAt() -> CGFloat
     
     func categoriesButtonOnTapped()
+    
 
 }
 

@@ -15,7 +15,7 @@ class CategoryInteractor : PresenterToInteractorCategoryProtocol {
             let response = try await networkManager.fetch(target: .categories, responseClass: DataResult<[CategoryResult]>.self)
             presenter?.sendData(categoryResult: response.data)
         }catch{
-            print("interactor error")
+            throw error
         }
        
     }

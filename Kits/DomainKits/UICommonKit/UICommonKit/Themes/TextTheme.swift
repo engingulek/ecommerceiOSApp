@@ -8,6 +8,7 @@
 import Foundation
 
 public enum TextTheme : String {
+    case noneText = ""
     case searchPlaceholder = "Search Product"
     case categories = "Categories"
     case lastViewed = "Last Viewed"
@@ -27,4 +28,14 @@ public enum TextTheme : String {
     case description = "Description"
     case nonProductMessage = "This product is not available."
     case productDetail = "Product Detail"
+    case errorTitle = "Error"
+    /// is Something went wrong
+    case primaryErrorMessage = "Something went wrong"
+    /// is Okey
+    case primaryActionTitle = "Okey"
+    case emptyList = "Empty List"
+    case secondaryEmtyList = "The list is empty, let's look at something"
+    
+    
+
 }
