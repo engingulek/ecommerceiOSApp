@@ -1,30 +1,30 @@
 //
 //  SceneDelegate.swift
-//  Ecommerce
+//  SearchProductListApp
 //
-//  Created by Engin Gülek on 16.09.2024.
+//  Created by Engin Gülek on 22.09.2024.
 //
 
 import UIKit
 import DependencyKits
-import HomeModule
+import SearchProductListModule
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
+
     var window: UIWindow?
-    
-    
+
+
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let dependenyRegister = DependencyRegister()
-        dependenyRegister.registerDependencies()
+        let dependencyRegister = DependencyEngine.shared
+        dependencyRegister.register(value: SearchProductListRouter(), for: SearchProductListModuleProtocol.self)
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        @Dependency var homeModule : HomeModuleProtocol
-        window?.rootViewController = UINavigationController(rootViewController: homeModule .createHomeModule())
+        @Dependency var searchProductListModule : SearchProductListModuleProtocol
+        window?.rootViewController = searchProductListModule.createSearchProductListModule(text: "")
         window?.makeKeyAndVisible()
     }
-    
-    
-    
+
+
+
 }
 
