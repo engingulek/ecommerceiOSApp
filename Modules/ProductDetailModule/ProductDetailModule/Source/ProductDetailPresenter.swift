@@ -106,73 +106,25 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
             let id = memorySize.id
             
             let text:String
-            let backColor:String
-            let borderColor:String
-            let textColor:String
-            let multiplyIconIsHidden:Bool
-            
-            text = size == "1000" ? "1GB" : "\(size)GB"
             
             let stock = invetoryCheckForMemorySize(memorySizeId: id)
+            text = size == "1000" ? "1GB" : "\(size)GB"
             
-            if stock  == 0{
-                textColor = ColorTheme.secandaryLabelColor.rawValue
-                borderColor = ColorTheme.secandaryLabelColor.rawValue
-                backColor = ColorTheme.secondaryBackColor.rawValue
-                multiplyIconIsHidden = false
-                
-            }else{
-                if selectedMemorySizeId == id {
-                    textColor = ColorTheme.primaryBackColor.rawValue
-                    borderColor = ColorTheme.thirdLabelColor.rawValue
-                    backColor = ColorTheme.lightOrange.rawValue
-                    multiplyIconIsHidden = true
-                    
-                    
-                }else{
-                    textColor = ColorTheme.secandaryLabelColor.rawValue
-                    borderColor = ColorTheme.secandaryLabelColor.rawValue
-                    backColor = ColorTheme.primaryBackColor.rawValue
-                    multiplyIconIsHidden = true
-                    
-                }
-            }
+            let cellConfigureItem = cellConfigureToAccordingStock(selectedId: selectedMemorySizeId!, getId: id, stock: stock)
 
-            return (text,textColor,backColor,borderColor,multiplyIconIsHidden)
+            return (text,cellConfigureItem.textColor,cellConfigureItem.backColor,cellConfigureItem.borderColor,cellConfigureItem.multiplyIconIsHidden)
         case 2:
             let color = colorsList[indexPath.item].name
             let id =  colorsList[indexPath.item].id
             let text:String
-            let backColor:String
-            let borderColor:String
-            let textColor:String
-            let multiplyIconIsHidden:Bool
-            
+           
+            let stock = invetoryCheckForColorId(colorId: id, memorySizeId: selectedMemorySizeId!)
             text = color
-           let stok = invetoryCheckForColorId(colorId: id, memorySizeId: selectedMemorySizeId!)
-            
-            if stok == 0{
-                textColor = ColorTheme.secandaryLabelColor.rawValue
-                borderColor = ColorTheme.secandaryLabelColor.rawValue
-                backColor = ColorTheme.secondaryBackColor.rawValue
-                multiplyIconIsHidden = false
-            }else{
-                if selectedColorId == id {
-                    textColor = ColorTheme.primaryBackColor.rawValue
-                    borderColor = ColorTheme.thirdLabelColor.rawValue
-                    backColor = ColorTheme.lightOrange.rawValue
-                    multiplyIconIsHidden = true
-                    
-                }else{
-                    textColor = ColorTheme.secandaryLabelColor.rawValue
-                    borderColor = ColorTheme.secandaryLabelColor.rawValue
-                    backColor = ColorTheme.primaryBackColor.rawValue
-                    multiplyIconIsHidden = true
-                }
-            }
           
+            let cellConfigureItem = cellConfigureToAccordingStock(selectedId: selectedColorId!, getId: id, stock: stock)
+                      
             
-            return (text,textColor,backColor,borderColor,multiplyIconIsHidden)
+           return (text,cellConfigureItem.textColor,cellConfigureItem.backColor,cellConfigureItem.borderColor,cellConfigureItem.multiplyIconIsHidden)
         default:
             return ("","","","",true)
         }
@@ -227,8 +179,41 @@ extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
         let alertLabelText = totalQuantity == 0 ? TextTheme.nonProductMessage.rawValue : ""
         view?.alertLabelSetText(text: alertLabelText)
     }
-    
-  
-    
-    
+}
+
+
+extension ProductDetailPresenter {
+    private func cellConfigureToAccordingStock(selectedId:Int,getId:Int,stock:Int) -> (textColor:String,
+                                                              backColor:String,
+                                                              borderColor:String,
+                                                              multiplyIconIsHidden:Bool){
+        
+        let backColor:String
+        let borderColor:String
+        let textColor:String
+        let multiplyIconIsHidden:Bool
+        if stock  == 0{
+            textColor = ColorTheme.secandaryLabelColor.rawValue
+            borderColor = ColorTheme.secandaryLabelColor.rawValue
+            backColor = ColorTheme.secondaryBackColor.rawValue
+            multiplyIconIsHidden = false
+            
+        }else{
+            if selectedId == getId {
+                textColor = ColorTheme.primaryBackColor.rawValue
+                borderColor = ColorTheme.thirdLabelColor.rawValue
+                backColor = ColorTheme.lightOrange.rawValue
+                multiplyIconIsHidden = true
+                
+                
+            }else{
+                textColor = ColorTheme.secandaryLabelColor.rawValue
+                borderColor = ColorTheme.secandaryLabelColor.rawValue
+                backColor = ColorTheme.primaryBackColor.rawValue
+                multiplyIconIsHidden = true
+                
+            }
+        }
+        return (textColor,backColor,borderColor,multiplyIconIsHidden)
+    }
 }

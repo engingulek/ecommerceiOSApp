@@ -8,9 +8,6 @@
          location = "group:ProductDetailApp/ProductDetailApp.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:SearchProductListApp/SearchProductListApp.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:ProductListApp/ProductListApp.xcodeproj">
       </FileRef>
       <FileRef
