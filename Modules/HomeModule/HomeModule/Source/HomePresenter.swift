@@ -8,6 +8,7 @@
 import Foundation
 import UICommonKit
 import RealmSwiftManager
+
 final class HomePresenter  {
     
     weak var view : PresenterToViewHomeProtocol?
@@ -29,7 +30,7 @@ final class HomePresenter  {
                 view?.setEmptyMessageLabel(text: TextTheme.secondaryEmtyList.rawValue)
             }else{
                 lastViewedProduct = list
-                view?.setEmptyMessageLabel(text: "")
+                view?.setEmptyMessageLabel(text: TextTheme.noneText.rawValue)
             }
             
         case .failure:
@@ -40,10 +41,8 @@ final class HomePresenter  {
     }
 }
 
-
+//MARK: ViewToPresenterHomeProtocol
 extension HomePresenter : ViewToPresenterHomeProtocol {
-    
-    
     
     func viewDidLoad() {
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
@@ -68,7 +67,8 @@ extension HomePresenter : ViewToPresenterHomeProtocol {
         return lastViewedProduct.count
     }
     
-    func collectionViewCellForItem(at indexPath: IndexPath) -> (product: LastViewedProductResult, radius: Double, backColor: String) {
+    func collectionViewCellForItem(at indexPath: IndexPath) -> (product: LastViewedProductResult, 
+                                                                radius: Double, backColor: String) {
         return ( lastViewedProduct[indexPath.item],
                  RadiusTheme.xSmall.rawValue,
                  ColorTheme.primaryBackColor.rawValue)
@@ -85,6 +85,4 @@ extension HomePresenter : ViewToPresenterHomeProtocol {
     func minimumInteritemSpacingForSectionAt() -> CGFloat {
         return 10
     }
-    
-    
 }

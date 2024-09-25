@@ -24,16 +24,16 @@
       location = "group:Modules"
       name = "Modules">
       <FileRef
-         location = "group:ProductDetailModule/ProductDetailModule.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:ProductListModule/ProductListModule.xcodeproj">
+         location = "group:HomeModule/HomeModule.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:CategoryModule/CategoryModule.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:HomeModule/HomeModule.xcodeproj">
+         location = "group:ProductListModule/ProductListModule.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:ProductDetailModule/ProductDetailModule.xcodeproj">
       </FileRef>
    </Group>
    <Group

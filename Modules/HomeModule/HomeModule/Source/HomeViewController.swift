@@ -10,6 +10,7 @@ import ViewControllerAbleKit
 import SnapKit
 import UICommonKit
 class HomeViewController: UIViewController {
+    
     lazy var presenter: ViewToPresenterHomeProtocol = HomePresenter(view: self)
     
     private lazy var categoryButton : UIButton = {
@@ -27,7 +28,8 @@ class HomeViewController: UIViewController {
     
     private lazy var emptyMessageLabel = UILabel.primaryUILabelLeft(color: ColorTheme.alertLabelColor.rawValue)
     
-    private lazy var lastViewedUILabel = UILabel.primaryUILabelLeft(text: TextTheme.lastViewed.rawValue,color: ColorTheme.secandaryLabelColor.rawValue)
+    private lazy var lastViewedUILabel = UILabel.primaryUILabelLeft(text: TextTheme.lastViewed.rawValue,
+                                                                    color: ColorTheme.secandaryLabelColor.rawValue)
     
     
     private lazy var categoryButtonAction  :UIAction = UIAction { _ in
@@ -44,13 +46,14 @@ class HomeViewController: UIViewController {
         presenter.viewDidLoad()
         configureUI()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewWillAppear()
     }
 
+    //MARK: ConfigureUI
     private func configureUI(){
-        
         
         view.addSubview(categoryButton)
         categoryButton.snp.makeConstraints { make in
@@ -111,7 +114,8 @@ extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier.self, for: indexPath) as? ProductCVC else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier.self, 
+                                                            for: indexPath) as? ProductCVC else {
             return UICollectionViewCell()
         }
         let cellItem =  presenter.collectionViewCellForItem(at: indexPath)
@@ -124,9 +128,9 @@ extension HomeViewController : UICollectionViewDelegate,UICollectionViewDataSour
         return cell
     }
     
-    
 }
 
+//MARK: UICollectionViewDelegateFlowLayout
 extension HomeViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
