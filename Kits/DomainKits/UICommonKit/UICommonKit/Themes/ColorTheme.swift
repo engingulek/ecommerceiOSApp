@@ -23,5 +23,7 @@ public enum ColorTheme : String {
     case secondaryBackColor = "#F6F5F5"
     
     case lightOrange = "#FFC96F"
+    
+    case alertLabelColor = "#FF0000"
 
 }

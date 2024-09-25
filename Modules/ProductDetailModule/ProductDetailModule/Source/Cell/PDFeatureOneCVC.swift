@@ -20,6 +20,13 @@ final class PDFeatureOneCVC : UICollectionViewCell {
         return label
     }()
     
+    private lazy var multiplyIcon : UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "multiply")
+        imageView.tintColor = UIColor(hex: ColorTheme.secandaryLabelColor.rawValue)
+        return imageView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -39,6 +46,14 @@ final class PDFeatureOneCVC : UICollectionViewCell {
             make.bottom.equalToSuperview()
             make.height.equalTo(50)
         }
+        
+        featureLabel.addSubview(multiplyIcon)
+        multiplyIcon.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview()
+            make.height.equalTo(40)
+            make.width.equalTo(40)
+        }
     }
     
     
@@ -47,11 +62,12 @@ final class PDFeatureOneCVC : UICollectionViewCell {
         featureLabel.text = text
     }
     
-    func setUI(backColor:String,borderColor:String,textColor:String){
+    func setUI(backColor:String,borderColor:String,textColor:String,multiplyIconIsHidden:Bool){
         contentView.layer.cornerRadius = 5
         contentView.layer.borderColor = UIColor(hex: borderColor)?.cgColor
         contentView.layer.backgroundColor = UIColor(hex: backColor)?.cgColor
         featureLabel.textColor = UIColor(hex: textColor)
         contentView.layer.borderWidth = 1
+        multiplyIcon.isHidden = multiplyIconIsHidden
     }
 }

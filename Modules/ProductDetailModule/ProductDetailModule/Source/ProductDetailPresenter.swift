@@ -7,6 +7,7 @@
 
 import Foundation
 import UICommonKit
+
 final class ProductDetailPresenter {
     weak var view : PresenterToViewProductDetailProtocol?
     private let interactor : PresenterToInteractorProductDetailProtocol
@@ -18,6 +19,7 @@ final class ProductDetailPresenter {
     private var productInventoryResult:[InventoryResult] = []
     private var selectedMemorySizeId: Int?
     private var selectedColorId:Int?
+    
     init(view: PresenterToViewProductDetailProtocol?,
          interactor: PresenterToInteractorProductDetailProtocol = ProductDetailInteractor(),
          router: PresenterToRouserProductDetailProtocol = ProductDetailRouter()) {
@@ -27,6 +29,22 @@ final class ProductDetailPresenter {
         self.router = router
         
     }
+    
+    private func invetoryCheckForColorId(colorId:Int,memorySizeId:Int) -> Int {
+       let stock = productInventoryResult.filter {
+           $0.color_id == colorId
+           && 
+           $0.memory_size_id == memorySizeId }.first?.stock_quantity ?? 0
+        
+        return stock
+    }
+    
+    private func invetoryCheckForMemorySize(memorySizeId:Int) -> Int {
+       let stocks = productInventoryResult.filter {$0.memory_size_id == memorySizeId }
+        let stockQuantity = stocks.reduce(0) { $0 + $1.stock_quantity }
+        return stockQuantity
+    }
+
 }
 
 
@@ -70,13 +88,17 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
         }
     }
     
-    //TODO: () = selected and nonselected  border color 
-    func collectionViewCellForItem(at indexPath: IndexPath,tag:Int) -> (text: String, textColor:String,backColor:String,borderColor:String) {
+    
+    func collectionViewCellForItem(at indexPath: IndexPath,tag:Int) -> (text: String, 
+                                                                        textColor:String,
+                                                                        backColor:String,
+                                                                        borderColor:String,
+                                                                        multiplyIconIsHidden:Bool) {
         switch tag {
         case 0 :
             //TODO: error image url will be added there
             let imageUrl = prodcutDetailResult?.imageurl[indexPath.item] ?? ""
-            return (imageUrl,"","","")
+            return (imageUrl,"","","",true)
         case 1:
             let memorySize = memorySizesList[indexPath.item]
             let size = memorySize.size
@@ -86,22 +108,40 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
             let backColor:String
             let borderColor:String
             let textColor:String
+            let multiplyIconIsHidden:Bool
             
             text = size
             
-            if selectedMemorySizeId == id {
-                textColor = ColorTheme.primaryBackColor.rawValue
-                borderColor = ColorTheme.thirdLabelColor.rawValue
-                backColor = ColorTheme.lightOrange.rawValue
-                
-            }else{
+            let stock = invetoryCheckForMemorySize(memorySizeId: id)
+            
+            if stock  == 0{
                 textColor = ColorTheme.secandaryLabelColor.rawValue
                 borderColor = ColorTheme.secandaryLabelColor.rawValue
-                backColor = ColorTheme.primaryBackColor.rawValue
+                backColor = ColorTheme.secondaryBackColor.rawValue
+                multiplyIconIsHidden = false
+                
+            }else{
+                if selectedMemorySizeId == id {
+                    textColor = ColorTheme.primaryBackColor.rawValue
+                    borderColor = ColorTheme.thirdLabelColor.rawValue
+                    backColor = ColorTheme.lightOrange.rawValue
+                    multiplyIconIsHidden = true
+                    
+                    
+                }else{
+                    textColor = ColorTheme.secandaryLabelColor.rawValue
+                    borderColor = ColorTheme.secandaryLabelColor.rawValue
+                    backColor = ColorTheme.primaryBackColor.rawValue
+                    multiplyIconIsHidden = true
+                    
+                }
             }
             
             
-            return (text,textColor,backColor,borderColor)
+          
+            
+            
+            return (text,textColor,backColor,borderColor,multiplyIconIsHidden)
         case 2:
             let color = colorsList[indexPath.item].name
             let id =  colorsList[indexPath.item].id
@@ -109,30 +149,43 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
             let backColor:String
             let borderColor:String
             let textColor:String
+            let multiplyIconIsHidden:Bool
             
             text = color
+           let stok = invetoryCheckForColorId(colorId: id, memorySizeId: selectedMemorySizeId!)
             
-            if selectedColorId == id {
-                textColor = ColorTheme.primaryBackColor.rawValue
-                borderColor = ColorTheme.thirdLabelColor.rawValue
-                backColor = ColorTheme.lightOrange.rawValue
-                
-            }else{
+            if stok == 0{
                 textColor = ColorTheme.secandaryLabelColor.rawValue
                 borderColor = ColorTheme.secandaryLabelColor.rawValue
-                backColor = ColorTheme.primaryBackColor.rawValue
+                backColor = ColorTheme.secondaryBackColor.rawValue
+                multiplyIconIsHidden = false
+            }else{
+                if selectedColorId == id {
+                    textColor = ColorTheme.primaryBackColor.rawValue
+                    borderColor = ColorTheme.thirdLabelColor.rawValue
+                    backColor = ColorTheme.lightOrange.rawValue
+                    multiplyIconIsHidden = true
+                    
+                }else{
+                    textColor = ColorTheme.secandaryLabelColor.rawValue
+                    borderColor = ColorTheme.secandaryLabelColor.rawValue
+                    backColor = ColorTheme.primaryBackColor.rawValue
+                    multiplyIconIsHidden = true
+                }
             }
+          
             
-            return (text,textColor,backColor,borderColor)
+            return (text,textColor,backColor,borderColor,multiplyIconIsHidden)
         default:
-            return ("","","","")
+            return ("","","","",true)
         }
     }
     
     func sizeForItemAt() -> CGSize {
         return CGSize(width: 80, height: 50)
     }
-
+    
+    
 }
 
 extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
@@ -153,10 +206,15 @@ extension ProductDetailPresenter : InteractorToPresenterProductDetailProtocol {
                             name: productDetail.name,
                             price: productDetail.price,
                             desc: productDetail.description)
+        
+        
     }
     
     func sendInventoryResult(inventorResult: [InventoryResult]) {
         productInventoryResult =  inventorResult
+        let totalQuantity = invetoryCheckForMemorySize(memorySizeId: selectedMemorySizeId!)
+        let alertLabelText = totalQuantity == 0 ? TextTheme.nonProductMessage.rawValue : ""
+        view?.alertLabelSetText(text: alertLabelText)
     }
     
   

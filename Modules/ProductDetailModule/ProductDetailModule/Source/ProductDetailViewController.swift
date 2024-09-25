@@ -26,11 +26,10 @@ class ProductDetailViewController: UIViewController {
     private lazy var productDesc = UILabel.secondaryLabel(numnerOfLines: 3)
     
     private lazy var productPrice = UILabel.primaryUILabelLeft()
-    
+    private lazy var noneProductLabel = UILabel.primaryUILabelLeft(color: ColorTheme.alertLabelColor.rawValue)
     
     
     private lazy var featureOneTitle = UILabel.primaryUILabelLeft(text: TextTheme.size.rawValue)
-    
     
     
     private lazy var featureTwoTitle = UILabel.primaryUILabelLeft(text: TextTheme.color.rawValue)
@@ -44,6 +43,7 @@ class ProductDetailViewController: UIViewController {
         productImagesCollectionView.register(ProductImagesCVC.self, forCellWithReuseIdentifier: ProductImagesCVC.identifier)
         featureOneCollectionView.register(PDFeatureOneCVC.self, forCellWithReuseIdentifier: PDFeatureOneCVC.identifier)
         featureTwoCollectionView.register(PDFeatureOneCVC.self, forCellWithReuseIdentifier: PDFeatureOneCVC.identifier)
+      
         
     }
     
@@ -77,6 +77,12 @@ class ProductDetailViewController: UIViewController {
             make.top.equalTo(productName.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(20)
             
+        }
+        
+        view.addSubview(noneProductLabel)
+        noneProductLabel.snp.makeConstraints { make in
+            make.top.equalTo(productName.snp.bottom).offset(10)
+            make.leading.equalTo(productPrice.snp.trailing).offset(5)
         }
         view.addSubview(descTitle)
         descTitle.snp.makeConstraints { make in
@@ -158,8 +164,13 @@ extension ProductDetailViewController : PresenterToViewProductDetailProtocol {
             let url = URL(string: baseImageUrl)
             baseProductImageView.kf.setImage(with: url)
         }
-      
-        
+    }
+    
+    func alertLabelSetText(text: String) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            noneProductLabel.text = text
+        }
     }
 }
 
@@ -185,7 +196,10 @@ extension ProductDetailViewController : UICollectionViewDelegate,UICollectionVie
             let item = presenter.collectionViewCellForItem(at: indexPath, tag: 1)
             
             cell.setData(text: item.text)
-            cell.setUI(backColor: item.backColor, borderColor: item.borderColor,textColor: item.textColor)
+            cell.setUI(backColor: item.backColor,
+                       borderColor: item.borderColor,
+                       textColor: item.textColor,
+                       multiplyIconIsHidden: item.multiplyIconIsHidden)
             return cell
         case 2:
             guard let cell = collectionView.dequeueReusableCell(
@@ -193,7 +207,11 @@ extension ProductDetailViewController : UICollectionViewDelegate,UICollectionVie
                 for: indexPath) as? PDFeatureOneCVC else {return UICollectionViewCell()}
             let item = presenter.collectionViewCellForItem(at: indexPath, tag: 2)
             cell.setData(text: item.text)
-            cell.setUI(backColor: item.backColor, borderColor: item.borderColor,textColor: item.textColor)
+            cell.setUI(backColor: item.backColor, 
+                       borderColor: item.borderColor,
+                       textColor: item.textColor,
+                       multiplyIconIsHidden: item.multiplyIconIsHidden)
+            
             return cell
         default:
             return UICollectionViewCell()
