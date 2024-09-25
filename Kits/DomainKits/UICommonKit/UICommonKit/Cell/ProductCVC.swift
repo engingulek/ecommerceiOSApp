@@ -17,14 +17,12 @@ public final class ProductCVC : UICollectionViewCell {
     private lazy var productImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "iphone")
         return imageView
     }()
     
     
     private lazy var productName : UILabel = {
         let label = UILabel()
-        label.text = "iPhone 13 256GB Black"
         label.font = FontTheme.font.primaryFontNormalVersion
         label.numberOfLines = 2
         return label
@@ -32,7 +30,6 @@ public final class ProductCVC : UICollectionViewCell {
     
     private lazy var productPrice : UILabel = {
         let label = UILabel()
-        label.text = "1220"
         label.font = FontTheme.font.secondaryFontBoldVersion
         label.textColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
         label.textAlignment = .left

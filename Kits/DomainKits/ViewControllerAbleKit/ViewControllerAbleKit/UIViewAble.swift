@@ -21,18 +21,6 @@ extension UIViewAble where Self : UIViewController  {
     
 }
 
-public protocol UICollectionViewControllerAble {
-    func setBackColorCollectionViewController(color:String)
-}
-
-
-extension UICollectionViewControllerAble where Self : UICollectionViewController {
-    public func setBackColorCollectionViewController(color:String) {
-        collectionView.backgroundColor = UIColor(hex: color)
-    }
-}
-
-
 //MARK: - SegueAble
 public protocol SegueAble {
     func pushViewControllerAble (_ vc:UIViewController,animated:Bool)
