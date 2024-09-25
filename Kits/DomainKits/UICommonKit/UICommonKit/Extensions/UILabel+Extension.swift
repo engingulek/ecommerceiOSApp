@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 extension UILabel {
-    public static func primaryUILabelLeft(text:String = "") -> UILabel {
+    public static func primaryUILabelLeft(text:String = "",color:String = ColorTheme.thirdLabelColor.rawValue ) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = FontTheme.font.primaryFontBoldVersion
-        label.textColor = UIColor(hex: ColorTheme.thirdLabelColor.rawValue)
+        label.textColor = UIColor(hex: color)
         label.textAlignment = .left
         return label
     }
@@ -25,3 +25,4 @@ extension UILabel {
         return label
     }
 }
+

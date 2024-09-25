@@ -14,8 +14,14 @@ protocol ViewToPresenterProductDetailProtocol {
     func viewDidLoad()
     func getProductInfo(id:Int,product_id:Int)
     func numberOfItemsInSection(tag:Int) -> Int
-    func collectionViewCellForItem(at indexPath:IndexPath,tag:Int)-> (text:String,textColor:String,backColor:String,borderColor:String)
+    func collectionViewCellForItem(at indexPath:IndexPath,tag:Int)-> (text:String,
+                                                                      textColor:String,
+                                                                      backColor:String,
+                                                                      borderColor:String,
+                                                                      multiplyIconIsHidden:Bool)
+    
     func sizeForItemAt() -> CGSize
+    
     
     
 }
@@ -25,6 +31,7 @@ protocol PresenterToViewProductDetailProtocol : AnyObject & Ables{
     func prepareCollectionView()
     func reloadCollectionView()
     func configureData(baseImageUrl:String,name:String,price:Int,desc:String)
+    func alertLabelSetText(text:String)
 }
 
 /// fetch
