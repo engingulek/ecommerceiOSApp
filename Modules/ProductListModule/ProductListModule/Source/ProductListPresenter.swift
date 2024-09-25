@@ -9,14 +9,16 @@ import Foundation
 import UICommonKit
 import RealmSwiftManager
 final class ProductListPresenter {
+    
     weak var view : PresenterToViewProductListProtocol?
     private let interactor : PresenterToInteractorProductListProtocol
     private let router : PresenterToRouserProductListProtocol
     private let realmManager : RealmSwiftManagerProtocol = RealmSwiftManager()
     private var baseProducts : [ProductResult] = []
     private var lastProducts  : [ProductResult] = []
+    
     init(view: PresenterToViewProductListProtocol?,
-         interactor: PresenterToInteractorProductListProtocol = ProductListInteractor(),
+         interactor: PresenterToInteractorProductListProtocol,
          router: PresenterToRouserProductListProtocol = ProductListRouter()) {
         self.view = view
         self.interactor = interactor

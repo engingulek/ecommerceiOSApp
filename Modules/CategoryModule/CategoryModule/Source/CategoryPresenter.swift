@@ -9,12 +9,12 @@ import Foundation
 import UICommonKit
 import RealmSwiftManager
 final class CategoryPresenter  {
+    
     weak var view: PresenterToViewCategoryProtocol?
     private let interactor : PresenterToInteractorCategoryProtocol
     private let realmManager : RealmSwiftManagerProtocol = RealmSwiftManager()
     private var categories: [CategoryResult] = []
     private var subCategories : [SubCategories] = []
-    
     
     private var selectedCategoryId: Int = -1
     private let router : PresenterToRouteCategoryProtocol
@@ -28,10 +28,13 @@ final class CategoryPresenter  {
     }
     
     private func addLastViewCategory(subCategories:SubCategories) {
-        realmManager.addLastViewCategory(id: subCategories.id, name: subCategories.name, imageUrl: subCategories.icon)
+        realmManager.addLastViewCategory(id: subCategories.id, 
+                                         name: subCategories.name,
+                                         imageUrl: subCategories.icon)
     }
     
     private func getLastViewedCategories()  {
+        
       let result = realmManager.fetchLastViewedCategory()
         
         switch result {
@@ -42,7 +45,7 @@ final class CategoryPresenter  {
                 subCategories = list.map({ category in
                     return  SubCategories(id: category.id, name: category.name, icon: category.imageUrl)
                 })
-                view?.setEmptyMessageForYou(text: "")
+                view?.setEmptyMessageForYou(text: TextTheme.noneText.rawValue)
             }
             
         case .failure:
@@ -66,12 +69,10 @@ extension CategoryPresenter  {
                                       message: TextTheme.primaryErrorMessage.rawValue,
                                       actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
-        
     }
-    
 }
 
-
+//MARK: ViewToPresenterCategoryProtocol For TableView
 extension CategoryPresenter : ViewToPresenterCategoryProtocol {
   
     func viewDidLoad() {
@@ -81,7 +82,6 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
         
         getLastViewedCategories()
        
-        
         view?.reloadCategoryTableView()
         view?.reloadSubCategoryCollectionView()
         view?.changeTitle(title: TextTheme.categories.rawValue)
@@ -91,7 +91,6 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
         Task {
             await fetch()
         }
-        
     }
     
     
@@ -123,7 +122,8 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
     func didSelectRow(at indexPath: IndexPath) {
     
         selectedCategoryId = categories[indexPath.row].id
-        view?.speacialViewChangeUI(textColor: ColorTheme.secandaryLabelColor.rawValue, backColor: ColorTheme.secondaryBackColor.rawValue)
+        view?.speacialViewChangeUI(textColor: ColorTheme.secandaryLabelColor.rawValue, 
+                                   backColor: ColorTheme.secondaryBackColor.rawValue)
         view?.reloadCategoryTableView()
         
         /// set subCategories
@@ -144,7 +144,7 @@ extension CategoryPresenter : ViewToPresenterCategoryProtocol {
     
 }
 
-
+//MARK: ViewToPresenterCategoryProtocol For CollectionView
 extension CategoryPresenter {
     
     func numberOfItemsInSection() -> Int {
@@ -164,6 +164,7 @@ extension CategoryPresenter {
     
 }
 
+//MARK: InteractorToPresenterCategoryProtocol
 extension CategoryPresenter : InteractorToPresenterCategoryProtocol {
     func sendData(categoryResult:[CategoryResult]) {
         categories = categoryResult

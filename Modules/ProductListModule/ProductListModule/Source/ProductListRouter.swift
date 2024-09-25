@@ -16,7 +16,9 @@ public class ProductListRouter : ProductListModuleProtocol {
     public func createProductListModule(subCategoryId: Int) -> UIViewController {
         let view = ProductListCollectionView()
         let interactor = ProductListInteractor()
-        let presenter : ViewToPresenterProductListProtocol & InteractorToPresenterProductListProtocol = ProductListPresenter(view: view,interactor: interactor)
+        let presenter : ViewToPresenterProductListProtocol & 
+        InteractorToPresenterProductListProtocol = ProductListPresenter(view: view,interactor: interactor)
+        
         view.presenter = presenter
         interactor.presenter = presenter
         presenter.getSubCategoryId(subCategoryId: subCategoryId)
@@ -30,11 +32,7 @@ extension ProductListRouter : PresenterToRouserProductListProtocol {
         @Dependency var productDetailModule : ProductDetailModuleProtocol
         let controllerView =  productDetailModule.createProductListModule(id: product_id, product_id: id)
         view?.pushViewControllerAble(controllerView, animated: true)
-        
-        
     }
-    
-    
 }
 
 

@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import DependencyKits
 import ProductListModule
+
+//MARK: CategoryModuleProtocol
 public class CategoryRouter : CategoryModuleProtocol {
 
     public init() {}
@@ -24,10 +26,9 @@ public class CategoryRouter : CategoryModuleProtocol {
 }
 
 
-
+//MARK: PresenterToRouteCategoryProtocol
 extension CategoryRouter : PresenterToRouteCategoryProtocol {
   
-    
     func toProductListModule(view:PresenterToViewCategoryProtocol?,subCategoryId: Int) {
         @Dependency var productListProtocol : ProductListModuleProtocol
         let collectionView = productListProtocol.createProductListModule(subCategoryId: subCategoryId)

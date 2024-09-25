@@ -9,17 +9,19 @@ import Foundation
 import UICommonKit
 import UIKit
 final class ProductListCollectionView :UIViewController {
-    lazy var presenter : ViewToPresenterProductListProtocol = ProductListPresenter(view: self)
+    lazy var presenter : ViewToPresenterProductListProtocol = ProductListPresenter(view: self,
+                                                                                   interactor: ProductListInteractor(),
+                                                                                   router: ProductListRouter())
+    
     private lazy var productListCollectionView = UICollectionView.createCollectionView(scrollDirection: .vertical)
     private lazy var searchTextField = UISearchTextField()
     private lazy var emptyMessageLabel = UILabel.primaryUILabelLeft(color: ColorTheme.alertLabelColor.rawValue)
     
     private lazy var loadingIndicator = UIActivityIndicatorView.createActivityIndicator()
     
-    //TODO: ActivityIndicator will be added there
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        
         productListCollectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
         let sortButton = UIBarButtonItem(title: TextTheme.sort.rawValue ,
                                          style: .plain, target: self,
@@ -29,7 +31,7 @@ final class ProductListCollectionView :UIViewController {
         presenter.viewDidLoad()
         
         productListCollectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
-        //TODO: Look at the best of this
+    
         searchTextField.addTarget(self,
                                   action: #selector(searchTextFieldDidChange(_:)),
                                   for: .editingChanged)
@@ -71,11 +73,12 @@ final class ProductListCollectionView :UIViewController {
     
     @objc func searchTextFieldDidChange(_ textField: UITextField){
         presenter.searchProductList(searchText: searchTextField.text)
-      
+        
     }
     
     @objc private func sortButtonTapped(){
-        let alert = UIAlertController(title: TextTheme.sort.rawValue, 
+        
+        let alert = UIAlertController(title: TextTheme.sort.rawValue,
                                       message: TextTheme.sortType.rawValue,
                                       preferredStyle: .actionSheet)
         
@@ -98,15 +101,16 @@ final class ProductListCollectionView :UIViewController {
 
 //MARK: CollectionViewDelegate and CollectionViewDataSource
 extension ProductListCollectionView : UICollectionViewDelegate,UICollectionViewDataSource {
-     func collectionView(_ collectionView: UICollectionView,
-                                 numberOfItemsInSection section: Int) -> Int {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         
         return presenter.numberOfItemsInSection()
         
     }
     
-     func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCVC.identifier,
                                                             for: indexPath) as? ProductCVC
@@ -166,7 +170,7 @@ extension ProductListCollectionView : UICollectionViewDelegateFlowLayout {
 
 //MARK: PresenterToViewProductListProtocol
 extension ProductListCollectionView : PresenterToViewProductListProtocol {
- 
+    
     func reloadCollectionView() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
@@ -191,21 +195,18 @@ extension ProductListCollectionView : PresenterToViewProductListProtocol {
     }
     
     func startIndicator() {
-          DispatchQueue.main.async { [weak self] in
-              guard let self = self else {return}
-              loadingIndicator.startAnimating()
-          }
-      }
-      
-      func stopIndicator() {
-          DispatchQueue.main.async { [weak self] in
-              guard let self = self else {return}
-              loadingIndicator.stopAnimating()
-          }
-      }
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            loadingIndicator.startAnimating()
+        }
+    }
     
+    func stopIndicator() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {return}
+            loadingIndicator.stopAnimating()
+        }
+    }
     
-    
-   
 }
 

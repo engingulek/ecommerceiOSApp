@@ -135,11 +135,11 @@ extension ProductDetailViewController : PresenterToViewProductDetailProtocol {
     func prepareCollectionView() {
         productImagesCollectionView.delegate = self
         productImagesCollectionView.dataSource = self
-        //TODO: A separate one will be created for this
+        
         featureOneCollectionView.delegate = self
         featureOneCollectionView.dataSource = self
         
-        //TODO: A separate one will be created for this
+        
         featureTwoCollectionView.delegate = self
         featureTwoCollectionView.dataSource = self
     }
@@ -147,10 +147,11 @@ extension ProductDetailViewController : PresenterToViewProductDetailProtocol {
     func reloadCollectionView() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {return}
+            
             productImagesCollectionView.reloadData()
-            //TODO: A separate one will be created for this
+            
             featureOneCollectionView.reloadData()
-            //TODO: A separate one will be created for this
+            
             featureTwoCollectionView.reloadData()
         }
     }

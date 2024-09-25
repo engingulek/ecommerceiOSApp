@@ -17,14 +17,12 @@ final class SubCategoryCVC : UICollectionViewCell {
     private lazy var subCategoryImageView : UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.image = UIImage(systemName: "tshirt.fill")
         return imageView
     }()
     
     
     private lazy var subCategoryName : UILabel = {
         let label = UILabel()
-        label.text = "Tshirt"
         label.font = FontTheme.font.primaryFontNormalVersion
         label.numberOfLines = .zero
         label.textAlignment = .center

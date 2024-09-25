@@ -14,6 +14,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
     
     private let networkManager : NetworkManagerProtocol = NetworkManager()
     
+    //MARK: fetchSmartPhoneProducts
     func fetchSmartPhoneProducts() async throws {
         do{
             let response = try await networkManager.fetch(target: .smartPhones, responseClass: DataResult<[ProductResult]>.self)
@@ -25,7 +26,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
         }
     }
     
-    
+    //MARK: fetchLaptopProducts
     func fetchLaptopProducts() async throws {
         do{
             let response = try await networkManager.fetch(target: .laptops, responseClass: DataResult<[ProductResult]>.self)
@@ -36,7 +37,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
         }
     }
     
-    
+    //MARK: fetchTshirtsProducts
     func fetchTshirtsProducts() async throws{
         do{
             let response = try await networkManager.fetch(target: .thirsts, responseClass: DataResult<[ProductResult]>.self)
@@ -47,6 +48,7 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
         }
     }
     
+    //MARK: fetchJumpersProducts
     func fetchJumpersProducts() async throws {
         do{
             let response = try await networkManager.fetch(target: .jumpers, responseClass: DataResult<[ProductResult]>.self)

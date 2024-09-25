@@ -38,5 +38,4 @@ protocol ViewToPresenterHomeProtocol {
 
 protocol PresenterToRouterHomeProtocol {
     func toCategoryModule(view:PresenterToViewHomeProtocol?)
-    func toSearchProductListModule(view:PresenterToViewHomeProtocol?,text:String)
 }

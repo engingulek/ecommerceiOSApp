@@ -13,11 +13,11 @@ typealias Ables = UIViewAble & NavConUIAble & SegueAble & AlertMessageAble
 protocol ViewToPresenterCategoryProtocol {
     var view : PresenterToViewCategoryProtocol? {get}
     func viewDidLoad()
-    //MARK: TableView
+    /// TableView
     func numberOfRowsInSection() -> Int
     func cellForItem(at indexPath : IndexPath) -> (text:String,textColor:String,backColor:String)
     func didSelectRow(at indexPath:IndexPath)
-    //MARK: Collection View
+    /// Collection View
     func numberOfItemsInSection() -> Int
     func specialViewOnTapped()
     func collectionViewCellForItem(at indexPath:IndexPath)-> SubCategories
@@ -26,10 +26,13 @@ protocol ViewToPresenterCategoryProtocol {
 }
 
 protocol PresenterToViewCategoryProtocol:AnyObject,Ables{
+    /// Collection View
     func prepareCollectionView()
+    func reloadSubCategoryCollectionView()
+    /// TableView
     func prepareTableView()
     func reloadCategoryTableView()
-    func reloadSubCategoryCollectionView()
+    
     func speacialViewChangeUI(textColor:String,backColor:String)
     func setEmptyMessageForYou(text:String)
 }

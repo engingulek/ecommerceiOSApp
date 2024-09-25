@@ -21,7 +21,7 @@ final class ProductDetailInteractor : PresenterToInteractorProductDetailProtocol
             let result = response.data
             presenter?.sendColor(colors: result)
         }catch{
-            print("laptop interactor error")
+            print(error.localizedDescription)
         }
     }
     
@@ -32,7 +32,7 @@ final class ProductDetailInteractor : PresenterToInteractorProductDetailProtocol
             let result = response.data
             presenter?.sendMemorySize(memorySizes: result)
         }catch{
-            print("laptop interactor error")
+            print(error.localizedDescription)
         }
     }
     
@@ -44,7 +44,7 @@ final class ProductDetailInteractor : PresenterToInteractorProductDetailProtocol
             let result = response.data
             presenter?.sendProductDetail(productDetail: result)
         }catch{
-            print("product detai error")
+            print(error.localizedDescription)
         }
     }
     
@@ -57,7 +57,7 @@ final class ProductDetailInteractor : PresenterToInteractorProductDetailProtocol
             presenter?.sendInventoryResult(inventorResult: result)
             
         }catch{
-            print("inventory error")
+            print(error.localizedDescription)
         }
     }
     
