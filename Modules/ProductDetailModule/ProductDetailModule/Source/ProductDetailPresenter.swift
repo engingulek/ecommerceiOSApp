@@ -56,6 +56,7 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
         getFeatures()
         view?.prepareCollectionView()
         view?.reloadCollectionView()
+        view?.changeTitle(title: TextTheme.productDetail.rawValue)
     }
     
     func getFeatures() {
@@ -110,7 +111,9 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
             let textColor:String
             let multiplyIconIsHidden:Bool
             
-            text = size
+            text = size == "1000" ? "1GB" : "\(size)GB"
+            
+            
             
             let stock = invetoryCheckForMemorySize(memorySizeId: id)
             
@@ -136,11 +139,7 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
                     
                 }
             }
-            
-            
-          
-            
-            
+
             return (text,textColor,backColor,borderColor,multiplyIconIsHidden)
         case 2:
             let color = colorsList[indexPath.item].name
@@ -180,6 +179,20 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
             return ("","","","",true)
         }
     }
+    
+   /* // This was made this func to show the change
+    func didSelectItem(at indexPath: IndexPath,tag:Int) {
+        switch tag {
+        case 1:
+            selectedMemorySizeId = memorySizesList[indexPath.item].id
+            let inventoryResults = productInventoryResult.filter { $0.memory_size_id == selectedMemorySizeId }
+            let inventoryResult = inventoryResults.first(where: {$0.stock_quantity > 0})
+            selectedColorId = inventoryResult?.color_id
+            view?.reloadCollectionView()
+        default:
+            return
+        }
+    }*/
     
     func sizeForItemAt() -> CGSize {
         return CGSize(width: 80, height: 50)
