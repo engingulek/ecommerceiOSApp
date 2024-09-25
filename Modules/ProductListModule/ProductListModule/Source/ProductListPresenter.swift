@@ -24,20 +24,48 @@ final class ProductListPresenter {
     }
     
     private func getSmartPhones() async {
-        await interactor.fetchSmartPhoneProducts()
+        do{
+          try await interactor.fetchSmartPhoneProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
+        
         
     }
     
     private func getLaptops() async {
-        await interactor.fetchLaptopProducts()
+        do{
+           try await interactor.fetchLaptopProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
+        
     }
     
     private func getTshirts() async {
-        await interactor.fetchTshirtsProducts()
+        do{
+          try  await interactor.fetchTshirtsProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
+        
     }
     
     private func getJumpers() async {
-        await interactor.fetchJumpersProducts()
+        do{
+           try await interactor.fetchJumpersProducts()
+        }catch{
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
+        }
+        
     }
 }
 
@@ -83,7 +111,9 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
             view?.changeTitle(title: TextTheme.jumpers.rawValue)
         default:
             //TODO: Alert Error will be added there
-            print("Switch Error")
+            view?.createAlertMesssage(title: TextTheme.errorTitle.rawValue,
+                                      message: TextTheme.primaryErrorMessage.rawValue,
+                                      actionTitle: TextTheme.primaryActionTitle.rawValue)
         }
         
     }
@@ -93,7 +123,12 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
         if searchText.isEmpty {
             lastProducts = baseProducts
         }else{
-            lastProducts = baseProducts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+            
+            if lastProducts.isEmpty {
+                view?.setEmptyMessageForYou(text: TextTheme.emptyList.rawValue)
+            }else{
+                lastProducts = baseProducts.filter({ $0.name.lowercased().contains(searchText.lowercased()) })
+            }
         }
         
         view?.reloadCollectionView()

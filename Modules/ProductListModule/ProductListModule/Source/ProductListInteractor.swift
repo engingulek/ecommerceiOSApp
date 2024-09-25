@@ -14,46 +14,46 @@ final class ProductListInteractor : PresenterToInteractorProductListProtocol {
     
     private let networkManager : NetworkManagerProtocol = NetworkManager()
     
-    func fetchSmartPhoneProducts() async {
+    func fetchSmartPhoneProducts() async throws {
         do{
             let response = try await networkManager.fetch(target: .smartPhones, responseClass: DataResult<[ProductResult]>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
            
         }catch{
-            print("smart phone interactor error \(error.localizedDescription)")
+            throw error
         }
     }
     
     
-    func fetchLaptopProducts() async  {
+    func fetchLaptopProducts() async throws {
         do{
             let response = try await networkManager.fetch(target: .laptops, responseClass: DataResult<[ProductResult]>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
         }catch{
-            print("laptop interactor error")
+            throw error
         }
     }
     
     
-    func fetchTshirtsProducts() async {
+    func fetchTshirtsProducts() async throws{
         do{
             let response = try await networkManager.fetch(target: .thirsts, responseClass: DataResult<[ProductResult]>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
         }catch{
-            print("smart phone interactor error")
+            throw error
         }
     }
     
-    func fetchJumpersProducts() async {
+    func fetchJumpersProducts() async throws {
         do{
             let response = try await networkManager.fetch(target: .jumpers, responseClass: DataResult<[ProductResult]>.self)
             let result = response.data
             presenter?.sendData(resultData: result)
         }catch{
-            print("smart phone interactor error")
+            throw error
         }
     }
     
