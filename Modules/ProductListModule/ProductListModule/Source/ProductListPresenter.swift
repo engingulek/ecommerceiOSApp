@@ -51,6 +51,7 @@ extension ProductListPresenter : ViewToPresenterProductListProtocol {
         view?.prepareCollectionView()
         view?.setBackColorAble(color: ColorTheme.primaryBackColor.rawValue)
         view?.searchTextFieldPlacholder(placholderText: TextTheme.searchPlaceholder.rawValue)
+        
     }
     
     func getSubCategoryId(subCategoryId: Int) {

@@ -26,4 +26,5 @@ public enum TextTheme : String {
     case size = "Size"
     case description = "Description"
     case nonProductMessage = "This product is not available."
+    case productDetail = "Product Detail"
 }

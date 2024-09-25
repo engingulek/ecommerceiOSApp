@@ -19,7 +19,7 @@ protocol ViewToPresenterProductDetailProtocol {
                                                                       backColor:String,
                                                                       borderColor:String,
                                                                       multiplyIconIsHidden:Bool)
-    
+
     func sizeForItemAt() -> CGSize
     
     
