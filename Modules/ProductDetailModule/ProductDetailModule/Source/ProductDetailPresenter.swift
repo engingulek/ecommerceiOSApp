@@ -97,7 +97,6 @@ extension ProductDetailPresenter : ViewToPresenterProductDetailProtocol {
                                                                         multiplyIconIsHidden:Bool) {
         switch tag {
         case 0 :
-            //TODO: error image url will be added there
             let imageUrl = prodcutDetailResult?.imageurl[indexPath.item] ?? ""
             return (imageUrl,"","","",true)
         case 1:

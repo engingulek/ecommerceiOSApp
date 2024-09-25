@@ -49,14 +49,12 @@ final class CategoryTVC : UITableViewCell {
             make.width.equalTo(3)
         }
     }
-    //TODO: Category model will be added
     func setData(name:String) {
         categoryLabel.text = name
     }
     
     func setConfigureUI(color:String){
         categoryLabel.textColor = UIColor(hex: color)
-        //TODO: We will look at the best way
         if(color == "#FFA500"){
             dividerUI.backgroundColor = UIColor(hex: color)
         }else{

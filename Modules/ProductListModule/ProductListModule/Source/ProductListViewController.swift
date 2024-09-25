@@ -19,7 +19,6 @@ final class ProductListCollectionView :UIViewController {
     
     private lazy var loadingIndicator = UIActivityIndicatorView.createActivityIndicator()
     
-    //TODO: ActivityIndicator will be added there
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +31,7 @@ final class ProductListCollectionView :UIViewController {
         presenter.viewDidLoad()
         
         productListCollectionView.register(ProductCVC.self, forCellWithReuseIdentifier: ProductCVC.identifier)
-        //TODO: Look at the best of this
+    
         searchTextField.addTarget(self,
                                   action: #selector(searchTextFieldDidChange(_:)),
                                   for: .editingChanged)

@@ -34,7 +34,6 @@ protocol PresenterToViewProductDetailProtocol : AnyObject & Ables{
     func alertLabelSetText(text:String)
 }
 
-/// fetch
 protocol PresenterToInteractorProductDetailProtocol{
     func fetchColor() async
     func fetchMemorySize() async
@@ -43,7 +42,6 @@ protocol PresenterToInteractorProductDetailProtocol{
     
 }
 
-// send data
 protocol InteractorToPresenterProductDetailProtocol{
     func sendColor(colors:[ColorResult])
     func sendMemorySize(memorySizes:[MemorySizeResult])
